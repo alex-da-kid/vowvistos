@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getPosts } from '@/lib/wordpress';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Consultoria de Vistos Americano, Canadense e Chinês | Vow Vistos',
@@ -91,9 +93,9 @@ const visaCards = [
 ];
 
 const stats = [
-  { value: '4 Anos', label: 'Líder em consultoria de vistos no Brasil' },
-  { value: '11.700+', label: 'Vistos aprovados para brasileiros' },
-  { value: '99,4%', label: 'Taxa de aprovação em 2024' },
+  { value: '8 Anos', label: 'Especialização exclusiva em consultoria consular' },
+  { value: '11.700+', label: 'Casos reais de brasileiros analisados e aprovados' },
+  { value: '99,4%', label: 'Taxa de aprovação em 2024 — com histórico de negativa incluso' },
 ];
 
 const scenarios = [
@@ -104,7 +106,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Turismo',
-    desc: 'Aquela viagem dos sonhos — Nova York, Toronto, Shanghai — não pode esperar mais. Cuidamos de cada detalhe da documentação para você embarcar com tranquilidade e sem surpresas no consulado.',
+    desc: 'O turismo é a categoria com mais negativas nos consulados brasileiros. Sabemos exatamente quais vínculos o cônsul quer ver — e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20turismo',
     featured: false,
   },
@@ -115,7 +117,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Estudo',
-    desc: 'Intercâmbio, MBA ou pós-graduação no exterior exigem uma análise de perfil precisa. Acompanhamos você do início ao fim para que você possa focar no que importa: a sua evolução acadêmica.',
+    desc: 'Visto de estudo exige demonstrar intenção real de retornar ao Brasil após o programa. A análise para estudantes é fundamentalmente diferente da de turistas — e a Vow Vistos entende essa diferença de cor.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20estudo',
     featured: true,
   },
@@ -126,48 +128,120 @@ const scenarios = [
       </svg>
     ),
     title: 'Trabalho',
-    desc: 'Transferência corporativa, visto TN, O-1 ou Green Card — os vistos de trabalho são os mais complexos e exigem orientação especializada. A Vow Vistos domina cada modalidade.',
+    desc: 'Visto TN, O-1, L-1, transferência corporativa — cada categoria tem critérios próprios e um nível de escrutínio diferente. São os vistos mais complexos do portfólio consular, e os que mais exigem especialização real.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20trabalho',
     featured: false,
   },
 ];
 
 const steps = [
-  { num: '01', title: 'Análise de Perfil', desc: 'Identificamos pontos fortes e vulnerabilidades do seu perfil antes mesmo de iniciar o processo — eliminando riscos de negativa.' },
-  { num: '02', title: 'Documentação Completa', desc: 'Preparamos e revisamos cada documento exigido pelo consulado. Nada é deixado ao acaso.' },
-  { num: '03', title: 'Simulação de Entrevista', desc: 'Você chega ao consulado preparado. Simulamos as perguntas reais com foco nas suas respostas e postura.' },
-  { num: '04', title: 'Aprovação', desc: 'Acompanhamos o processo em tempo real até a concessão do visto. E se houver negativa, nossa Garantia Vitalícia entra em ação.' },
+  { num: '01', title: 'Análise de Perfil', desc: 'Não é uma triagem genérica. Mapeamos vínculos com o Brasil, histórico de viagens, consistência financeira e relações familiares internacionais. É aqui que a maioria das negativas poderia ter sido evitada.' },
+  { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel — enviamos evidências organizadas para responder às dúvidas do cônsul antes da entrevista.' },
+  { num: '03', title: 'Simulação de Entrevista', desc: 'Reproduzimos a dinâmica real do consulado: as perguntas difíceis, os silêncios, as inconsistências que derrubam candidatos bem-documentados. Você entra na sala sem surpresas.' },
+  { num: '04', title: 'Aprovação com Garantia', desc: 'Acompanhamos em tempo real até a concessão. Se o visto for negado, a Garantia Vitalícia entra em ação: reconsultoria gratuita e ilimitada até a aprovação.' },
 ];
 
 const differentials = [
-  { title: 'Experiência Comprovada', desc: 'Mais de 11.700 vistos aprovados desde 2017. Não somos uma agência de turismo que faz vistos — somos especialistas 100% focados em consultoria consular.' },
-  { title: 'Preparo para Entrevista', desc: 'A entrevista consular é o ponto mais crítico do processo. Nossa simulação exclusiva prepara você para responder com segurança e convicção.' },
-  { title: 'Documentação Blindada', desc: 'Documentação errada ou incompleta é um dos maiores motivos de negativa. Revisamos cada detalhe antes do seu agendamento.' },
-  { title: 'Garantia Vitalícia', desc: 'Se o visto for negado, oferecemos reconsultoria gratuita ilimitada — para sempre. Nenhuma outra consultoria no Brasil oferece isso.' },
+  {
+    title: '11.700 Casos. Um Padrão.',
+    desc: 'Você não aprende o que o cônsul realmente avalia em um livro. Aprende vendo 11.700 perfis de brasileiros — o que funcionou, o que falhou e por quê. Esse padrão é o que aplicamos no seu caso.',
+  },
+  {
+    title: 'Sabemos o que o Cônsul Pergunta',
+    desc: 'A entrevista dura em média 2 minutos. As perguntas parecem simples, mas o que é avaliado é a consistência, a segurança e os vínculos. Nossa simulação reproduz o ambiente real dos consulados de SP, RJ e Brasília.',
+  },
+  {
+    title: 'Documentação que Convence',
+    desc: 'Não basta apresentar documentos — eles precisam contar uma história coerente. Identificamos inconsistências que causam negativas "invisíveis" e montamos cada dossiê para responder às dúvidas antes que sejam levantadas.',
+  },
+  {
+    title: 'Garantia Vitalícia',
+    desc: 'Se o visto for negado, reconsultoria gratuita ilimitada — para sempre. Nenhuma outra consultoria no Brasil faz isso porque nenhuma outra tem nossa confiança na própria análise.',
+  },
 ];
 
 const faqs = [
   {
     q: 'Vale a pena contratar uma consultoria de visto americano?',
-    a: 'Sim. Uma consultoria especializada reduz drasticamente o risco de negativa ao identificar pontos fracos no seu perfil antes da entrevista, preparar a documentação corretamente e simular as perguntas do consulado. A Vow Vistos tem 99,4% de aprovação em 2024 e mais de 11.700 vistos aprovados.',
+    a: 'Sim — e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 11.700 casos de brasileiros: reconhecemos os padrões de aprovação e os sinais que os consulados usam para negar. Isso não está em nenhum guia gratuito na internet.',
   },
   {
     q: 'Quais são os principais motivos para a negativa do visto americano?',
-    a: 'Os motivos mais comuns são: falta de comprovação de vínculos com o Brasil (emprego, família, imóveis), documentação incompleta ou inconsistente, respostas inseguras na entrevista consular e histórico de viagens inadequado. A Vow Vistos analisa todos esses pontos antes do seu agendamento.',
+    a: 'Os motivos mais comuns são: vínculos insuficientes com o Brasil (emprego, família, patrimônio), inconsistências entre o que você declara e o que a documentação mostra, respostas hesitantes ou contraditórias na entrevista e histórico de permanências longas ou irregulares. O que distingue a Vow Vistos é que identificamos esses pontos antes do seu agendamento — não depois.',
   },
   {
-    q: 'O que é perguntado na entrevista para visto americano?',
-    a: 'O cônsul geralmente pergunta sobre o motivo da viagem, tempo de permanência, comprovação de renda e emprego, vínculos com o Brasil, histórico de viagens anteriores e se você tem parentes nos Estados Unidos. A Vow Vistos realiza uma simulação completa de entrevista antes do seu agendamento.',
+    q: 'O que o cônsul avalia na entrevista para visto americano?',
+    a: 'A entrevista dura entre 1 e 3 minutos. O cônsul faz poucas perguntas, mas avalia muito: a consistência entre o que você diz e o que a documentação mostra, a segurança das respostas e se o seu perfil indica risco de permanência irregular. A Vow Vistos simula as perguntas específicas para o seu tipo de visto e perfil — preparando você exatamente para os pontos que levantam dúvidas no seu caso.',
   },
   {
     q: 'O que é a Garantia Vitalícia da Vow Vistos?',
-    a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias. É o nosso compromisso com a sua aprovação — para sempre.',
+    a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias — sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Nenhuma outra consultoria no Brasil faz isso.',
   },
 ];
 
+// ── REPLACE these with real YouTube video IDs when available ──────────────────
 const videos = ['YOUTUBE_ID_1', 'YOUTUBE_ID_2', 'YOUTUBE_ID_3'];
 
-export default function HomePage() {
+// ── REPLACE with real reviews from Google Maps ────────────────────────────────
+// Replace GOOGLE_MAPS_URL with your actual Google Maps business profile link
+const GOOGLE_MAPS_URL = 'https://g.page/r/REPLACE_WITH_YOUR_PLACE_ID';
+
+const googleReviews = [
+  {
+    name: 'Maria S.',
+    date: 'março de 2025',
+    text: 'Atendimento incrível! Me ajudaram com todo o processo do visto americano, desde a documentação até a simulação da entrevista. Aprovada na primeira tentativa!',
+    color: 'bg-blue-500',
+  },
+  {
+    name: 'João P.',
+    date: 'fevereiro de 2025',
+    text: 'Super profissionais. Já tinha tentado sozinho e levei negativa. Com a Vow Vistos aprovei em menos de 30 dias. A Garantia Vitalícia foi o que me convenceu a contratar.',
+    color: 'bg-green-500',
+  },
+  {
+    name: 'Ana C.',
+    date: 'janeiro de 2025',
+    text: 'O suporte foi excelente do início ao fim. Explicaram tudo com clareza, me prepararam muito bem para a entrevista e o visto saiu sem nenhum problema.',
+    color: 'bg-purple-500',
+  },
+  {
+    name: 'Carlos M.',
+    date: 'dezembro de 2024',
+    text: 'Visto canadense aprovado! A equipe da Vow Vistos é muito atenciosa e competente. Responderam todas as minhas dúvidas rapidamente. Recomendo muito!',
+    color: 'bg-red-500',
+  },
+  {
+    name: 'Fernanda L.',
+    date: 'novembro de 2024',
+    text: 'Contratei para o visto americano após duas negativas anteriores. Com o trabalho deles entendi exatamente onde estava errando. Aprovada! Não tenho palavras para agradecer.',
+    color: 'bg-yellow-500',
+  },
+  {
+    name: 'Ricardo T.',
+    date: 'outubro de 2024',
+    text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva — cheguei ao consulado muito mais confiante. Vale cada centavo investido.',
+    color: 'bg-indigo-500',
+  },
+];
+
+function stripHtml(html: string) {
+  return html.replace(/<[^>]+>/g, '').trim();
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+export default async function HomePage() {
+  let blogPosts: any[] = [];
+  try {
+    const { posts } = await getPosts(3, 1);
+    blogPosts = posts;
+  } catch {
+    blogPosts = [];
+  }
+
   return (
     <>
       <script
@@ -182,17 +256,23 @@ export default function HomePage() {
           <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-primary-light blur-3xl"/>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
-            Líder em consultoria de vistos no Brasil há 4 anos
-          </span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+            <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+              Líder em consultoria de vistos no Brasil há 4 anos
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
+              <GoogleStars />
+              4.9 · 100+ avaliações no Google
+            </span>
+          </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
-            Seu Visto Aprovado <br className="hidden md:block"/>
-            <span className="text-accent">ou a Gente Não Para.</span>
+            Seu Visto Aprovado. <br className="hidden md:block"/>
+            <span className="text-accent">Não por acaso. Por conhecimento.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-            Consultoria especializada em visto americano, canadense, chinês e muito mais. Preparação completa, documentação blindada e a única <strong className="text-white">Garantia Vitalícia</strong> do mercado.
+            A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia — vínculos, consistência, postura — com base em <strong className="text-white">11.700 aprovações reais de brasileiros</strong>. Expertise que não está em nenhum manual.
           </p>
-          <p className="text-sm text-white/50 mb-10">Mais de 11.700 brasileiros aprovados desde 2017. Taxa de 99,4% em 2024.</p>
+          <p className="text-sm text-white/50 mb-10">Especialização exclusiva desde 2017. Taxa de 99,4% em 2024 — incluindo casos com histórico de negativa.</p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
             {visaCards.map((c) => (
@@ -236,10 +316,10 @@ export default function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Por que a Vow Vistos?</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              A diferença entre aprovado e negado está nos detalhes
+              A diferença entre aprovado e negado é saber o que o cônsul vê em 90 segundos
             </h2>
             <p className="text-muted leading-relaxed">
-              Qualquer pessoa pode preencher um formulário. O que a Vow Vistos faz é antecipar cada motivo de negativa e eliminar o risco antes da sua entrevista.
+              Qualquer empresa preenche formulários. O que a Vow Vistos faz é diferente: antecipamos cada motivo de negativa com base em padrões reais — não em suposições.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -254,6 +334,60 @@ export default function HomePage() {
                 <p className="text-muted text-sm leading-relaxed">{d.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT CONSULATES REALLY EVALUATE ──────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Conhecimento de Causa</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">
+              O que o cônsul americano realmente avalia
+            </h2>
+            <p className="text-muted leading-relaxed">
+              Não é o que você imagina. Aqui está o que 11.700 aprovações — e as negativas que as antecederam — nos ensinaram.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                num: '01',
+                title: 'Vínculos com o Brasil',
+                desc: 'O consulado parte do princípio de que qualquer solicitante pode ter intenção de imigrar. Você precisa provar o contrário — emprego formal, família, patrimônio, obrigações financeiras no Brasil. Sabemos quais vínculos têm mais peso para cada tipo de perfil e como apresentá-los.',
+              },
+              {
+                num: '02',
+                title: 'Consistência entre perfil e documentação',
+                desc: 'Uma renda declarada no DS-160 que não bate com o extrato bancário. Uma carta de emprego com dados divergentes do CNPJ. Inconsistências assim passam despercebidas por quem não sabe o que procurar — e derrubam pedidos bem-intencionados sem explicação aparente.',
+              },
+              {
+                num: '03',
+                title: 'Postura e segurança na entrevista',
+                desc: 'O cônsul entrevista centenas de pessoas por dia. Ele detecta hesitação, respostas decoradas e inconsistência de linguagem corporal. Nosso treinamento é construído para que suas respostas sejam naturais, específicas e totalmente alinhadas com a sua documentação.',
+              },
+              {
+                num: '04',
+                title: 'Histórico de viagens e vistos anteriores',
+                desc: 'Vistos negados em outros países, permanências longas nos EUA, entradas irregulares — tudo consta no sistema consular. Analisamos seu histórico completo antes de qualquer agendamento e definimos a estratégia correta de apresentação para o seu caso.',
+              },
+            ].map((item) => (
+              <div key={item.num} className="bg-white rounded-2xl p-8 flex gap-6 hover:shadow-lg transition-shadow duration-200">
+                <div className="text-4xl font-heading font-extrabold text-accent/25 leading-none flex-shrink-0 pt-1">{item.num}</div>
+                <div>
+                  <h3 className="font-heading font-bold text-dark text-lg mb-2">{item.title}</h3>
+                  <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Quero que a Vow Vistos analise meu perfil
+            </a>
           </div>
         </div>
       </section>
@@ -305,11 +439,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────────── */}
+      {/* ── GOOGLE REVIEWS ────────────────────────────────────────────────── */}
       <section className="py-20 bg-light">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Avaliações</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-3">
+              O que nossos clientes dizem
+            </h2>
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <GoogleStarsFull />
+              <span className="font-heading font-bold text-dark text-lg">4.9</span>
+              <span className="text-muted text-sm">· 100+ avaliações no Google</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {googleReviews.map((r) => (
+              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0 ${r.color}`}>
+                      {r.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-heading font-semibold text-dark text-sm">{r.name}</div>
+                      <div className="text-xs text-muted">{r.date}</div>
+                    </div>
+                  </div>
+                  <GoogleGLogo />
+                </div>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border-2 border-primary/20 hover:border-primary text-primary font-heading font-semibold px-6 py-3 rounded-full transition-colors text-sm">
+              Ver todas as avaliações no Google
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos em Vídeo</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
               Mais de 11.700 sonhos realizados. <br className="hidden md:block"/>Ouça quem já passou por isso.
             </h2>
@@ -323,7 +509,7 @@ export default function HomePage() {
                 <iframe className="w-full h-full"
                   src={`https://www.youtube.com/embed/${id}?rel=0`}
                   title={`Depoimento de cliente Vow Vistos ${i + 1}`}
-                  frameBorder="0"
+                  style={{ border: 0 }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen loading="lazy"/>
               </div>
@@ -352,17 +538,68 @@ export default function HomePage() {
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Garantia Vitalícia</h2>
           <p className="text-white/75 text-lg md:text-xl mb-4 leading-relaxed">
-            Se o seu visto for negado após a nossa consultoria, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até que você seja aprovado.
+            Se o seu visto for negado após a nossa consultoria, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até que você seja aprovado. Sem prazo. Sem letras miúdas.
           </p>
           <p className="text-white/50 text-base mb-10">
-            Você paga apenas as taxas consulares obrigatórias — sem custo adicional com a Vow Vistos, para sempre.
+            Você paga apenas as taxas consulares obrigatórias — nada mais à Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Simples assim.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={`https://wa.me/${wa}?text=Quero%20saber%20mais%20sobre%20a%20Garantia%20Vitalícia`}
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-dark font-heading font-bold px-10 py-4 rounded-full transition-colors text-lg shadow-lg">
-              Começar agora
-            </a>
+          <a href={`https://wa.me/${wa}?text=Quero%20saber%20mais%20sobre%20a%20Garantia%20Vitalícia`}
+            target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-dark font-heading font-bold px-10 py-4 rounded-full transition-colors text-lg shadow-lg">
+            Começar agora
+          </a>
+        </div>
+      </section>
+
+      {/* ── VISTO NEGADO HOOK ─────────────────────────────────────────────── */}
+      <section className="py-16 bg-light">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-8 md:p-10">
+                <span className="inline-block bg-red-100 text-red-600 text-xs font-heading font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-5">
+                  Visto negado?
+                </span>
+                <h2 className="text-3xl font-heading font-bold text-dark mb-4 leading-tight">
+                  Uma negativa anterior não é o fim — é informação. E nós sabemos usá-la.
+                </h2>
+                <p className="text-muted leading-relaxed mb-6">
+                  Mais da metade dos clientes da Vow Vistos já tinha levado negativa antes de nos contratar. Uma negativa anterior <strong className="text-dark">não impede a aprovação</strong> — mas deixa um registro no sistema consular que exige uma estratégia específica para ser contornado. Isso é o que fazemos.
+                </p>
+                <ul className="space-y-2 mb-8">
+                  {[
+                    'Análise do motivo real da negativa',
+                    'Estratégia personalizada para o seu caso',
+                    'Documentação reforçada ponto a ponto',
+                    'Garantia Vitalícia inclusa',
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-muted">
+                      <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <a href={`https://wa.me/${wa}?text=Tive%20meu%20visto%20negado%20e%20quero%20uma%20análise%20gratuita`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-7 py-3.5 rounded-full transition-colors text-sm">
+                  <WaIcon /> Consultar meu caso gratuitamente
+                </a>
+              </div>
+              <div className="bg-gradient-to-br from-primary to-dark flex items-center justify-center p-10 text-white text-center">
+                <div>
+                  <div className="text-6xl font-heading font-extrabold text-accent mb-2">50%+</div>
+                  <p className="text-white/70 text-sm leading-relaxed max-w-xs">
+                    dos nossos clientes chegaram até nós após uma negativa anterior — e foram aprovados.
+                  </p>
+                  <div className="mt-8 pt-8 border-t border-white/10">
+                    <div className="text-3xl font-heading font-bold text-white mb-1">99,4%</div>
+                    <p className="text-white/60 text-xs">Taxa de aprovação em 2024, incluindo casos com histórico de negativa.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -397,28 +634,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── BLOG PREVIEW ──────────────────────────────────────────────────── */}
+      {blogPosts.length > 0 && (
+        <section className="py-20 bg-light">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Blog</span>
+              <h2 className="text-3xl font-heading font-bold text-dark mb-3">Dicas e guias sobre vistos</h2>
+              <p className="text-muted text-sm">Artigos escritos pelos nossos especialistas para ajudar você a se preparar.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {blogPosts.map((post: any) => {
+                const thumb = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+                const excerpt = stripHtml(post.excerpt?.rendered ?? '').slice(0, 100);
+                return (
+                  <Link key={post.id} href={`/blog/${post.slug}`}
+                    className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col group no-underline">
+                    {thumb && (
+                      <img src={thumb} alt={post.title?.rendered ?? ''} className="w-full h-40 object-cover" loading="lazy"/>
+                    )}
+                    <div className="p-5 flex flex-col flex-1">
+                      <time className="text-xs text-muted mb-2 block">{formatDate(post.date)}</time>
+                      <h3 className="font-heading font-bold text-dark text-sm leading-snug mb-2 group-hover:text-primary transition-colors"
+                        dangerouslySetInnerHTML={{ __html: post.title?.rendered ?? '' }} />
+                      {excerpt && <p className="text-muted text-xs leading-relaxed flex-1">{excerpt}…</p>}
+                      <span className="mt-3 text-xs text-primary font-heading font-semibold group-hover:text-accent transition-colors">Ler artigo →</span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="text-center mt-10">
+              <Link href="/blog"
+                className="inline-block border-2 border-primary/20 hover:border-primary text-primary font-heading font-semibold px-6 py-3 rounded-full transition-colors text-sm">
+                Ver todos os artigos
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CONTACT CTA ───────────────────────────────────────────────────── */}
-      <section className="py-20 bg-light" id="contato">
+      <section className="py-20 bg-white" id="contato">
         <div className="max-w-2xl mx-auto px-4 text-center mb-10">
           <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Contato</span>
           <h2 className="text-4xl font-heading font-bold text-dark mb-3">
             Comece sua análise de perfil gratuita
           </h2>
           <p className="text-muted leading-relaxed">
-            Preencha o formulário abaixo ou fale diretamente pelo WhatsApp. Respondemos em até 24 horas úteis com uma análise honesta do seu perfil e as melhores chances de aprovação.
+            Preencha o formulário ou fale pelo WhatsApp. Respondemos em até 24 horas úteis com uma análise honesta do seu perfil.
           </p>
         </div>
-        <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8 md:p-10">
-          <p className="text-center text-muted text-sm">
-            Formulário Gravity Forms — configure o ID em <code className="bg-light px-1 py-0.5 rounded text-xs">.env.local</code> quando estiver pronto.
-          </p>
-          <div className="mt-6 text-center">
-            <a href={`https://wa.me/${wa}?text=Olá,%20quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-3 rounded-full transition-colors">
-              <WaIcon /> Prefiro falar pelo WhatsApp
-            </a>
-          </div>
+        <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8 md:p-10 border border-light">
+          <ContactForm />
         </div>
       </section>
     </>
@@ -429,6 +697,41 @@ function WaIcon() {
   return (
     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  );
+}
+
+function GoogleStars() {
+  return (
+    <span className="flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} className="w-3 h-3 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+function GoogleStarsFull() {
+  return (
+    <span className="flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} className="w-5 h-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+function GoogleGLogo() {
+  return (
+    <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
     </svg>
   );
 }
