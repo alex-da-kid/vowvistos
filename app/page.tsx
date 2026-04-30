@@ -256,7 +256,7 @@ export default async function HomePage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="py-24 md:py-36 text-center text-white relative overflow-hidden bg-dark"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1586441133374-ed1cb4007a47?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-zF4NSsj73DU?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-dark/95 to-primary/85" aria-hidden />
         <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden>
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent blur-3xl"/>
