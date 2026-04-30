@@ -16,9 +16,23 @@ const channels = [
     ),
     bg: 'bg-green-500/10',
     label: 'WhatsApp',
-    value: '+55 (11) 99999-9999',
-    href: `https://wa.me/${wa}`,
+    value: null,
+    href: `https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`,
     target: '_blank',
+    cta: 'Falar pelo WhatsApp',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+      </svg>
+    ),
+    bg: 'bg-primary/10',
+    label: 'Telefone',
+    value: '(85) 2018-6898',
+    href: 'tel:+558520186898',
+    target: '_self',
+    cta: null,
   },
   {
     icon: (
@@ -28,9 +42,10 @@ const channels = [
     ),
     bg: 'bg-primary/10',
     label: 'E-mail',
-    value: 'contato@vowvistos.com.br',
-    href: 'mailto:contato@vowvistos.com.br',
+    value: 'atendimento@vowvistos.com.br',
+    href: 'mailto:atendimento@vowvistos.com.br',
     target: '_self',
+    cta: null,
   },
   {
     icon: (
@@ -39,10 +54,25 @@ const channels = [
       </svg>
     ),
     bg: 'bg-primary/10',
-    label: 'Horário de atendimento',
-    value: 'Seg–Sex: 9h às 18h | Sáb: 9h às 13h',
+    label: 'Atendimento',
+    value: 'Segunda à Sexta, 9h às 18h',
     href: null,
     target: '_self',
+    cta: null,
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+    ),
+    bg: 'bg-primary/10',
+    label: 'Endereço',
+    value: 'Av. Senador Virgílio Távora, 1701 — Sala 1408, Meireles, Fortaleza/CE',
+    href: 'https://maps.google.com/?q=Av.+Senador+Virgílio+Távora,+1701,+Meireles,+Fortaleza,+CE',
+    target: '_blank',
+    cta: null,
   },
 ];
 
@@ -71,7 +101,10 @@ export default function ContatoPage() {
                   </div>
                   <div>
                     <div className="font-heading font-semibold text-dark text-sm">{c.label}</div>
-                    {c.href ? (
+                    {c.cta ? (
+                      <a href={c.href!} target={c.target} rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-green-600 font-heading font-semibold text-sm hover:text-green-700 transition-colors">{c.cta}</a>
+                    ) : c.href ? (
                       <a href={c.href} target={c.target} rel={c.target === '_blank' ? 'noopener noreferrer' : undefined}
                         className="text-muted text-sm hover:text-accent transition-colors">{c.value}</a>
                     ) : (
