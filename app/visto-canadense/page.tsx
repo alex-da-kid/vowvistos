@@ -59,8 +59,8 @@ export default function VistoCanadensePage() {
       </section>
 
       <div className="bg-primary py-8">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-          {[['Líder 4 Anos','No mercado desde 2017'],['11.700+','Vistos aprovados'],['99,4%','Taxa de aprovação 2024']].map(([v,l])=>(
+        <div className="max-w-3xl mx-auto px-4 grid grid-cols-2 gap-4 text-center divide-x divide-white/10">
+          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>

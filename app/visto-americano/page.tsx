@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Visto Americano | Consultoria Especializada com 99,4% de Aprovação',
+  title: 'Visto Americano | Consultoria Especializada para Brasileiros | Vow Vistos',
   description: 'Consultoria completa para visto americano: análise de perfil, preenchimento do DS-160, simulação de entrevista e Garantia Vitalícia. 11.700+ vistos aprovados. Fale agora.',
   keywords: 'visto americano, consultoria visto americano, como tirar visto americano, visto americano negado, entrevista visto americano, DS-160, visto B1 B2',
 };
@@ -76,7 +75,7 @@ export default function VistoAmericanoPage() {
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
             Análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. A consultoria mais completa do Brasil para o visto americano.
           </p>
-          <p className="text-sm text-white/50 mb-10">11.700+ vistos aprovados · 99,4% de aprovação em 2024 · Líder há 4 anos</p>
+          <p className="text-sm text-white/50 mb-10">Mais de 7.000 vistos aprovados · Especialização exclusiva desde 2017</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Americano`}
               target="_blank" rel="noopener noreferrer"
@@ -93,8 +92,8 @@ export default function VistoAmericanoPage() {
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <div className="bg-primary py-8">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-          {[['Líder 4 Anos','No mercado desde 2017'],['11.700+','Vistos aprovados'],['99,4%','Taxa de aprovação 2024']].map(([v,l])=>(
+        <div className="max-w-3xl mx-auto px-4 grid grid-cols-2 gap-4 text-center divide-x divide-white/10">
+          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
@@ -176,7 +175,7 @@ export default function VistoAmericanoPage() {
                 <iframe className="w-full h-full"
                   src={`https://www.youtube.com/embed/${id}?rel=0`}
                   title={`Depoimento visto americano ${i + 1}`}
-                  frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen loading="lazy"/>
               </div>
             ))}

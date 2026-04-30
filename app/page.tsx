@@ -4,12 +4,12 @@ import { getPosts } from '@/lib/wordpress';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Consultoria de Vistos Americano, Canadense e Chinês | Vow Vistos',
-  description: 'A Vow Vistos é líder em consultoria de visto americano, canadense e chinês no Brasil. 11.700+ vistos aprovados, 99,4% de aprovação em 2024 e Garantia Vitalícia. Fale agora.',
-  keywords: 'consultoria visto americano, visto americano, como tirar visto americano, visto canadense, visto chinês, assessoria de vistos, visto americano negado, entrevista visto americano',
+  title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
+  description: 'A Vow Vistos analisa seu perfil com base nas práticas reais das embaixadas e consulados. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia. Fale agora.',
+  keywords: 'consultoria de vistos, visto americano, visto canadense, visto chinês, análise de perfil visto, assessoria de vistos, como tirar visto, visto negado',
   openGraph: {
-    title: 'Consultoria de Vistos Americano, Canadense e Chinês | Vow Vistos',
-    description: 'Líder em consultoria de vistos no Brasil. 11.700+ aprovações, 99,4% de taxa de sucesso e Garantia Vitalícia. Seu visto aprovado ou reconsultoria gratuita para sempre.',
+    title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
+    description: 'A Vow Vistos analisa seu perfil com honestidade, com base nas práticas reais das embaixadas. Mais de 7.000 vistos aprovados e Garantia Vitalícia.',
     url: 'https://vowvistos.com.br',
     siteName: 'Vow Vistos',
     locale: 'pt_BR',
@@ -40,34 +40,34 @@ const schemaOrg = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Vale a pena contratar uma consultoria de visto americano?',
+          name: 'Vale a pena contratar uma consultoria de vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Sim. Uma consultoria especializada reduz drasticamente o risco de negativa ao identificar pontos fracos no seu perfil antes da entrevista, preparar a documentação corretamente e simular as perguntas do consulado. A Vow Vistos tem 99,4% de aprovação em 2024 e mais de 11.700 vistos aprovados.',
+            text: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que as embaixadas usam para aprovar e os sinais que usam para negar.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Quais são os principais motivos para a negativa do visto americano?',
+          name: 'O que é a análise de perfil gratuita da Vow Vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Os motivos mais comuns são: falta de comprovação de vínculos com o Brasil (emprego, família, imóveis), documentação incompleta ou inconsistente, respostas inseguras na entrevista consular e histórico de viagens inadequado. A Vow Vistos analisa todos esses pontos antes do seu agendamento.',
+            text: 'É uma avaliação inicial do seu perfil com base nos critérios reais das embaixadas e consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
           },
         },
         {
           '@type': 'Question',
-          name: 'O que é perguntado na entrevista para visto americano?',
+          name: 'Quais são os principais motivos para a negativa de um visto?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'O cônsul geralmente pergunta sobre o motivo da viagem, tempo de permanência, comprovação de renda e emprego, vínculos com o Brasil, histórico de viagens anteriores e se você tem parentes nos Estados Unidos. A Vow Vistos realiza uma simulação completa de entrevista antes do seu agendamento.',
+            text: 'Os motivos mais comuns são: vínculos insuficientes com o Brasil (emprego, família, patrimônio), inconsistências entre o que você declara e o que a documentação mostra, histórico de permanências longas ou irregulares e perfil incompatível com o tipo de visto solicitado. O que diferencia a Vow Vistos é que identificamos esses pontos antes do seu agendamento. Não depois de uma negativa.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Quanto tempo demora para tirar o visto americano com a Vow Vistos?',
+          name: 'Meu visto foi negado antes. Posso tentar novamente?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'O prazo varia conforme a disponibilidade do consulado na sua cidade. A Vow Vistos cuida do agendamento e de toda a preparação para que você chegue pronto no dia da entrevista. Consultores experientes também orientam sobre estratégias para agilizar o processo quando possível.',
+            text: 'Sim. Uma negativa anterior não impede a aprovação, mas deixa um registro no sistema da embaixada que exige uma abordagem específica para ser contornado. Mais da metade dos clientes da Vow Vistos chegou até nós após uma negativa anterior, e todos foram aprovados com uma estratégia diferente.',
           },
         },
         {
@@ -75,7 +75,7 @@ const schemaOrg = {
           name: 'O que é a Garantia Vitalícia da Vow Vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias. É o nosso compromisso com a sua aprovação — para sempre.',
+            text: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias, sem custo adicional com a Vow Vistos, para sempre. É o nosso compromisso de não te abandonar.',
           },
         },
       ],
@@ -94,8 +94,7 @@ const visaCards = [
 
 const stats = [
   { value: '8 Anos', label: 'Especialização exclusiva em consultoria consular' },
-  { value: '11.700+', label: 'Casos reais de brasileiros analisados e aprovados' },
-  { value: '99,4%', label: 'Taxa de aprovação em 2024 — com histórico de negativa incluso' },
+  { value: '7.000+', label: 'Vistos aprovados para brasileiros desde 2017' },
 ];
 
 const scenarios = [
@@ -106,7 +105,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Turismo',
-    desc: 'O turismo é a categoria com mais negativas nos consulados brasileiros. Sabemos exatamente quais vínculos o cônsul quer ver — e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
+    desc: 'O turismo é a categoria com mais negativas nos consulados. Sabemos exatamente quais vínculos as embaixadas querem ver e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20turismo',
     featured: false,
   },
@@ -117,7 +116,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Estudo',
-    desc: 'Visto de estudo exige demonstrar intenção real de retornar ao Brasil após o programa. A análise para estudantes é fundamentalmente diferente da de turistas — e a Vow Vistos entende essa diferença de cor.',
+    desc: 'Visto de estudo exige demonstrar intenção real de retornar ao Brasil após o programa. A análise para estudantes é fundamentalmente diferente da de turistas. A Vow Vistos entende essa diferença de cor.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20estudo',
     featured: true,
   },
@@ -128,7 +127,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Trabalho',
-    desc: 'Visto TN, O-1, L-1, transferência corporativa — cada categoria tem critérios próprios e um nível de escrutínio diferente. São os vistos mais complexos do portfólio consular, e os que mais exigem especialização real.',
+    desc: 'Work permits, vistos de trabalho especializado e transferências corporativas: cada categoria tem critérios próprios e um nível de escrutínio diferente. São os processos mais complexos do portfólio consular, e os que mais exigem especialização real. Não chute.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20trabalho',
     featured: false,
   },
@@ -136,46 +135,46 @@ const scenarios = [
 
 const steps = [
   { num: '01', title: 'Análise de Perfil', desc: 'Não é uma triagem genérica. Mapeamos vínculos com o Brasil, histórico de viagens, consistência financeira e relações familiares internacionais. É aqui que a maioria das negativas poderia ter sido evitada.' },
-  { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel — enviamos evidências organizadas para responder às dúvidas do cônsul antes da entrevista.' },
+  { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel: enviamos evidências organizadas para responder às dúvidas da embaixada antes de qualquer entrevista.' },
   { num: '03', title: 'Simulação de Entrevista', desc: 'Reproduzimos a dinâmica real do consulado: as perguntas difíceis, os silêncios, as inconsistências que derrubam candidatos bem-documentados. Você entra na sala sem surpresas.' },
   { num: '04', title: 'Aprovação com Garantia', desc: 'Acompanhamos em tempo real até a concessão. Se o visto for negado, a Garantia Vitalícia entra em ação: reconsultoria gratuita e ilimitada até a aprovação.' },
 ];
 
 const differentials = [
   {
-    title: '11.700 Casos. Um Padrão.',
-    desc: 'Você não aprende o que o cônsul realmente avalia em um livro. Aprende vendo 11.700 perfis de brasileiros — o que funcionou, o que falhou e por quê. Esse padrão é o que aplicamos no seu caso.',
+    title: '7.000 Casos. Um Padrão.',
+    desc: 'Você não aprende o que o cônsul realmente avalia em um livro. Aprende vendo 7.000 perfis de brasileiros: o que funcionou, o que falhou e por quê. Esse padrão é o que aplicamos no seu caso.',
   },
   {
-    title: 'Sabemos o que o Cônsul Pergunta',
-    desc: 'A entrevista dura em média 2 minutos. As perguntas parecem simples, mas o que é avaliado é a consistência, a segurança e os vínculos. Nossa simulação reproduz o ambiente real dos consulados de SP, RJ e Brasília.',
+    title: 'Sabemos o que Cada Processo Exige',
+    desc: 'Cada país tem critérios, formulários e etapas diferentes. O que não muda é o que as embaixadas e consulados avaliam: consistência, vínculos e intenção. Conhecemos esse processo por dentro, para cada destino que atendemos.',
   },
   {
     title: 'Documentação que Convence',
-    desc: 'Não basta apresentar documentos — eles precisam contar uma história coerente. Identificamos inconsistências que causam negativas "invisíveis" e montamos cada dossiê para responder às dúvidas antes que sejam levantadas.',
+    desc: 'Não basta apresentar documentos: eles precisam contar uma história coerente. Identificamos inconsistências que causam negativas "invisíveis" e montamos cada dossiê para responder às dúvidas antes que sejam levantadas.',
   },
   {
     title: 'Garantia Vitalícia',
-    desc: 'Se o visto for negado, reconsultoria gratuita ilimitada — para sempre. Nenhuma outra consultoria no Brasil faz isso porque nenhuma outra tem nossa confiança na própria análise.',
+    desc: 'Se o visto for negado, reconsultoria gratuita ilimitada, para sempre. Nenhuma outra consultoria no Brasil faz isso porque nenhuma outra tem nossa confiança na própria análise.',
   },
 ];
 
 const faqs = [
   {
-    q: 'Vale a pena contratar uma consultoria de visto americano?',
-    a: 'Sim — e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 11.700 casos de brasileiros: reconhecemos os padrões de aprovação e os sinais que os consulados usam para negar. Isso não está em nenhum guia gratuito na internet.',
+    q: 'Vale a pena contratar uma consultoria de vistos?',
+    a: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que as embaixadas usam para aprovar e os sinais que usam para negar. Isso não está em nenhum guia gratuito na internet.',
   },
   {
-    q: 'Quais são os principais motivos para a negativa do visto americano?',
-    a: 'Os motivos mais comuns são: vínculos insuficientes com o Brasil (emprego, família, patrimônio), inconsistências entre o que você declara e o que a documentação mostra, respostas hesitantes ou contraditórias na entrevista e histórico de permanências longas ou irregulares. O que distingue a Vow Vistos é que identificamos esses pontos antes do seu agendamento — não depois.',
+    q: 'O que é a análise de perfil gratuita da Vow Vistos?',
+    a: 'É uma avaliação inicial do seu perfil com base nos critérios reais das embaixadas e consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
   },
   {
-    q: 'O que o cônsul avalia na entrevista para visto americano?',
-    a: 'A entrevista dura entre 1 e 3 minutos. O cônsul faz poucas perguntas, mas avalia muito: a consistência entre o que você diz e o que a documentação mostra, a segurança das respostas e se o seu perfil indica risco de permanência irregular. A Vow Vistos simula as perguntas específicas para o seu tipo de visto e perfil — preparando você exatamente para os pontos que levantam dúvidas no seu caso.',
+    q: 'Quais são os principais motivos para a negativa de um visto?',
+    a: 'Os motivos mais comuns são: vínculos insuficientes com o Brasil (emprego, família, patrimônio), inconsistências entre o que você declara e o que a documentação mostra, histórico de permanências longas ou irregulares e perfil incompatível com o tipo de visto solicitado. O que diferencia a Vow Vistos é que identificamos esses pontos antes do seu agendamento. Não depois de uma negativa.',
   },
   {
     q: 'O que é a Garantia Vitalícia da Vow Vistos?',
-    a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias — sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Nenhuma outra consultoria no Brasil faz isso.',
+    a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias, sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Nenhuma outra consultoria no Brasil faz isso.',
   },
 ];
 
@@ -220,7 +219,7 @@ const googleReviews = [
   {
     name: 'Ricardo T.',
     date: 'outubro de 2024',
-    text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva — cheguei ao consulado muito mais confiante. Vale cada centavo investido.',
+    text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva: cheguei ao consulado muito mais confiante. Vale cada centavo investido.',
     color: 'bg-indigo-500',
   },
 ];
@@ -270,9 +269,9 @@ export default async function HomePage() {
             <span className="text-accent">Não por acaso. Por conhecimento.</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-            A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia — vínculos, consistência, postura — com base em <strong className="text-white">11.700 aprovações reais de brasileiros</strong>. Expertise que não está em nenhum manual.
+            A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia: vínculos, consistência e postura, com base em <strong className="text-white">mais de 7.000 aprovações reais de brasileiros</strong>. Expertise que não está em nenhum manual.
           </p>
-          <p className="text-sm text-white/50 mb-10">Especialização exclusiva desde 2017. Taxa de 99,4% em 2024 — incluindo casos com histórico de negativa.</p>
+          <p className="text-sm text-white/50 mb-10">Especialização exclusiva em consultoria consular desde 2017.</p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
             {visaCards.map((c) => (
@@ -300,7 +299,7 @@ export default async function HomePage() {
 
       {/* ── TRUST STATS ───────────────────────────────────────────────────── */}
       <section className="bg-primary py-12" aria-label="Números da Vow Vistos">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="max-w-3xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
           {stats.map((s) => (
             <div key={s.label} className="py-4 sm:py-0">
               <div className="text-4xl md:text-5xl font-heading font-bold text-accent">{s.value}</div>
@@ -316,10 +315,10 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Por que a Vow Vistos?</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              A diferença entre aprovado e negado é saber o que o cônsul vê em 90 segundos
+              A diferença entre aprovado e negado é saber o que a embaixada realmente avalia no seu perfil
             </h2>
             <p className="text-muted leading-relaxed">
-              Qualquer empresa preenche formulários. O que a Vow Vistos faz é diferente: antecipamos cada motivo de negativa com base em padrões reais — não em suposições.
+              Qualquer empresa preenche formulários. O que a Vow Vistos faz é diferente: antecipamos cada motivo de negativa com base em padrões reais, para cada destino, não em suposições.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -344,10 +343,10 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Conhecimento de Causa</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              O que o cônsul americano realmente avalia
+              O que as embaixadas e consulados realmente avaliam
             </h2>
             <p className="text-muted leading-relaxed">
-              Não é o que você imagina. Aqui está o que 11.700 aprovações — e as negativas que as antecederam — nos ensinaram.
+              Não é o que você imagina. Aqui está o que 7.000 processos, e as negativas que os antecederam, nos ensinaram.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -355,22 +354,22 @@ export default async function HomePage() {
               {
                 num: '01',
                 title: 'Vínculos com o Brasil',
-                desc: 'O consulado parte do princípio de que qualquer solicitante pode ter intenção de imigrar. Você precisa provar o contrário — emprego formal, família, patrimônio, obrigações financeiras no Brasil. Sabemos quais vínculos têm mais peso para cada tipo de perfil e como apresentá-los.',
+                desc: 'O consulado parte do princípio de que qualquer solicitante pode ter intenção de imigrar. Você precisa provar o contrário: emprego formal, família, patrimônio, obrigações financeiras no Brasil. Sabemos quais vínculos têm mais peso para cada tipo de perfil e como apresentá-los.',
               },
               {
                 num: '02',
                 title: 'Consistência entre perfil e documentação',
-                desc: 'Uma renda declarada no DS-160 que não bate com o extrato bancário. Uma carta de emprego com dados divergentes do CNPJ. Inconsistências assim passam despercebidas por quem não sabe o que procurar — e derrubam pedidos bem-intencionados sem explicação aparente.',
+                desc: 'Uma renda declarada no DS-160 que não bate com o extrato bancário. Uma carta de emprego com dados divergentes do CNPJ. Inconsistências assim passam despercebidas por quem não sabe o que procurar e derrubam pedidos bem-intencionados sem explicação aparente.',
               },
               {
                 num: '03',
-                title: 'Postura e segurança na entrevista',
-                desc: 'O cônsul entrevista centenas de pessoas por dia. Ele detecta hesitação, respostas decoradas e inconsistência de linguagem corporal. Nosso treinamento é construído para que suas respostas sejam naturais, específicas e totalmente alinhadas com a sua documentação.',
+                title: 'Coerência entre perfil e intenção declarada',
+                desc: 'As embaixadas analisam se o seu perfil, sua documentação e o motivo declarado contam a mesma história. Inconsistências sutis entre renda, objetivo da viagem e histórico de saídas são suficientes para uma negativa. Para os destinos que incluem entrevista, preparamos você para esse momento também.',
               },
               {
                 num: '04',
                 title: 'Histórico de viagens e vistos anteriores',
-                desc: 'Vistos negados em outros países, permanências longas nos EUA, entradas irregulares — tudo consta no sistema consular. Analisamos seu histórico completo antes de qualquer agendamento e definimos a estratégia correta de apresentação para o seu caso.',
+                desc: 'Vistos negados em outros países, permanências longas nos EUA, entradas irregulares: tudo consta no sistema consular. Analisamos seu histórico completo antes de qualquer agendamento e definimos a estratégia correta de apresentação para o seu caso.',
               },
             ].map((item) => (
               <div key={item.num} className="bg-white rounded-2xl p-8 flex gap-6 hover:shadow-lg transition-shadow duration-200">
@@ -450,7 +449,7 @@ export default async function HomePage() {
             <div className="flex items-center justify-center gap-2 mb-3">
               <GoogleStarsFull />
               <span className="font-heading font-bold text-dark text-lg">4.9</span>
-              <span className="text-muted text-sm">· 100+ avaliações no Google</span>
+              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -497,10 +496,10 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos em Vídeo</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              Mais de 11.700 sonhos realizados. <br className="hidden md:block"/>Ouça quem já passou por isso.
+              Mais de 7.000 sonhos realizados. <br className="hidden md:block"/>Ouça quem já passou por isso.
             </h2>
             <p className="text-muted leading-relaxed">
-              Cada aprovação é uma história real. Veja o que nossos clientes dizem sobre a experiência com a Vow Vistos — do medo da entrevista à passagem na mão.
+              Cada aprovação é uma história real. Veja o que nossos clientes dizem sobre a experiência com a Vow Vistos, do medo da entrevista à passagem na mão.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -541,7 +540,7 @@ export default async function HomePage() {
             Se o seu visto for negado após a nossa consultoria, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até que você seja aprovado. Sem prazo. Sem letras miúdas.
           </p>
           <p className="text-white/50 text-base mb-10">
-            Você paga apenas as taxas consulares obrigatórias — nada mais à Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Simples assim.
+            Você paga apenas as taxas consulares obrigatórias, nada mais à Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Simples assim.
           </p>
           <a href={`https://wa.me/${wa}?text=Quero%20saber%20mais%20sobre%20a%20Garantia%20Vitalícia`}
             target="_blank" rel="noopener noreferrer"
@@ -561,10 +560,10 @@ export default async function HomePage() {
                   Visto negado?
                 </span>
                 <h2 className="text-3xl font-heading font-bold text-dark mb-4 leading-tight">
-                  Uma negativa anterior não é o fim — é informação. E nós sabemos usá-la.
+                  Uma negativa anterior não é o fim: é informação. E nós sabemos usá-la.
                 </h2>
                 <p className="text-muted leading-relaxed mb-6">
-                  Mais da metade dos clientes da Vow Vistos já tinha levado negativa antes de nos contratar. Uma negativa anterior <strong className="text-dark">não impede a aprovação</strong> — mas deixa um registro no sistema consular que exige uma estratégia específica para ser contornado. Isso é o que fazemos.
+                  Mais da metade dos clientes da Vow Vistos já tinha levado negativa antes de nos contratar. Uma negativa anterior <strong className="text-dark">não impede a aprovação</strong>, mas deixa um registro no sistema consular que exige uma estratégia específica para ser contornado. Isso é o que fazemos.
                 </p>
                 <ul className="space-y-2 mb-8">
                   {[
@@ -591,11 +590,11 @@ export default async function HomePage() {
                 <div>
                   <div className="text-6xl font-heading font-extrabold text-accent mb-2">50%+</div>
                   <p className="text-white/70 text-sm leading-relaxed max-w-xs">
-                    dos nossos clientes chegaram até nós após uma negativa anterior — e foram aprovados.
+                    dos nossos clientes chegaram até nós após uma negativa anterior e foram aprovados.
                   </p>
                   <div className="mt-8 pt-8 border-t border-white/10">
-                    <div className="text-3xl font-heading font-bold text-white mb-1">99,4%</div>
-                    <p className="text-white/60 text-xs">Taxa de aprovação em 2024, incluindo casos com histórico de negativa.</p>
+                    <div className="text-3xl font-heading font-bold text-white mb-1">8 Anos</div>
+                    <p className="text-white/60 text-xs">Especialização exclusiva em consultoria consular, não somos agência de turismo.</p>
                   </div>
                 </div>
               </div>

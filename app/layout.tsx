@@ -10,7 +10,7 @@ const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-heading', 
 
 export const metadata: Metadata = {
   title: { default: 'Vow Vistos — Consultoria de Vistos', template: '%s | Vow Vistos' },
-  description: 'Consultoria especializada em vistos americano, canadense, chinês e outros. 11.700+ vistos aprovados. Taxa de aprovação de 99,4% em 2024.',
+  description: 'Consultoria especializada em vistos americano, canadense, chinês e outros. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
