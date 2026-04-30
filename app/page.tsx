@@ -5,11 +5,11 @@ import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
-  description: 'A Vow Vistos analisa seu perfil com base nas práticas reais das embaixadas e consulados. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia. Fale agora.',
+  description: 'A Vow Vistos analisa seu perfil com base nas práticas reais dos consulados. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia. Fale agora.',
   keywords: 'consultoria de vistos, visto americano, visto canadense, visto chinês, análise de perfil visto, assessoria de vistos, como tirar visto, visto negado',
   openGraph: {
     title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
-    description: 'A Vow Vistos analisa seu perfil com honestidade, com base nas práticas reais das embaixadas. Mais de 7.000 vistos aprovados e Garantia Vitalícia.',
+    description: 'A Vow Vistos analisa seu perfil com honestidade, com base nas práticas reais dos consulados. Mais de 7.000 vistos aprovados e Garantia Vitalícia.',
     url: 'https://vowvistos.com.br',
     siteName: 'Vow Vistos',
     locale: 'pt_BR',
@@ -43,7 +43,7 @@ const schemaOrg = {
           name: 'Vale a pena contratar uma consultoria de vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que as embaixadas usam para aprovar e os sinais que usam para negar.',
+            text: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que os consulados usam para aprovar e os sinais que usam para negar.',
           },
         },
         {
@@ -51,7 +51,7 @@ const schemaOrg = {
           name: 'O que é a análise de perfil gratuita da Vow Vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'É uma avaliação inicial do seu perfil com base nos critérios reais das embaixadas e consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
+            text: 'É uma avaliação inicial do seu perfil com base nos critérios reais dos consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
           },
         },
         {
@@ -67,7 +67,7 @@ const schemaOrg = {
           name: 'Meu visto foi negado antes. Posso tentar novamente?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Sim. Uma negativa anterior não impede a aprovação, mas deixa um registro no sistema da embaixada que exige uma abordagem específica para ser contornado. Mais da metade dos clientes da Vow Vistos chegou até nós após uma negativa anterior, e todos foram aprovados com uma estratégia diferente.',
+            text: 'Sim. Uma negativa anterior não impede a aprovação, mas deixa um registro no sistema consular que exige uma abordagem específica para ser contornado. Não é incomum que clientes cheguem até nós após uma negativa anterior, e com a estratégia certa, a aprovação é possível.',
           },
         },
         {
@@ -105,7 +105,7 @@ const scenarios = [
       </svg>
     ),
     title: 'Turismo',
-    desc: 'O turismo é a categoria com mais negativas nos consulados. Sabemos exatamente quais vínculos as embaixadas querem ver e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
+    desc: 'O turismo é a categoria com mais negativas nos consulados. Sabemos exatamente quais vínculos os consulados querem ver e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
     msg: 'Quero%20informações%20sobre%20visto%20de%20turismo',
     featured: false,
   },
@@ -135,7 +135,7 @@ const scenarios = [
 
 const steps = [
   { num: '01', title: 'Análise de Perfil', desc: 'Não é uma triagem genérica. Mapeamos vínculos com o Brasil, histórico de viagens, consistência financeira e relações familiares internacionais. É aqui que a maioria das negativas poderia ter sido evitada.' },
-  { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel: enviamos evidências organizadas para responder às dúvidas da embaixada antes de qualquer entrevista.' },
+  { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel: enviamos evidências organizadas para responder às dúvidas do consulado antes de qualquer entrevista.' },
   { num: '03', title: 'Simulação de Entrevista', desc: 'Reproduzimos a dinâmica real do consulado: as perguntas difíceis, os silêncios, as inconsistências que derrubam candidatos bem-documentados. Você entra na sala sem surpresas.' },
   { num: '04', title: 'Aprovação com Garantia', desc: 'Acompanhamos em tempo real até a concessão. Se o visto for negado, a Garantia Vitalícia entra em ação: reconsultoria gratuita e ilimitada até a aprovação.' },
 ];
@@ -147,7 +147,7 @@ const differentials = [
   },
   {
     title: 'Sabemos o que Cada Processo Exige',
-    desc: 'Cada país tem critérios, formulários e etapas diferentes. O que não muda é o que as embaixadas e consulados avaliam: consistência, vínculos e intenção. Conhecemos esse processo por dentro, para cada destino que atendemos.',
+    desc: 'Cada país tem critérios, formulários e etapas diferentes. O que não muda é o que os consulados avaliam: consistência, vínculos e intenção. Conhecemos esse processo por dentro, para cada destino que atendemos.',
   },
   {
     title: 'Documentação que Convence',
@@ -162,11 +162,11 @@ const differentials = [
 const faqs = [
   {
     q: 'Vale a pena contratar uma consultoria de vistos?',
-    a: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que as embaixadas usam para aprovar e os sinais que usam para negar. Isso não está em nenhum guia gratuito na internet.',
+    a: 'Sim, e a diferença está no que você não sabe. A maioria das negativas não ocorre por falta de dinheiro ou documentos, mas por inconsistências que só aparecem quando alguém experiente avalia seu perfil. A Vow Vistos analisou mais de 7.000 casos de brasileiros em diferentes destinos: reconhecemos os padrões que os consulados usam para aprovar e os sinais que usam para negar. Isso não está em nenhum guia gratuito na internet.',
   },
   {
     q: 'O que é a análise de perfil gratuita da Vow Vistos?',
-    a: 'É uma avaliação inicial do seu perfil com base nos critérios reais das embaixadas e consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
+    a: 'É uma avaliação inicial do seu perfil com base nos critérios reais dos consulados. Analisamos seus vínculos com o Brasil, histórico de viagens, situação financeira e objetivo da viagem. Te damos uma perspectiva honesta das suas reais chances antes de você tomar qualquer decisão.',
   },
   {
     q: 'Quais são os principais motivos para a negativa de um visto?',
@@ -315,7 +315,7 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Por que a Vow Vistos?</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              A diferença entre aprovado e negado é saber o que a embaixada realmente avalia no seu perfil
+              A diferença entre aprovado e negado é saber o que o consulado realmente avalia no seu perfil
             </h2>
             <p className="text-muted leading-relaxed">
               Qualquer empresa preenche formulários. O que a Vow Vistos faz é diferente: antecipamos cada motivo de negativa com base em padrões reais, para cada destino, não em suposições.
@@ -343,7 +343,7 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Conhecimento de Causa</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              O que as embaixadas e consulados realmente avaliam
+              O que os consulados realmente avaliam
             </h2>
             <p className="text-muted leading-relaxed">
               Não é o que você imagina. Aqui está o que 7.000 processos, e as negativas que os antecederam, nos ensinaram.
@@ -359,12 +359,12 @@ export default async function HomePage() {
               {
                 num: '02',
                 title: 'Consistência entre perfil e documentação',
-                desc: 'Uma renda declarada no DS-160 que não bate com o extrato bancário. Uma carta de emprego com dados divergentes do CNPJ. Inconsistências assim passam despercebidas por quem não sabe o que procurar e derrubam pedidos bem-intencionados sem explicação aparente.',
+                desc: 'Uma renda declarada que não bate com o extrato bancário. Uma carta de emprego com dados divergentes do CNPJ. Inconsistências assim passam despercebidas por quem não sabe o que procurar e derrubam pedidos bem-intencionados sem explicação aparente.',
               },
               {
                 num: '03',
                 title: 'Coerência entre perfil e intenção declarada',
-                desc: 'As embaixadas analisam se o seu perfil, sua documentação e o motivo declarado contam a mesma história. Inconsistências sutis entre renda, objetivo da viagem e histórico de saídas são suficientes para uma negativa. Para os destinos que incluem entrevista, preparamos você para esse momento também.',
+                desc: 'Os consulados analisam se o seu perfil, sua documentação e o motivo declarado contam a mesma história. Inconsistências sutis entre renda, objetivo da viagem e histórico de saídas são suficientes para uma negativa. Para os destinos que incluem entrevista, preparamos você para esse momento também.',
               },
               {
                 num: '04',
@@ -563,7 +563,7 @@ export default async function HomePage() {
                   Uma negativa anterior não é o fim: é informação. E nós sabemos usá-la.
                 </h2>
                 <p className="text-muted leading-relaxed mb-6">
-                  Mais da metade dos clientes da Vow Vistos já tinha levado negativa antes de nos contratar. Uma negativa anterior <strong className="text-dark">não impede a aprovação</strong>, mas deixa um registro no sistema consular que exige uma estratégia específica para ser contornado. Isso é o que fazemos.
+                  Não é incomum que clientes cheguem até nós após uma negativa anterior. Uma negativa <strong className="text-dark">não impede a aprovação</strong>, mas deixa um registro no sistema consular que exige uma abordagem específica para ser contornada. É exatamente nisso que a Vow Vistos é especialista.
                 </p>
                 <ul className="space-y-2 mb-8">
                   {[
@@ -588,9 +588,14 @@ export default async function HomePage() {
               </div>
               <div className="bg-gradient-to-br from-primary to-dark flex items-center justify-center p-10 text-white text-center">
                 <div>
-                  <div className="text-6xl font-heading font-extrabold text-accent mb-2">50%+</div>
+                  <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-5">
+                    <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                  </div>
+                  <div className="text-xl font-heading font-bold text-accent mb-3">Negativa anterior não é barreira</div>
                   <p className="text-white/70 text-sm leading-relaxed max-w-xs">
-                    dos nossos clientes chegaram até nós após uma negativa anterior e foram aprovados.
+                    Com a estratégia certa e um dossiê bem construído, a aprovação é possível mesmo após uma ou mais negativas anteriores.
                   </p>
                   <div className="mt-8 pt-8 border-t border-white/10">
                     <div className="text-3xl font-heading font-bold text-white mb-1">8 Anos</div>
