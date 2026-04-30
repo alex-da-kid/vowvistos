@@ -106,6 +106,8 @@ const scenarios = [
     ),
     title: 'Turismo',
     desc: 'O turismo é a categoria com mais negativas nos consulados. Sabemos exatamente quais vínculos os consulados querem ver e como apresentá-los para que sua viagem de lazer não levante suspeitas.',
+    img: 'https://images.unsplash.com/photo-1765570811507-7b9acf02eb7e?auto=format&fit=crop&w=600&q=80',
+    imgAlt: 'Destino turístico no exterior — Photo by Elijah Cobb on Unsplash',
     msg: 'Quero%20informações%20sobre%20visto%20de%20turismo',
     featured: false,
   },
@@ -117,6 +119,8 @@ const scenarios = [
     ),
     title: 'Estudo',
     desc: 'Visto de estudo exige demonstrar intenção real de retornar ao Brasil após o programa. A análise para estudantes é fundamentalmente diferente da de turistas. A Vow Vistos entende essa diferença de cor.',
+    img: 'https://images.unsplash.com/photo-1587580105302-16ec548c145f?auto=format&fit=crop&w=600&q=80',
+    imgAlt: 'Estudante no exterior — Photo by VENUS MAJOR on Unsplash',
     msg: 'Quero%20informações%20sobre%20visto%20de%20estudo',
     featured: true,
   },
@@ -128,6 +132,8 @@ const scenarios = [
     ),
     title: 'Trabalho',
     desc: 'Work permits, vistos de trabalho especializado e transferências corporativas: cada categoria tem critérios próprios e um nível de escrutínio diferente. São os processos mais complexos do portfólio consular, e os que mais exigem especialização real. Não chute.',
+    img: 'https://images.unsplash.com/photo-1568004614241-cc28447dc0f0?auto=format&fit=crop&w=600&q=80',
+    imgAlt: 'Profissional em viagem de negócios — Photo by David Veksler on Unsplash',
     msg: 'Quero%20informações%20sobre%20visto%20de%20trabalho',
     featured: false,
   },
@@ -249,7 +255,9 @@ export default async function HomePage() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-dark to-primary py-24 md:py-36 text-center text-white relative overflow-hidden">
+      <section className="py-24 md:py-36 text-center text-white relative overflow-hidden bg-dark"
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1586441133374-ed1cb4007a47?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark/95 to-primary/85" aria-hidden />
         <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden>
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent blur-3xl"/>
           <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-primary-light blur-3xl"/>
@@ -402,16 +410,18 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {scenarios.map((s) => (
               <div key={s.title}
-                className={`rounded-2xl p-8 flex flex-col items-center text-center transition-all duration-200 hover:shadow-xl bg-white ${s.featured ? 'ring-2 ring-accent shadow-lg' : ''}`}>
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-5 ${s.featured ? 'bg-accent/15 text-accent' : 'bg-primary/10 text-primary'}`}>
-                  {s.icon}
+                className={`rounded-2xl overflow-hidden flex flex-col transition-all duration-200 hover:shadow-xl bg-white ${s.featured ? 'ring-2 ring-accent shadow-lg' : ''}`}>
+                <div className="relative h-48 overflow-hidden">
+                  <img src={s.img} alt={s.imgAlt} className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-dark mb-3">{s.title}</h3>
-                <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{s.desc}</p>
-                <a href={`https://wa.me/${wa}?text=${s.msg}`} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-3 rounded-full transition-colors w-full justify-center">
-                  <WaIcon /> Falar com Especialista
-                </a>
+                <div className="p-6 flex flex-col items-center text-center flex-1">
+                  <h3 className="text-xl font-heading font-bold text-dark mb-3">{s.title}</h3>
+                  <p className="text-muted text-sm leading-relaxed mb-6 flex-1">{s.desc}</p>
+                  <a href={`https://wa.me/${wa}?text=${s.msg}`} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-3 rounded-full transition-colors w-full justify-center">
+                    <WaIcon /> Falar com Especialista
+                  </a>
+                </div>
               </div>
             ))}
           </div>
