@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Visto Americano | Consultoria Especializada para Brasileiros | Vow Vistos',
-  description: 'Consultoria completa para visto americano: análise de perfil, preenchimento do DS-160, simulação de entrevista e Garantia Vitalícia. 11.700+ vistos aprovados. Fale agora.',
-  keywords: 'visto americano, consultoria visto americano, como tirar visto americano, visto americano negado, entrevista visto americano, DS-160, visto B1 B2',
+  description: 'Consultoria completa para visto americano: análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. Mais de 7.000 vistos aprovados. Fale agora.',
+  keywords: 'visto americano, consultoria visto americano, como tirar visto americano, visto americano negado, entrevista visto americano, DS-160, visto B1 B2, código 214b',
 };
 
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
@@ -47,11 +47,44 @@ const plans = [
   },
 ];
 
+const denialReasons = [
+  {
+    code: '214(b)',
+    title: 'Vínculos insuficientes com o Brasil',
+    desc: 'O motivo mais comum de negativa. O cônsul precisa acreditar que você vai voltar. Emprego formal, imóvel, família dependente e renda consistente são os principais vínculos que avaliamos.',
+  },
+  {
+    code: 'DS-160',
+    title: 'Inconsistências no formulário',
+    desc: 'Uma data errada, uma resposta contraditória ou uma tradução imprecisa no DS-160 pode levantar dúvidas que resultam em negativa na mesma hora. Cada campo importa.',
+  },
+  {
+    code: 'Histórico',
+    title: 'Negativa anterior sem estratégia',
+    desc: 'Tentar novamente sem entender o motivo da negativa anterior é o erro mais comum. A Vow Vistos analisa o registro consular e repositiona o perfil antes da nova tentativa.',
+  },
+  {
+    code: 'Perfil',
+    title: 'Perfil incompatível com o objetivo',
+    desc: 'O cônsul avalia se o que você declara faz sentido com quem você é. Uma renda que não sustenta a viagem planejada ou um objetivo vago são sinais de alerta imediatos.',
+  },
+];
+
+const consulates = [
+  { city: 'São Paulo', state: 'SP', note: 'Maior volume de atendimentos do Brasil' },
+  { city: 'Rio de Janeiro', state: 'RJ', note: 'Atende todo o estado do Rio' },
+  { city: 'Brasília', state: 'DF', note: 'Atende o Distrito Federal e entorno' },
+  { city: 'Recife', state: 'PE', note: 'Atende o Nordeste' },
+  { city: 'Porto Alegre', state: 'RS', note: 'Atende o Sul do país' },
+];
+
 const faqs = [
   { q: 'Qual a diferença entre visto B1 e B2?', a: 'O visto B1 é para viagens de negócios e o B2 para turismo. Na prática, os consulados americanos costumam emitir o visto B1/B2 combinado, que permite ambas as finalidades.' },
-  { q: 'O que é o código 214(b) e como evitá-lo?', a: 'O código 214(b) é a negativa mais comum para brasileiros. Significa que o cônsul não ficou convencido de que você voltará ao Brasil. A chave é comprovar vínculos sólidos: emprego formal, imóveis, família. A Vow Vistos orienta exatamente como fazer isso.' },
+  { q: 'O que é o código 214(b) e como evitá-lo?', a: 'O código 214(b) é a negativa mais comum para brasileiros. Significa que o cônsul não ficou convencido de que você voltará ao Brasil. A chave é comprovar vínculos sólidos: emprego formal, imóveis, família. A Vow Vistos orienta exatamente como fazer isso antes da sua entrevista.' },
   { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há limite de tentativas. O importante é entender o motivo da negativa e corrigi-lo antes de agendar nova entrevista. A Vow Vistos realiza essa análise e reposiciona o perfil para a próxima tentativa.' },
   { q: 'Preciso comparecer pessoalmente ao consulado?', a: 'Sim, a entrevista presencial é obrigatória para a maioria dos solicitantes. Brasileiros adultos precisam comparecer ao consulado americano na cidade agendada. A Vow Vistos cuida de toda a preparação para esse momento.' },
+  { q: 'Qual consulado americano devo escolher para agendar?', a: 'Você pode agendar em qualquer um dos cinco consulados no Brasil, independente de onde mora. A escolha estratégica depende da disponibilidade de datas, do histórico consular e do perfil do solicitante. A Vow Vistos orienta qual opção faz mais sentido para cada caso.' },
+  { q: 'Quanto tempo leva para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa — por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
 ];
 
 const videos = ['YOUTUBE_ID_US_1', 'YOUTUBE_ID_US_2', 'YOUTUBE_ID_US_3'];
@@ -60,7 +93,9 @@ export default function VistoAmericanoPage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-dark to-primary py-24 md:py-32 text-center text-white relative overflow-hidden">
+      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1564309780826-cce2ef0705a0?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex items-center justify-center gap-2 mb-6">
             <span className="text-4xl">🇺🇸</span>
@@ -101,6 +136,33 @@ export default function VistoAmericanoPage() {
           ))}
         </div>
       </div>
+
+      {/* ── WHY VISAS GET DENIED ──────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Negativas</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Por que o visto americano é negado?</h2>
+            <p className="text-muted">A maioria das negativas tem causas previsíveis. Identificar e corrigir esses pontos antes da entrevista é o que fazemos.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {denialReasons.map((r) => (
+              <div key={r.code} className="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow duration-200">
+                <div className="inline-block bg-primary/10 text-primary text-xs font-heading font-bold px-3 py-1 rounded-full mb-4">{r.code}</div>
+                <h3 className="font-heading font-bold text-dark mb-2">{r.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{r.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Quero%20entender%20se%20tenho%20risco%20de%20negativa%20no%20visto%20americano`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Verificar meu perfil gratuitamente
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ── HOW IT WORKS ──────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
@@ -161,8 +223,30 @@ export default function VistoAmericanoPage() {
         </div>
       </section>
 
-      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
+      {/* ── CONSULATES ────────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Onde Agendar</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Consulados americanos no Brasil</h2>
+            <p className="text-muted">O Brasil tem cinco consulados americanos. Você pode agendar em qualquer um, independente de onde mora. A Vow Vistos orienta qual escolher para o seu perfil.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            {consulates.map((c) => (
+              <div key={c.city} className="bg-light rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
+                <div className="text-2xl mb-2">🇺🇸</div>
+                <div className="font-heading font-bold text-dark">{c.city}</div>
+                <div className="text-xs text-accent font-heading font-semibold mb-1">{c.state}</div>
+                <p className="text-muted text-xs leading-snug">{c.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-muted text-sm mt-8">A escolha do consulado pode influenciar o tempo de espera para agendamento. Consulte-nos antes de marcar.</p>
+        </div>
+      </section>
+
+      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
@@ -184,7 +268,7 @@ export default function VistoAmericanoPage() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-light">
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Dúvidas</span>
@@ -192,7 +276,7 @@ export default function VistoAmericanoPage() {
           </div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <details key={i} className="group bg-white rounded-2xl p-6 cursor-pointer [&[open]]:bg-primary [&[open]]:text-white transition-colors duration-200">
+              <details key={i} className="group bg-light rounded-2xl p-6 cursor-pointer [&[open]]:bg-primary [&[open]]:text-white transition-colors duration-200">
                 <summary className="font-heading font-bold text-dark group-open:text-white flex justify-between items-center gap-4 list-none cursor-pointer">
                   {faq.q}
                   <svg className="w-5 h-5 flex-shrink-0 text-accent group-open:rotate-45 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
