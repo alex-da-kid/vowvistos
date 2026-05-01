@@ -78,6 +78,15 @@ const consulates = [
   { city: 'Porto Alegre', state: 'RS', note: 'Atende o Sul do país' },
 ];
 
+const visaTypes = [
+  { code: 'B1/B2', desc: 'Turismo e negócios — o mais solicitado por brasileiros' },
+  { code: 'F-1',   desc: 'Estudo em instituição americana credenciada' },
+  { code: 'J-1',   desc: 'Intercâmbio cultural ou treinamento profissional' },
+  { code: 'O-1',   desc: 'Habilidade extraordinária: artistas, atletas, acadêmicos' },
+  { code: 'L-1',   desc: 'Transferência de executivo ou especialista dentro da mesma empresa' },
+  { code: 'E-2',   desc: 'Investidor em empresa americana' },
+];
+
 const faqs = [
   { q: 'Qual a diferença entre visto B1 e B2?', a: 'O visto B1 é para viagens de negócios e o B2 para turismo. Na prática, os consulados americanos costumam emitir o visto B1/B2 combinado, que permite ambas as finalidades.' },
   { q: 'O que é o código 214(b) e como evitá-lo?', a: 'O código 214(b) é a negativa mais comum para brasileiros. Significa que o cônsul não ficou convencido de que você voltará ao Brasil. A chave é comprovar vínculos sólidos: emprego formal, imóveis, família. A Vow Vistos orienta exatamente como fazer isso antes da sua entrevista.' },
@@ -85,6 +94,11 @@ const faqs = [
   { q: 'Preciso comparecer pessoalmente ao consulado?', a: 'Sim, a entrevista presencial é obrigatória para a maioria dos solicitantes. Brasileiros adultos precisam comparecer ao consulado americano na cidade agendada. A Vow Vistos cuida de toda a preparação para esse momento.' },
   { q: 'Qual consulado americano devo escolher para agendar?', a: 'Você pode agendar em qualquer um dos cinco consulados no Brasil, independente de onde mora. A escolha estratégica depende da disponibilidade de datas, do histórico consular e do perfil do solicitante. A Vow Vistos orienta qual opção faz mais sentido para cada caso.' },
   { q: 'Quanto tempo leva para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa — por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
+  { q: 'Quais documentos preciso para solicitar o visto americano?', a: 'Os documentos base são: passaporte válido com pelo menos 6 meses de validade além da data de retorno, foto padrão 5×5 cm fundo branco, confirmação do DS-160 e comprovante de pagamento da taxa MRV. Além disso, documentos financeiros (extratos bancários, declaração de IR, comprovante de renda), vínculos com o Brasil (carta do empregador, escritura de imóvel, certidão de dependentes) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil específico.' },
+  { q: 'Quanto custa o visto americano?', a: 'Além da consultoria da Vow Vistos, você pagará a taxa MRV de US$ 185 diretamente ao governo americano — obrigatória para todos os solicitantes e não reembolsável mesmo em caso de negativa. Para vistos de estudo (F-1) e intercâmbio (J-1), há ainda a taxa SEVIS de US$ 350.' },
+  { q: 'Por quanto tempo o visto americano é válido?', a: 'Para brasileiros, o visto B1/B2 é normalmente emitido com validade de 10 anos e entradas múltiplas. A validade do visto não define quanto tempo você pode ficar nos EUA — isso é determinado pelo agente de imigração na chegada, geralmente até 6 meses por entrada.' },
+  { q: 'Posso solicitar o visto americano para meus filhos menores?', a: 'Sim. Menores de 14 anos geralmente não precisam comparecer à entrevista presencial, mas os documentos precisam estar em ordem. Entre 14 e 17 anos, a entrevista pode ou não ser exigida dependendo do caso. A Vow Vistos orienta famílias com dependentes em cada etapa.' },
+  { q: 'Qual a diferença entre ESTA e visto americano?', a: 'O ESTA é exclusivo para cidadãos de países participantes do Programa de Isenção de Vistos. O Brasil não faz parte dessa lista — brasileiros sempre precisam de visto para entrar nos Estados Unidos, independente do motivo da viagem.' },
 ];
 
 const videos = ['YOUTUBE_ID_US_1', 'YOUTUBE_ID_US_2', 'YOUTUBE_ID_US_3'];
@@ -184,6 +198,47 @@ export default function VistoAmericanoPage() {
         </div>
       </section>
 
+      {/* ── TRANSPARENCY ──────────────────────────────────────────────── */}
+      <section className="py-20 bg-dark text-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="mb-12">
+            <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Transparência</span>
+            <h2 className="text-4xl font-heading font-bold mb-6">Nenhuma consultoria pode garantir a aprovação do seu visto. Desconfie de quem diz o contrário.</h2>
+            <p className="text-white/75 text-lg leading-relaxed mb-6">
+              A decisão final é sempre do cônsul americano. Isso não muda — independente de quem te atende, qual formulário foi preenchido ou qual argumento foi usado. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta. Não de competência.
+            </p>
+            <p className="text-white/75 text-lg leading-relaxed">
+              O que uma consultoria séria pode fazer — e o que a Vow Vistos faz — é garantir que o seu perfil chegue ao consulado da forma mais sólida possível. Sem improvisação, sem achismos, sem "fórmulas secretas".
+            </p>
+          </div>
+
+          <div className="border-t border-white/10 pt-12">
+            <h3 className="text-2xl font-heading font-bold mb-4">O DS-160 não é o bicho de sete cabeças que a internet faz parecer</h3>
+            <p className="text-white/75 leading-relaxed mb-6">
+              O formulário DS-160 é, na prática, um documento padronizado. Com o conhecimento certo, não existe mistério. O problema é que a internet está cheia de tutoriais desatualizados, interpretações equivocadas e "dicas" que podem, na realidade, prejudicar a sua solicitação. A desinformação cria uma ansiedade desnecessária — e é exatamente por isso que tantas pessoas buscam ajuda profissional.
+            </p>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
+                  <p className="text-white/70 leading-relaxed">
+                    A forma como a Vow Vistos orienta o preenchimento do DS-160 — e todo o preparo da solicitação — foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
+                  </p>
+                  <p className="text-white/70 leading-relaxed mt-3">
+                    Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── PRICING ───────────────────────────────────────────────────── */}
       <section className="py-20 bg-light" id="planos">
         <div className="max-w-7xl mx-auto px-4">
@@ -242,6 +297,28 @@ export default function VistoAmericanoPage() {
             ))}
           </div>
           <p className="text-center text-muted text-sm mt-8">A escolha do consulado pode influenciar o tempo de espera para agendamento. Consulte-nos antes de marcar.</p>
+        </div>
+      </section>
+
+      {/* ── VISA TYPES ────────────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Categorias</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Outros tipos de visto americano</h2>
+            <p className="text-muted">O B1/B2 cobre turismo e negócios, mas existem categorias específicas para outros objetivos. Cada uma tem critérios e etapas próprias.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {visaTypes.map((v) => (
+              <div key={v.code} className="bg-white rounded-2xl p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="font-heading font-extrabold text-primary text-sm">{v.code}</span>
+                </div>
+                <p className="text-muted text-sm leading-relaxed pt-1">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20americano%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
         </div>
       </section>
 
