@@ -79,7 +79,7 @@ const consulates = [
 ];
 
 const visaTypes = [
-  { code: 'B1/B2', desc: 'Turismo e negócios — o mais solicitado por brasileiros' },
+  { code: 'B1/B2', desc: 'Turismo e negócios, o mais solicitado por brasileiros' },
   { code: 'F-1',   desc: 'Estudo em instituição americana credenciada' },
   { code: 'J-1',   desc: 'Intercâmbio cultural ou treinamento profissional' },
   { code: 'O-1',   desc: 'Habilidade extraordinária: artistas, atletas, acadêmicos' },
@@ -93,15 +93,16 @@ const faqs = [
   { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há limite de tentativas. O importante é entender o motivo da negativa e corrigi-lo antes de agendar nova entrevista. A Vow Vistos realiza essa análise e reposiciona o perfil para a próxima tentativa.' },
   { q: 'Preciso comparecer pessoalmente ao consulado?', a: 'Sim, a entrevista presencial é obrigatória para a maioria dos solicitantes. Brasileiros adultos precisam comparecer ao consulado americano na cidade agendada. A Vow Vistos cuida de toda a preparação para esse momento.' },
   { q: 'Qual consulado americano devo escolher para agendar?', a: 'Você pode agendar em qualquer um dos cinco consulados no Brasil, independente de onde mora. A escolha estratégica depende da disponibilidade de datas, do histórico consular e do perfil do solicitante. A Vow Vistos orienta qual opção faz mais sentido para cada caso.' },
-  { q: 'Quanto tempo leva para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa — por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
+  { q: 'Quanto tempo leva para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa, por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
   { q: 'Quais documentos preciso para solicitar o visto americano?', a: 'Os documentos base são: passaporte válido com pelo menos 6 meses de validade além da data de retorno, foto padrão 5×5 cm fundo branco, confirmação do DS-160 e comprovante de pagamento da taxa MRV. Além disso, documentos financeiros (extratos bancários, declaração de IR, comprovante de renda), vínculos com o Brasil (carta do empregador, escritura de imóvel, certidão de dependentes) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil específico.' },
-  { q: 'Quanto custa o visto americano?', a: 'Além da consultoria da Vow Vistos, você pagará a taxa MRV de US$ 185 diretamente ao governo americano — obrigatória para todos os solicitantes e não reembolsável mesmo em caso de negativa. Para vistos de estudo (F-1) e intercâmbio (J-1), há ainda a taxa SEVIS de US$ 350.' },
-  { q: 'Por quanto tempo o visto americano é válido?', a: 'Para brasileiros, o visto B1/B2 é normalmente emitido com validade de 10 anos e entradas múltiplas. A validade do visto não define quanto tempo você pode ficar nos EUA — isso é determinado pelo agente de imigração na chegada, geralmente até 6 meses por entrada.' },
+  { q: 'Quanto custa o visto americano?', a: 'Além da consultoria da Vow Vistos, você pagará a taxa MRV de US$ 185 diretamente ao governo americano, obrigatória para todos os solicitantes e não reembolsável mesmo em caso de negativa. Para vistos de estudo (F-1) e intercâmbio (J-1), há ainda a taxa SEVIS de US$ 350.' },
+  { q: 'Por quanto tempo o visto americano é válido?', a: 'Para brasileiros, o visto B1/B2 é normalmente emitido com validade de 10 anos e entradas múltiplas. A validade do visto não define quanto tempo você pode ficar nos EUA. Isso é determinado pelo agente de imigração na chegada, geralmente até 6 meses por entrada.' },
   { q: 'Posso solicitar o visto americano para meus filhos menores?', a: 'Sim. Menores de 14 anos geralmente não precisam comparecer à entrevista presencial, mas os documentos precisam estar em ordem. Entre 14 e 17 anos, a entrevista pode ou não ser exigida dependendo do caso. A Vow Vistos orienta famílias com dependentes em cada etapa.' },
-  { q: 'Qual a diferença entre ESTA e visto americano?', a: 'O ESTA é exclusivo para cidadãos de países participantes do Programa de Isenção de Vistos. O Brasil não faz parte dessa lista — brasileiros sempre precisam de visto para entrar nos Estados Unidos, independente do motivo da viagem.' },
+  { q: 'Qual a diferença entre ESTA e visto americano?', a: 'O ESTA é exclusivo para cidadãos de países participantes do Programa de Isenção de Vistos. O Brasil não faz parte dessa lista. Brasileiros sempre precisam de visto para entrar nos Estados Unidos, independente do motivo da viagem.' },
 ];
 
-const videos = ['YOUTUBE_ID_US_1', 'YOUTUBE_ID_US_2', 'YOUTUBE_ID_US_3'];
+const videos = ['BetAiESGUhE', '_Qh3LY3myds', 'AthKx2yI9SU', '3v7fBJdhjos'];
+const shorts = ['UbjqSU76oNU', 'YZs78ZCti6U', 'KVSVSXCgjwg'];
 
 const schemaOrg = {
   '@context': 'https://schema.org',
@@ -217,17 +218,17 @@ export default function VistoAmericanoPage() {
             <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Transparência</span>
             <h2 className="text-4xl font-heading font-bold mb-6">Nenhuma consultoria pode garantir a aprovação do seu visto. Desconfie de quem diz o contrário.</h2>
             <p className="text-white/75 text-lg leading-relaxed mb-6">
-              A decisão final é sempre do cônsul americano. Isso não muda — independente de quem te atende, qual formulário foi preenchido ou qual argumento foi usado. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta. Não de competência.
+              A decisão final é sempre do cônsul americano. Isso não muda, independente de quem te atende, qual formulário foi preenchido ou qual argumento foi usado. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta. Não de competência.
             </p>
             <p className="text-white/75 text-lg leading-relaxed">
-              O que uma consultoria séria pode fazer — e o que a Vow Vistos faz — é garantir que o seu perfil chegue ao consulado da forma mais sólida possível. Sem improvisação, sem achismos, sem "fórmulas secretas".
+              O que uma consultoria séria pode fazer, e o que a Vow Vistos faz, é garantir que o seu perfil chegue ao consulado da forma mais sólida possível. Sem improvisação, sem achismos, sem "fórmulas secretas".
             </p>
           </div>
 
           <div className="border-t border-white/10 pt-12">
             <h3 className="text-2xl font-heading font-bold mb-4">O DS-160 não é o bicho de sete cabeças que a internet faz parecer</h3>
             <p className="text-white/75 leading-relaxed mb-6">
-              O formulário DS-160 é, na prática, um documento padronizado. Com o conhecimento certo, não existe mistério. O problema é que a internet está cheia de tutoriais desatualizados, interpretações equivocadas e "dicas" que podem, na realidade, prejudicar a sua solicitação. A desinformação cria uma ansiedade desnecessária — e é exatamente por isso que tantas pessoas buscam ajuda profissional.
+              O formulário DS-160 é, na prática, um documento padronizado. Com o conhecimento certo, não existe mistério. O problema é que a internet está cheia de tutoriais desatualizados, interpretações equivocadas e "dicas" que podem, na realidade, prejudicar a sua solicitação. A desinformação cria uma ansiedade desnecessária, e é exatamente por isso que tantas pessoas buscam ajuda profissional.
             </p>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <div className="flex items-start gap-4">
@@ -239,7 +240,7 @@ export default function VistoAmericanoPage() {
                 <div>
                   <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
                   <p className="text-white/70 leading-relaxed">
-                    A forma como a Vow Vistos orienta o preenchimento do DS-160 — e todo o preparo da solicitação — foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
+                    A forma como a Vow Vistos orienta o preenchimento do DS-160, e todo o preparo da solicitação, foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
                   </p>
                   <p className="text-white/70 leading-relaxed mt-3">
                     Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
@@ -257,7 +258,7 @@ export default function VistoAmericanoPage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Entrevista</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">O que esperar da entrevista no consulado americano</h2>
-            <p className="text-muted">A entrevista costuma durar entre 2 e 5 minutos. O cônsul já analisou seu DS-160 antes de te receber — o objetivo é confirmar o que está no formulário, não fazer uma conversa longa.</p>
+            <p className="text-muted">A entrevista costuma durar entre 2 e 5 minutos. O cônsul já analisou seu DS-160 antes de te receber. O objetivo é confirmar o que está no formulário, não fazer uma conversa longa.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl p-7 shadow-sm">
@@ -284,10 +285,10 @@ export default function VistoAmericanoPage() {
                 {[
                   'Chegue 30 minutos antes do horário agendado',
                   'Leve o passaporte e a confirmação impressa do DS-160',
-                  'Responda com objetividade — respostas longas podem gerar dúvidas',
+                  'Responda com objetividade: respostas longas podem gerar dúvidas',
                   'Não leve documentos que não foram solicitados',
                   'Vista-se de forma profissional',
-                  'Não minta — inconsistências são detectadas imediatamente',
+                  'Não minta: inconsistências são detectadas imediatamente',
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-muted">
                     <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -414,11 +415,11 @@ export default function VistoAmericanoPage() {
               },
               {
                 title: 'Aposentados e pensionistas',
-                body: 'Aposentados têm boas chances de aprovação — a renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos afetivos e patrimoniais com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
+                body: 'Aposentados têm boas chances de aprovação. A renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos afetivos e patrimoniais com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
               },
               {
                 title: 'Quem tem dívidas ou restrições financeiras',
-                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. O cônsul avalia a capacidade financeira para custear a viagem, não o histórico de crédito. O que importa é demonstrar que você tem recursos suficientes para a viagem declarada — e que vai voltar. A Vow Vistos analisa cada caso antes de qualquer recomendação.',
+                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. O cônsul avalia a capacidade financeira para custear a viagem, não o histórico de crédito. O que importa é demonstrar que você tem recursos suficientes para a viagem declarada, e que vai voltar. A Vow Vistos analisa cada caso antes de qualquer recomendação.',
               },
             ].map((p) => (
               <div key={p.title} className="bg-light rounded-2xl p-7 hover:shadow-lg transition-shadow">
@@ -428,10 +429,10 @@ export default function VistoAmericanoPage() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href={`https://wa.me/${wa}?text=Meu%20caso%20é%20específico%20—%20quero%20uma%20análise`}
+            <a href={`https://wa.me/${wa}?text=Meu%20caso%20é%20específico,%20quero%20uma%20análise`}
               target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
-              Meu caso é específico — quero uma análise
+              Meu caso é específico, quero uma análise
             </a>
           </div>
         </div>
@@ -445,12 +446,23 @@ export default function VistoAmericanoPage() {
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação do visto americano</h2>
             <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {videos.map((id, i) => (
               <div key={i} className="rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
                 <iframe className="w-full h-full"
                   src={`https://www.youtube.com/embed/${id}?rel=0`}
                   title={`Depoimento visto americano ${i + 1}`}
+                  style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen loading="lazy"/>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            {shorts.map((id, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden shadow-lg bg-dark" style={{ aspectRatio: '9/16' }}>
+                <iframe className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${id}?rel=0`}
+                  title={`Depoimento curto visto americano ${i + 1}`}
                   style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen loading="lazy"/>
               </div>
@@ -509,7 +521,7 @@ export default function VistoAmericanoPage() {
           <p className="text-muted">Respondemos em até 24 horas úteis com uma análise honesta do seu perfil.</p>
         </div>
         <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8">
-          <p className="text-center text-muted text-sm mb-6">Formulário Gravity Forms — configure o ID em <code className="bg-light px-1 rounded text-xs">.env.local</code>.</p>
+          <p className="text-center text-muted text-sm mb-6">Formulário Gravity Forms: configure o ID em <code className="bg-light px-1 rounded text-xs">.env.local</code>.</p>
           <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Americano`}
             target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-3 rounded-full transition-colors w-full">
