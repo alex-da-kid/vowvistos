@@ -43,7 +43,7 @@ function GoogleGLogo() {
 }
 
 const steps = [
-  { num: '01', title: 'Análise de Perfil e Categoria', desc: 'Identificamos a categoria correta para o seu objetivo: turismo (L), negócios (M), intercâmbio (F) ou estudo (X). A categoria errada resulta em recusa automática.' },
+  { num: '01', title: 'Análise de Perfil e Categoria', desc: 'Identificamos a categoria correta para o seu objetivo: turismo (L) ou negócios (M). A categoria errada resulta em recusa automática.' },
   { num: '02', title: 'Preparação da Documentação', desc: 'Cuidamos de toda a documentação exigida pelo consulado chinês, incluindo formulário, carta de apresentação, comprovantes financeiros e fotos no padrão exigido.' },
   { num: '03', title: 'Orientação no CVASC', desc: 'O visto chinês é solicitado presencialmente no CVASC. Orientamos sobre o agendamento, o que levar e o procedimento completo para a entrega dos documentos.' },
   { num: '04', title: 'Acompanhamento até a Aprovação', desc: 'Monitoramos o andamento da solicitação e mantemos você informado. Se houver qualquer solicitação adicional do consulado, respondemos juntos.' },
@@ -62,22 +62,22 @@ const features = [
 
 const plans = [
   {
-    name: 'Turismo, Negócios ou Intercâmbio',
-    subtitle: 'Vistos L, M e F para visitas à China',
-    price: 'R$ 380',
-    installment: '6x de R$ 63,33 sem juros',
+    name: 'Visto de Turismo',
+    subtitle: 'Visto L para visitas turísticas e lazer na China',
+    price: 'R$ 480',
+    installment: '6x de R$ 80,00 sem juros',
     featured: false,
-    cta: 'Contratar Consultoria',
-    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Chin%C3%AAs%20(L%2FM%2FF)',
+    cta: 'Contratar Visto L',
+    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Chin%C3%AAs%20de%20Turismo',
   },
   {
-    name: 'Visto de Estudo',
-    subtitle: 'Study Visa (X1/X2) para programas de estudo na China',
+    name: 'Visto de Negócios',
+    subtitle: 'Visto M para missões comerciais e feiras na China',
     price: 'R$ 480',
     installment: '6x de R$ 80,00 sem juros',
     featured: true,
-    cta: 'Contratar Visto X',
-    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20X%20chin%C3%AAs',
+    cta: 'Contratar Visto M',
+    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Chin%C3%AAs%20de%20Neg%C3%B3cios',
   },
 ];
 
@@ -110,12 +110,8 @@ const cvacs = [
 ];
 
 const visaTypes = [
-  { code: 'L', name: 'Turismo', desc: 'Para visitas turísticas, lazer e visitas a familiares na China.' },
-  { code: 'M', name: 'Negócios', desc: 'Para viagens de negócios, feiras comerciais e missões empresariais.' },
-  { code: 'F', name: 'Intercâmbio', desc: 'Para intercâmbios culturais, visitas técnicas e pesquisas de curta duração.' },
-  { code: 'X1', name: 'Estudo Longo', desc: 'Para programas de estudo com duração superior a 180 dias.' },
-  { code: 'X2', name: 'Estudo Curto', desc: 'Para programas de estudo com duração de até 180 dias.' },
-  { code: 'G', name: 'Trânsito', desc: 'Para passageiros em trânsito pela China em conexões aéreas.' },
+  { code: 'L', name: 'Turismo', desc: 'Para visitas turísticas, lazer e visitas a familiares na China. O visto mais solicitado por brasileiros.' },
+  { code: 'M', name: 'Negócios', desc: 'Para viagens de negócios, feiras comerciais, missões empresariais e atividades comerciais na China.' },
 ];
 
 const faqs = [
@@ -128,6 +124,7 @@ const faqs = [
   { q: 'Qual é o padrão de foto exigido pelo consulado chinês?', a: 'O consulado chinês exige foto colorida, fundo branco puro, tamanho 33mm × 48mm, rosto centralizado ocupando de 60% a 70% da foto, expressão neutra, boca fechada, sem óculos. Fotos que não atendem ao padrão são recusadas no balcão do CVASC, o que invalida o agendamento.' },
   { q: 'Por quanto tempo o visto chinês é válido?', a: 'A validade varia por categoria e pelo histórico do solicitante. Vistos L (turismo) podem ser emitidos com validade de 3 meses (entrada única), 6 meses ou 1 ano (entradas múltiplas). Vistos X1 têm validade normalmente atrelada à duração do curso. A decisão sobre a validade é do consulado.' },
   { q: 'Quanto custam as taxas do governo chinês?', a: 'As taxas consulares variam por tipo de processamento: normal (4-7 dias úteis) custa aproximadamente R$ 205, expresso (2-3 dias) R$ 291 e urgente (1 dia) R$ 377. Esses valores são pagos diretamente no CVASC e não estão incluídos na consultoria da Vow Vistos.' },
+  { q: 'Qual a diferença entre o visto L e o visto M?', a: 'O visto L é para turismo, lazer e visitas a familiares. O visto M é para viagens de negócios, feiras comerciais e atividades empresariais. A documentação exigida é diferente: o visto M geralmente requer convite de empresa chinesa e comprovação da relação comercial. A Vow Vistos identifica a categoria correta para o seu objetivo antes de iniciar o processo.' },
   { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há período de bloqueio obrigatório. O importante é entender o motivo da recusa e corrigir os pontos antes de uma nova tentativa. A Vow Vistos analisa a negativa anterior e reposiciona a documentação para a próxima solicitação.' },
   { q: 'O visto chinês funciona para Hong Kong e Macau?', a: 'Não. Hong Kong e Macau têm sistemas de imigração próprios e separados da China continental. Brasileiros podem entrar em Hong Kong sem visto por até 90 dias e em Macau por até 30 dias. O visto chinês emitido para a China continental não é válido nessas regiões.' },
 ];
@@ -410,10 +407,10 @@ export default function VistoChinesPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Categorias</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Tipos de visto chinês para brasileiros</h2>
-            <p className="text-muted">A categoria certa muda tudo. A Vow Vistos identifica qual visto se aplica ao seu caso antes de qualquer submissão.</p>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Os vistos que oferecemos para a China</h2>
+            <p className="text-muted">Trabalhamos com turismo e negócios. A Vow Vistos identifica a categoria certa e prepara tudo antes de qualquer submissão.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {visaTypes.map((v) => (
               <div key={v.code} className="bg-light rounded-2xl p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -442,15 +439,15 @@ export default function VistoChinesPage() {
             {[
               {
                 title: 'Viajantes de negócios',
-                body: 'O visto M (negócios) exige convite de empresa chinesa parceira, carta da empresa brasileira autorizando a viagem e documentos que comprovem a relação comercial. A Vow Vistos orienta sobre como estruturar a documentação para que o objetivo da viagem fique claro ao consulado.',
+                body: 'O visto M exige convite de empresa chinesa parceira, carta da empresa brasileira autorizando a viagem e documentos que comprovem a relação comercial. A Vow Vistos orienta sobre como estruturar a documentação para que o objetivo da viagem fique claro ao consulado.',
               },
               {
                 title: 'MEI e autônomos',
                 body: 'Trabalhadores por conta própria precisam comprovar renda e capacidade financeira sem um holerite tradicional. Extratos bancários consistentes, declaração do MEI e comprovantes de receita são os documentos centrais. A Vow Vistos monta um pacote documental adaptado para o seu perfil.',
               },
               {
-                title: 'Estudantes',
-                body: 'O visto X1 (estudo longo) ou X2 (estudo curto) exige carta de admissão de instituição chinesa reconhecida, comprovante financeiro e, em alguns casos, exame médico. A Vow Vistos orienta sobre os requisitos específicos da instituição e da categoria, do início ao processo de emissão do visto de residência na China.',
+                title: 'Aposentados e turistas frequentes',
+                body: 'Aposentados têm boas chances de aprovação do visto L quando demonstram renda regular e vínculos com o Brasil. A ausência de emprego formal não é obstáculo, mas a comprovação de independência financeira e a apresentação de um itinerário claro são fundamentais.',
               },
             ].map((p) => (
               <div key={p.title} className="bg-white rounded-2xl p-7 hover:shadow-lg transition-shadow">
