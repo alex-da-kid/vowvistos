@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import VideoCarousel from './VideoCarousel';
 
 export const metadata: Metadata = {
   title: 'Visto Americano | Consultoria Especializada para Brasileiros | Vow Vistos',
@@ -101,8 +102,6 @@ const faqs = [
   { q: 'Qual a diferença entre ESTA e visto americano?', a: 'O ESTA é exclusivo para cidadãos de países participantes do Programa de Isenção de Vistos. O Brasil não faz parte dessa lista. Brasileiros sempre precisam de visto para entrar nos Estados Unidos, independente do motivo da viagem.' },
 ];
 
-const videos = ['BetAiESGUhE', '_Qh3LY3myds', 'AthKx2yI9SU', '3v7fBJdhjos'];
-const shorts = ['UbjqSU76oNU', 'YZs78ZCti6U', 'KVSVSXCgjwg'];
 
 const schemaOrg = {
   '@context': 'https://schema.org',
@@ -446,21 +445,7 @@ export default function VistoAmericanoPage() {
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação do visto americano</h2>
             <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
-          <div className="relative">
-            <div className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {[...videos, ...shorts].map((id, i) => (
-                <div key={i} className="snap-start flex-shrink-0 w-[85%] sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)] rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
-                  <iframe className="w-full h-full"
-                    src={`https://www.youtube.com/embed/${id}?rel=0`}
-                    title={`Depoimento visto americano ${i + 1}`}
-                    style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen loading="lazy"/>
-                </div>
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-light to-transparent" aria-hidden />
-          </div>
-          <p className="text-center text-xs text-muted mt-3">Deslize para ver todos os depoimentos →</p>
+          <VideoCarousel />
         </div>
       </section>
 
