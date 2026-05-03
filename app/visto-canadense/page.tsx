@@ -58,7 +58,7 @@ const plans = [
     price: 'R$ 847,00',
     installment: '6x de R$ 141,17 sem juros',
     featured: false,
-    cta: 'Iniciar Conversa',
+    cta: 'Contratar TRV',
     msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Canadense%20TRV',
     features: [
       'Orientação passo a passo do começo ao fim',
@@ -77,7 +77,7 @@ const plans = [
     price: 'R$ 897,00',
     installment: '6x de R$ 149,50 sem juros',
     featured: true,
-    cta: 'Iniciar Conversa',
+    cta: 'Contratar Study Permit',
     msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Study%20Permit%20Canadense',
     features: [
       'Orientação passo a passo do começo ao fim',
@@ -97,7 +97,7 @@ const plans = [
     price: 'R$ 257,00',
     installment: '6x de R$ 42,83 sem juros',
     featured: false,
-    cta: 'Iniciar Conversa',
+    cta: 'Contratar ETA',
     msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20ETA%20Canadense',
     features: [
       'Orientação passo a passo do começo ao fim',
@@ -330,18 +330,20 @@ export default function VistoCanadensePage() {
                   {p.price}
                 </div>
                 <p className={`text-xs mb-8 ${p.featured ? 'text-white/50' : 'text-muted'}`}>ou {p.installment}</p>
-                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
-                  className={`block text-center font-heading font-bold px-6 py-3 rounded-full transition-colors mb-8 ${p.featured ? 'bg-accent hover:bg-accent-light text-dark' : 'bg-primary hover:bg-primary-light text-white'}`}>
-                  {p.cta}
-                </a>
-                <ul className="space-y-3 flex-1">
+                <ul className="space-y-3 flex-1 mb-8">
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm">
-                      <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                      <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${p.featured ? 'text-accent' : 'text-green-500'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
                       <span className={p.featured ? 'text-white/80' : 'text-muted'}>{f}</span>
                     </li>
                   ))}
                 </ul>
+                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
+                  className={`block text-center font-heading font-bold px-6 py-3 rounded-full transition-colors ${p.featured ? 'bg-accent hover:bg-accent-light text-dark' : 'bg-primary hover:bg-primary-light text-white'}`}>
+                  {p.cta}
+                </a>
               </div>
             ))}
           </div>
