@@ -103,9 +103,21 @@ const faqs = [
 
 const videos = ['YOUTUBE_ID_US_1', 'YOUTUBE_ID_US_2', 'YOUTUBE_ID_US_3'];
 
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function VistoAmericanoPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
+
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1564309780826-cce2ef0705a0?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -239,8 +251,66 @@ export default function VistoAmericanoPage() {
         </div>
       </section>
 
+      {/* ── INTERVIEW PREP ────────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Entrevista</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">O que esperar da entrevista no consulado americano</h2>
+            <p className="text-muted">A entrevista costuma durar entre 2 e 5 minutos. O cônsul já analisou seu DS-160 antes de te receber — o objetivo é confirmar o que está no formulário, não fazer uma conversa longa.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl p-7 shadow-sm">
+              <h3 className="font-heading font-bold text-dark text-lg mb-4">Perguntas mais comuns na entrevista</h3>
+              <ul className="space-y-3">
+                {[
+                  'Qual é o objetivo da sua viagem?',
+                  'Quanto tempo pretende ficar nos EUA?',
+                  'Quem vai custear a viagem?',
+                  'Você tem familiares nos Estados Unidos?',
+                  'Qual é a sua profissão e situação de emprego atual?',
+                  'Você já teve visto americano antes? Foi negado?',
+                ].map((q) => (
+                  <li key={q} className="flex items-start gap-3 text-sm text-muted">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl p-7 shadow-sm">
+              <h3 className="font-heading font-bold text-dark text-lg mb-4">Dicas para o dia da entrevista</h3>
+              <ul className="space-y-3">
+                {[
+                  'Chegue 30 minutos antes do horário agendado',
+                  'Leve o passaporte e a confirmação impressa do DS-160',
+                  'Responda com objetividade — respostas longas podem gerar dúvidas',
+                  'Não leve documentos que não foram solicitados',
+                  'Vista-se de forma profissional',
+                  'Não minta — inconsistências são detectadas imediatamente',
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-muted">
+                    <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Quero%20me%20preparar%20para%20a%20entrevista%20do%20visto%20americano`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Quero me preparar para a entrevista
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── PRICING ───────────────────────────────────────────────────── */}
-      <section className="py-20 bg-light" id="planos">
+      <section className="py-20 bg-white" id="planos">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Planos</span>
@@ -297,6 +367,12 @@ export default function VistoAmericanoPage() {
             ))}
           </div>
           <p className="text-center text-muted text-sm mt-8">A escolha do consulado pode influenciar o tempo de espera para agendamento. Consulte-nos antes de marcar.</p>
+          <div className="mt-6 text-center text-sm text-muted">
+            Também assessoramos vistos para{' '}
+            <a href="/visto-canadense" className="text-accent font-semibold hover:underline">Canadá</a>,{' '}
+            <a href="/visto-chines" className="text-accent font-semibold hover:underline">China</a> e{' '}
+            <a href="/outros-paises" className="text-accent font-semibold hover:underline">outros países</a>.
+          </div>
         </div>
       </section>
 
@@ -319,6 +395,45 @@ export default function VistoAmericanoPage() {
             ))}
           </div>
           <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20americano%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
+        </div>
+      </section>
+
+      {/* ── SPECIFIC PROFILES ─────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Perfis Específicos</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Situações especiais no visto americano</h2>
+            <p className="text-muted">Cada perfil tem desafios próprios. A Vow Vistos tem experiência com as situações mais sensíveis.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                title: 'MEI e autônomos',
+                body: 'Trabalhadores por conta própria enfrentam um desafio comum: comprovar renda estável e vínculo com o Brasil sem um holerite tradicional. Extratos bancários consistentes, declaração do MEI, contrato com clientes e comprovantes de pagamento do INSS são os principais documentos. A Vow Vistos orienta exatamente quais usar para o seu caso.',
+              },
+              {
+                title: 'Aposentados e pensionistas',
+                body: 'Aposentados têm boas chances de aprovação — a renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos afetivos e patrimoniais com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
+              },
+              {
+                title: 'Quem tem dívidas ou restrições financeiras',
+                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. O cônsul avalia a capacidade financeira para custear a viagem, não o histórico de crédito. O que importa é demonstrar que você tem recursos suficientes para a viagem declarada — e que vai voltar. A Vow Vistos analisa cada caso antes de qualquer recomendação.',
+              },
+            ].map((p) => (
+              <div key={p.title} className="bg-light rounded-2xl p-7 hover:shadow-lg transition-shadow">
+                <h3 className="font-heading font-bold text-dark text-lg mb-3">{p.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{p.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Meu%20caso%20é%20específico%20—%20quero%20uma%20análise`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Meu caso é específico — quero uma análise
+            </a>
+          </div>
         </div>
       </section>
 
@@ -400,6 +515,11 @@ export default function VistoAmericanoPage() {
             className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-3 rounded-full transition-colors w-full">
             Prefiro falar pelo WhatsApp
           </a>
+          <p className="text-center text-xs text-muted mt-4">
+            Prefere visitar nossa{' '}
+            <a href="/contato" className="text-accent hover:underline">página de contato</a>
+            {' '}completa.
+          </p>
         </div>
       </section>
     </>
