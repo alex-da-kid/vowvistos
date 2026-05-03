@@ -446,28 +446,21 @@ export default function VistoAmericanoPage() {
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação do visto americano</h2>
             <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {videos.map((id, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
-                <iframe className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${id}?rel=0`}
-                  title={`Depoimento visto americano ${i + 1}`}
-                  style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen loading="lazy"/>
-              </div>
-            ))}
+          <div className="relative">
+            <div className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {[...videos, ...shorts].map((id, i) => (
+                <div key={i} className="snap-start flex-shrink-0 w-[85%] sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)] rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
+                  <iframe className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${id}?rel=0`}
+                    title={`Depoimento visto americano ${i + 1}`}
+                    style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen loading="lazy"/>
+                </div>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-light to-transparent" aria-hidden />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {shorts.map((id, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden shadow-lg bg-dark" style={{ aspectRatio: '9/16' }}>
-                <iframe className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${id}?rel=0`}
-                  title={`Depoimento curto visto americano ${i + 1}`}
-                  style={{ border: 0 }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen loading="lazy"/>
-              </div>
-            ))}
-          </div>
+          <p className="text-center text-xs text-muted mt-3">Deslize para ver todos os depoimentos →</p>
         </div>
       </section>
 
