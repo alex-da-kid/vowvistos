@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import VideoCarousel from '../visto-americano/VideoCarousel';
 
 export const metadata: Metadata = {
   title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
@@ -378,48 +379,15 @@ export default function VistoCanadensePage() {
         </div>
       </section>
 
-      {/* ── VISA TYPES COMPARISON ─────────────────────────────────────── */}
+      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
       <section className="py-20 bg-light">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Comparativo</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Qual documento você precisa?</h2>
-            <p className="text-muted">TRV, ETA ou Study Permit: cada um serve a um propósito diferente. Confira o comparativo.</p>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação</h2>
+            <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full max-w-4xl mx-auto text-sm border-separate border-spacing-0">
-              <thead>
-                <tr>
-                  <th className="bg-white rounded-tl-2xl px-5 py-4 text-left text-muted font-heading font-semibold text-xs uppercase tracking-widest border-b border-light w-1/4" />
-                  <th className="bg-primary text-white px-5 py-4 text-center font-heading font-bold text-base">TRV</th>
-                  <th className="bg-dark text-white px-5 py-4 text-center font-heading font-bold text-base ring-2 ring-accent">Study Permit</th>
-                  <th className="bg-primary text-white px-5 py-4 text-center font-heading font-bold text-base rounded-tr-2xl">ETA</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { label: 'Para quem', trv: 'Turismo, visitas e trânsito pelo Canadá', study: 'Programas de estudo com duração superior a 6 meses', eta: 'Passaportes elegíveis à entrada sem visto (não inclui Brasil)' },
-                  { label: 'Taxa do governo', trv: 'CAD $100', study: 'CAD $150', eta: 'CAD $7' },
-                  { label: 'Prazo médio IRCC', trv: '2 a 8 semanas', study: '4 a 12 semanas', eta: 'Minutos a 72 h' },
-                  { label: 'Validade', trv: 'Até 10 anos ou venc. do passaporte', study: 'Duração do curso + 90 dias', eta: '5 anos ou venc. do passaporte' },
-                  { label: 'Biometria', trv: 'Obrigatória (CAD $85)', study: 'Obrigatória (CAD $85)', eta: 'Geralmente não é exigida' },
-                  { label: 'Nossa consultoria', trv: 'R$ 847,00', study: 'R$ 897,00', eta: 'R$ 257,00' },
-                ].map((row, i, arr) => {
-                  const isLast = i === arr.length - 1;
-                  const cell = `px-5 py-4 border-b ${isLast ? 'border-transparent' : 'border-light'}`;
-                  return (
-                    <tr key={row.label} className={i % 2 === 0 ? 'bg-white' : 'bg-light/50'}>
-                      <td className={`${cell} font-heading font-semibold text-dark ${isLast ? 'rounded-bl-2xl' : ''}`}>{row.label}</td>
-                      <td className={`${cell} text-center text-muted`}>{row.trv}</td>
-                      <td className={`${cell} text-center text-muted ring-2 ring-accent ring-inset`}>{row.study}</td>
-                      <td className={`${cell} text-center text-muted ${isLast ? 'rounded-br-2xl' : ''}`}>{row.eta}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20canadense%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
+          <VideoCarousel />
         </div>
       </section>
 
