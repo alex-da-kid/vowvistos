@@ -2,46 +2,76 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
-  description: 'Consultoria completa para visto canadense: TRV, ETA, estudo e trabalho. Análise de perfil, formulários IRCC, biometria e Garantia Vitalícia. Mais de 7.000 vistos aprovados.',
-  keywords: 'visto canadense, consultoria visto canadense, TRV Canada, visto turismo Canada, como tirar visto canadense, visto negado Canada, IRCC, Work Permit, Study Permit',
+  description: 'Consultoria completa para visto canadense: TRV, ETA e Study Permit. Análise de perfil, formulários IRCC, biometria e Garantia Vitalícia. Mais de 7.000 vistos aprovados.',
+  keywords: 'visto canadense, consultoria visto canadense, TRV Canada, visto turismo Canada, como tirar visto canadense, visto negado Canada, IRCC, ETA Canada, Study Permit Canada',
 };
 
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
 
 const steps = [
-  { num: '01', title: 'Análise de Elegibilidade', desc: 'Identificamos o documento certo para o seu caso: TRV, ETA, Study Permit ou Work Permit. A categoria errada leva à recusa automática.' },
+  { num: '01', title: 'Análise de Elegibilidade', desc: 'Identificamos o documento certo para o seu caso: TRV, ETA ou Study Permit. A categoria errada leva à recusa automática.' },
   { num: '02', title: 'Formulários IRCC', desc: 'Cuidamos do preenchimento de todos os formulários online da IRCC com precisão. Cada inconsistência pode resultar em recusa sem direito a reembolso da taxa.' },
   { num: '03', title: 'Biometria e Documentação', desc: 'A maioria dos solicitantes precisa fornecer dados biométricos. Orientamos sobre o agendamento no CVAC e preparamos toda a documentação de suporte.' },
   { num: '04', title: 'Acompanhamento da Aplicação', desc: 'Monitoramos o andamento da sua solicitação na IRCC e mantemos você informado a cada atualização até a decisão final.' },
 ];
 
-const features = [
-  'Análise de elegibilidade e tipo de visto ideal',
-  'Preenchimento de todos os formulários IRCC',
-  'Carta de apresentação estratégica',
-  'Checklist de documentação personalizado',
-  'Orientação sobre biometria e CVAC',
-  'Comprovação financeira orientada',
-  'Acompanhamento em tempo real',
-  'Garantia Vitalícia de reaprovação',
-];
-
 const plans = [
   {
-    name: 'Visto de Turismo (TRV)',
+    name: 'Visto de Turismo',
+    badge: 'TRV',
     subtitle: 'Para visitas, passeios e trânsito pelo Canadá',
-    price: 'Consulte',
+    originalPrice: 'R$ 999,00',
+    price: 'R$ 847,00',
+    installment: '6x de R$ 141,17 sem juros',
     featured: false,
-    cta: 'Solicitar TRV',
+    cta: 'Iniciar Conversa',
     msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Canadense%20TRV',
+    features: [
+      'Orientação passo a passo do começo ao fim',
+      'Análise de Perfil',
+      'Preparação dos formulários consulares',
+      'Elaboração de lista personalizada de documentos',
+      'Agendamento e preparação de visita ao VFS',
+      'Acompanhamento do seu processo em tempo real',
+    ],
   },
   {
-    name: 'Estudo / Trabalho / IEC',
-    subtitle: 'Study Permit, Work Permit e Working Holiday',
-    price: 'Consulte',
+    name: 'Visto de Estudos',
+    badge: 'Study Permit',
+    subtitle: 'Para programas de estudo com duração superior a 6 meses',
+    originalPrice: 'R$ 1.049,00',
+    price: 'R$ 897,00',
+    installment: '6x de R$ 149,50 sem juros',
     featured: true,
-    cta: 'Solicitar Consultoria',
-    msg: 'Quero%20contratar%20a%20consultoria%20para%20Visto%20Canadense%20de%20Estudo%20ou%20Trabalho',
+    cta: 'Iniciar Conversa',
+    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20Study%20Permit%20Canadense',
+    features: [
+      'Orientação passo a passo do começo ao fim',
+      'Análise de Perfil',
+      'Preparação dos formulários consulares',
+      'Elaboração de lista personalizada de documentos',
+      'Agendamento e preparação de visita ao VFS',
+      'Preparação para consulta médica (se necessária)',
+      'Acompanhamento do seu processo em tempo real',
+    ],
+  },
+  {
+    name: 'ETA',
+    badge: 'Electronic Travel Authorization',
+    subtitle: 'Para passaportes elegíveis à autorização eletrônica',
+    originalPrice: 'R$ 349,00',
+    price: 'R$ 257,00',
+    installment: '6x de R$ 42,83 sem juros',
+    featured: false,
+    cta: 'Iniciar Conversa',
+    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20ETA%20Canadense',
+    features: [
+      'Orientação passo a passo do começo ao fim',
+      'Análise de Perfil',
+      'Elaboração de lista personalizada de documentos',
+      'Preparação dos formulários consulares',
+      'Acompanhamento do seu processo em tempo real',
+    ],
   },
 ];
 
@@ -78,11 +108,8 @@ const cvacs = [
 
 const visaTypes = [
   { code: 'TRV', desc: 'Temporary Resident Visa, visto de turismo e trânsito para o Canadá' },
-  { code: 'ETA', desc: 'Electronic Travel Authorization, para passaportes elegíveis' },
-  { code: 'Study', desc: 'Study Permit, para cursos com duração superior a 6 meses' },
-  { code: 'Work', desc: 'Work Permit, para trabalho temporário com ou sem LMIA' },
-  { code: 'IEC', desc: 'International Experience Canada, o Working Holiday canadense' },
-  { code: 'Super', desc: 'Super Visa, para pais e avós de cidadãos ou residentes permanentes' },
+  { code: 'ETA', desc: 'Electronic Travel Authorization, para passaportes elegíveis à entrada sem visto' },
+  { code: 'Study', desc: 'Study Permit, para programas de estudo com duração superior a 6 meses' },
 ];
 
 const faqs = [
@@ -93,7 +120,7 @@ const faqs = [
   { q: 'Qual a diferença entre TRV e ETA?', a: 'O TRV é um visto adesivado no passaporte, exigido para nacionais de países como o Brasil. O ETA é uma autorização eletrônica vinculada ao passaporte, disponível apenas para cidadãos de países isentos de visto para o Canadá. Brasileiros, em geral, precisam do TRV.' },
   { q: 'Quanto tempo demora a aprovação do visto canadense?', a: 'O tempo varia conforme o tipo de visto e o volume de solicitações da IRCC. Vistos de turismo levam em média de 2 a 8 semanas. Study Permits e Work Permits podem levar mais. A Vow Vistos orienta sobre como preparar uma aplicação robusta para evitar atrasos.' },
   { q: 'Quais documentos preciso para o TRV canadense?', a: 'Os documentos base são: passaporte válido, fotos recentes, comprovante de vínculos com o Brasil (emprego, imóvel, família), documentos financeiros (extratos bancários, declaração de IR, comprovante de renda) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil.' },
-  { q: 'Quanto custam as taxas do governo canadense?', a: 'As principais taxas pagas diretamente ao governo canadense são: TRV: CAD $100, Study Permit: CAD $150, Work Permit: CAD $155, Biometria: CAD $85. Essas taxas não são reembolsáveis em caso de recusa e não estão incluídas na consultoria da Vow Vistos.' },
+  { q: 'Quanto custam as taxas do governo canadense?', a: 'As taxas pagas diretamente ao governo canadense são: TRV: CAD $100, ETA: CAD $7, Study Permit: CAD $150, Biometria: CAD $85. Essas taxas não são reembolsáveis em caso de recusa e não estão incluídas na consultoria da Vow Vistos.' },
   { q: 'Por quanto tempo o TRV canadense é válido?', a: 'O TRV de turismo costuma ser emitido com validade de até 10 anos ou até o vencimento do passaporte, o que ocorrer primeiro. O prazo de permanência em cada entrada é determinado pelo agente de fronteira canadense, geralmente 6 meses.' },
   { q: 'Posso estudar no Canadá com visto de turismo?', a: 'Apenas em cursos de curta duração (até 6 meses). Para programas mais longos, é necessário o Study Permit. Estudar além do autorizado com TRV configura violação das condições do visto.' },
   { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há limite de tentativas. O importante é entender o motivo da recusa e corrigir os pontos antes de submeter nova aplicação. A Vow Vistos analisa a decisão anterior e reposiciona o perfil para a próxima tentativa.' },
@@ -252,36 +279,51 @@ export default function VistoCanadensePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Planos</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Consultoria de visto canadense</h2>
-            <p className="text-muted">Escolha o tipo de visto e fale com um especialista para saber o valor exato para o seu caso.</p>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Escolha o tipo de serviço</h2>
+            <p className="text-muted">Parcelamos em até 6x sem juros no cartão. Clique em qualquer plano para falar com um especialista.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {plans.map((p) => (
               <div key={p.name}
                 className={`rounded-2xl p-8 flex flex-col shadow-lg ${p.featured ? 'bg-dark ring-2 ring-accent' : 'bg-white'}`}>
                 {p.featured && (
                   <span className="inline-block bg-accent text-dark text-xs font-heading font-bold uppercase px-3 py-1 rounded-full mb-4 self-start">Mais procurado</span>
                 )}
+                <div className={`text-xs font-heading font-bold uppercase tracking-widest mb-1 ${p.featured ? 'text-accent' : 'text-primary'}`}>{p.badge}</div>
                 <h3 className={`font-heading font-bold text-xl mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>{p.name}</h3>
-                <p className={`text-sm mb-6 ${p.featured ? 'text-white/60' : 'text-muted'}`}>{p.subtitle}</p>
-                <div className={`text-3xl font-heading font-extrabold mb-8 ${p.featured ? 'text-accent' : 'text-primary'}`}>{p.price}</div>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {features.map((f) => (
+                <p className={`text-xs mb-6 ${p.featured ? 'text-white/50' : 'text-muted'}`}>{p.subtitle}</p>
+                <div className="mb-1">
+                  <span className={`text-sm line-through ${p.featured ? 'text-white/40' : 'text-muted'}`}>DE {p.originalPrice} POR</span>
+                </div>
+                <div className={`text-3xl font-heading font-extrabold mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>
+                  APENAS {p.price}
+                </div>
+                <p className={`text-xs mb-8 ${p.featured ? 'text-white/50' : 'text-muted'}`}>ou {p.installment}</p>
+                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-6 py-3 rounded-full transition-colors mb-8">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  {p.cta}
+                </a>
+                <ul className="space-y-3 flex-1">
+                  {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm">
-                      <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${p.featured ? 'text-accent' : 'text-green-500'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                      </svg>
+                      <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-1.5" />
                       <span className={p.featured ? 'text-white/80' : 'text-muted'}>{f}</span>
                     </li>
                   ))}
+                  <li className="flex items-start gap-2 text-sm font-heading font-bold">
+                    <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                    <span className={p.featured ? 'text-accent' : 'text-primary'}>Assessoria parcelada em até 6x sem juros no cartão</span>
+                  </li>
                 </ul>
-                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
-                  className={`block text-center font-heading font-bold px-6 py-3 rounded-full transition-colors ${p.featured ? 'bg-accent hover:bg-accent-light text-dark' : 'bg-primary hover:bg-primary-light text-white'}`}>
-                  {p.cta}
-                </a>
               </div>
             ))}
           </div>
+          <p className="text-center text-muted text-xs mt-10 max-w-2xl mx-auto">
+            Preparamos seu processo de acordo com os requisitos da IRCC, proporcionando a melhor chance de aprovação. Orientamos do início ao fim. Nosso trabalho só está completo quando você tiver o seu visto canadense em mãos.
+          </p>
         </div>
       </section>
 
@@ -346,12 +388,12 @@ export default function VistoCanadensePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
-                title: 'Estudantes e intercambistas',
-                body: 'O Study Permit exige comprovação de matrícula em instituição credenciada pela IRCC, capacidade financeira para custear estudos e estadia, e vínculos sólidos com o Brasil. Cursos de até 6 meses podem ser feitos com TRV, mas programas mais longos exigem autorização específica. A Vow Vistos orienta cada caso.',
+                title: 'Estudantes',
+                body: 'O Study Permit exige comprovação de matrícula em instituição credenciada pela IRCC, capacidade financeira para custear estudos e estadia, e vínculos sólidos com o Brasil. Cursos de até 6 meses podem ser feitos com TRV, mas programas mais longos exigem o Study Permit. A Vow Vistos orienta cada caso e prepara toda a documentação.',
               },
               {
-                title: 'Profissionais e trabalhadores',
-                body: 'O Work Permit pode ser com ou sem LMIA (Labour Market Impact Assessment). O IEC (Working Holiday) é uma das categorias mais buscadas por jovens brasileiros. Cada modalidade tem critérios e cotas específicas. A Vow Vistos analisa qual categoria se aplica ao seu perfil e momento de aplicação.',
+                title: 'MEI, autônomos e informais',
+                body: 'Comprovar renda sem holerite tradicional é o principal desafio para trabalhadores por conta própria. Extratos bancários consistentes, declaração do MEI ou DECORE e contratos com clientes são os documentos centrais. A IRCC avalia a capacidade financeira para a viagem, não o tipo de vínculo empregatício.',
               },
               {
                 title: 'Aposentados e turistas frequentes',
