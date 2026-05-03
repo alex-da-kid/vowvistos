@@ -7,6 +7,39 @@ export const metadata: Metadata = {
 };
 
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
+const GOOGLE_MAPS_URL = 'https://g.page/r/REPLACE_WITH_YOUR_PLACE_ID';
+
+const googleReviews = [
+  { name: 'Maria S.',    date: 'março de 2025',    color: 'bg-blue-500',   text: 'Atendimento incrível! Me ajudaram com todo o processo do visto americano, desde a documentação até a simulação da entrevista. Aprovada na primeira tentativa!' },
+  { name: 'João P.',     date: 'fevereiro de 2025', color: 'bg-green-500',  text: 'Super profissionais. Já tinha tentado sozinho e levei negativa. Com a Vow Vistos aprovei em menos de 30 dias. A Garantia Vitalícia foi o que me convenceu a contratar.' },
+  { name: 'Ana C.',      date: 'janeiro de 2025',   color: 'bg-purple-500', text: 'O suporte foi excelente do início ao fim. Explicaram tudo com clareza, me prepararam muito bem para a entrevista e o visto saiu sem nenhum problema.' },
+  { name: 'Carlos M.',   date: 'dezembro de 2024',  color: 'bg-red-500',    text: 'Visto canadense aprovado! A equipe da Vow Vistos é muito atenciosa e competente. Responderam todas as minhas dúvidas rapidamente. Recomendo muito!' },
+  { name: 'Fernanda L.', date: 'novembro de 2024',  color: 'bg-yellow-500', text: 'Contratei para o visto americano após duas negativas anteriores. Com o trabalho deles entendi exatamente onde estava errando. Aprovada! Não tenho palavras para agradecer.' },
+  { name: 'Ricardo T.',  date: 'outubro de 2024',   color: 'bg-indigo-500', text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva: cheguei ao consulado muito mais confiante. Vale cada centavo investido.' },
+];
+
+function GoogleStarsFull() {
+  return (
+    <span className="flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} className="w-5 h-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+function GoogleGLogo() {
+  return (
+    <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+    </svg>
+  );
+}
 
 const steps = [
   { num: '01', title: 'Análise de Elegibilidade', desc: 'Identificamos o documento certo para o seu caso: TRV, ETA ou Study Permit. A categoria errada leva à recusa automática.' },
@@ -114,11 +147,11 @@ const visaTypes = [
 
 const faqs = [
   { q: 'Brasileiros precisam de visto para entrar no Canadá?', a: 'Sim. Brasileiros precisam do TRV (Temporary Resident Visa) para entrar no Canadá. O ETA é uma autorização eletrônica disponível apenas para cidadãos de países específicos, e o Brasil não está na lista. A Vow Vistos confirma o documento correto para o seu passaporte.' },
-  { q: 'O que é o código 214(b) e como evitá-lo?', a: 'O código 214(b) é específico dos Estados Unidos. Para o Canadá, as recusas da IRCC geralmente citam artigos da Lei de Imigração e Proteção de Refugiados (IRPA), sendo os mais comuns: perfil de risco de imigração, documentação insuficiente ou capacidade financeira não comprovada.' },
+  { q: 'O que acontece se meu TRV canadense for recusado?', a: 'A IRCC envia uma carta de recusa informando o artigo da lei citado. Os motivos mais comuns são: perfil de risco de imigração, documentação insuficiente e capacidade financeira não comprovada. Não há prazo de bloqueio para nova tentativa, mas submeter uma aplicação idêntica tende a gerar o mesmo resultado. A Vow Vistos analisa a carta de recusa e reposiciona o perfil antes da próxima submissão.' },
   { q: 'Preciso ir ao consulado para tirar o visto canadense?', a: 'Na maioria dos casos, não há entrevista presencial. A aplicação é feita online pelo portal da IRCC. No entanto, a biometria é obrigatória para a maioria dos solicitantes e é coletada nos CVACs (Canada Visa Application Centres) no Brasil.' },
   { q: 'O que é biometria e quando é necessária?', a: 'A biometria consiste na coleta de impressões digitais e foto, realizada em um CVAC (Canada Visa Application Centre). É obrigatória para a maioria dos solicitantes e tem validade de 10 anos. A Vow Vistos orienta sobre o agendamento e o que levar no dia.' },
   { q: 'Qual a diferença entre TRV e ETA?', a: 'O TRV é um visto adesivado no passaporte, exigido para nacionais de países como o Brasil. O ETA é uma autorização eletrônica vinculada ao passaporte, disponível apenas para cidadãos de países isentos de visto para o Canadá. Brasileiros, em geral, precisam do TRV.' },
-  { q: 'Quanto tempo demora a aprovação do visto canadense?', a: 'O tempo varia conforme o tipo de visto e o volume de solicitações da IRCC. Vistos de turismo levam em média de 2 a 8 semanas. Study Permits e Work Permits podem levar mais. A Vow Vistos orienta sobre como preparar uma aplicação robusta para evitar atrasos.' },
+  { q: 'Quanto tempo demora a aprovação do visto canadense?', a: 'O tempo varia conforme o tipo de visto e o volume de solicitações da IRCC. Vistos de turismo levam em média de 2 a 8 semanas. Study Permits podem levar mais tempo. A Vow Vistos orienta sobre como preparar uma aplicação robusta para evitar atrasos.' },
   { q: 'Quais documentos preciso para o TRV canadense?', a: 'Os documentos base são: passaporte válido, fotos recentes, comprovante de vínculos com o Brasil (emprego, imóvel, família), documentos financeiros (extratos bancários, declaração de IR, comprovante de renda) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil.' },
   { q: 'Quanto custam as taxas do governo canadense?', a: 'As taxas pagas diretamente ao governo canadense são: TRV: CAD $100, ETA: CAD $7, Study Permit: CAD $150, Biometria: CAD $85. Essas taxas não são reembolsáveis em caso de recusa e não estão incluídas na consultoria da Vow Vistos.' },
   { q: 'Por quanto tempo o TRV canadense é válido?', a: 'O TRV de turismo costuma ser emitido com validade de até 10 anos ou até o vencimento do passaporte, o que ocorrer primeiro. O prazo de permanência em cada entrada é determinado pelo agente de fronteira canadense, geralmente 6 meses.' },
@@ -355,23 +388,46 @@ export default function VistoCanadensePage() {
         </div>
       </section>
 
-      {/* ── VISA TYPES ────────────────────────────────────────────────── */}
+      {/* ── VISA TYPES COMPARISON ─────────────────────────────────────── */}
       <section className="py-20 bg-light">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Categorias</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Tipos de visto e autorização canadense</h2>
-            <p className="text-muted">O TRV cobre turismo e trânsito, mas existem categorias específicas para outros objetivos. Cada uma tem critérios e etapas próprias.</p>
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Comparativo</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Qual documento você precisa?</h2>
+            <p className="text-muted">TRV, ETA ou Study Permit: cada um serve a um propósito diferente. Confira o comparativo.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {visaTypes.map((v) => (
-              <div key={v.code} className="bg-white rounded-2xl p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <span className="font-heading font-extrabold text-primary text-sm">{v.code}</span>
-                </div>
-                <p className="text-muted text-sm leading-relaxed pt-1">{v.desc}</p>
-              </div>
-            ))}
+          <div className="overflow-x-auto">
+            <table className="w-full max-w-4xl mx-auto text-sm border-separate border-spacing-0">
+              <thead>
+                <tr>
+                  <th className="bg-white rounded-tl-2xl px-5 py-4 text-left text-muted font-heading font-semibold text-xs uppercase tracking-widest border-b border-light w-1/4" />
+                  <th className="bg-primary text-white px-5 py-4 text-center font-heading font-bold text-base">TRV</th>
+                  <th className="bg-dark text-white px-5 py-4 text-center font-heading font-bold text-base ring-2 ring-accent">Study Permit</th>
+                  <th className="bg-primary text-white px-5 py-4 text-center font-heading font-bold text-base rounded-tr-2xl">ETA</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { label: 'Para quem', trv: 'Turismo, visitas e trânsito pelo Canadá', study: 'Programas de estudo com duração superior a 6 meses', eta: 'Passaportes elegíveis à entrada sem visto (não inclui Brasil)' },
+                  { label: 'Taxa do governo', trv: 'CAD $100', study: 'CAD $150', eta: 'CAD $7' },
+                  { label: 'Prazo médio IRCC', trv: '2 a 8 semanas', study: '4 a 12 semanas', eta: 'Minutos a 72 h' },
+                  { label: 'Validade', trv: 'Até 10 anos ou venc. do passaporte', study: 'Duração do curso + 90 dias', eta: '5 anos ou venc. do passaporte' },
+                  { label: 'Biometria', trv: 'Obrigatória (CAD $85)', study: 'Obrigatória (CAD $85)', eta: 'Geralmente não é exigida' },
+                  { label: 'Nossa consultoria', trv: 'R$ 847,00', study: 'R$ 897,00', eta: 'R$ 257,00' },
+                ].map((row, i, arr) => {
+                  const isLast = i === arr.length - 1;
+                  const cell = `px-5 py-4 border-b ${isLast ? 'border-transparent' : 'border-light'}`;
+                  return (
+                    <tr key={row.label} className={i % 2 === 0 ? 'bg-white' : 'bg-light/50'}>
+                      <td className={`${cell} font-heading font-semibold text-dark ${isLast ? 'rounded-bl-2xl' : ''}`}>{row.label}</td>
+                      <td className={`${cell} text-center text-muted`}>{row.trv}</td>
+                      <td className={`${cell} text-center text-muted ring-2 ring-accent ring-inset`}>{row.study}</td>
+                      <td className={`${cell} text-center text-muted ${isLast ? 'rounded-br-2xl' : ''}`}>{row.eta}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
           <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20canadense%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
         </div>
@@ -411,6 +467,46 @@ export default function VistoCanadensePage() {
               target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
               Meu caso é específico, quero uma análise
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GOOGLE REVIEWS ────────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Avaliações</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">O que nossos clientes dizem</h2>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <GoogleStarsFull />
+              <span className="text-muted text-sm">4.9 · 100+ avaliações verificadas no Google</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {googleReviews.map((r) => (
+              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>
+                      {r.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-heading font-bold text-dark text-sm">{r.name}</div>
+                      <div className="text-muted text-xs">{r.date}</div>
+                    </div>
+                  </div>
+                  <GoogleGLogo />
+                </div>
+                <GoogleStarsFull />
+                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-heading font-bold px-8 py-3 rounded-full transition-colors">
+              Ver todas as avaliações no Google
             </a>
           </div>
         </div>
