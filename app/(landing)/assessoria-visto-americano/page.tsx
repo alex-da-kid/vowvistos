@@ -178,6 +178,38 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* ── REVIEWS ───────────────────────────────────────────────────── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Avaliações</span>
+            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O que nossos clientes dizem</h2>
+            <div className="flex items-center justify-center gap-2">
+              <Stars />
+              <span className="font-heading font-bold text-dark">4.9</span>
+              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {reviews.map((r) => (
+              <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>
+                    {r.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-heading font-bold text-dark text-sm">{r.name}</div>
+                    <div className="text-muted text-xs">{r.date}</div>
+                  </div>
+                </div>
+                <Stars />
+                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY VISAS GET DENIED ──────────────────────────────────────── */}
       <section className="py-16 bg-light">
         <div className="max-w-6xl mx-auto px-4">
@@ -202,6 +234,77 @@ export default function LandingPage() {
               Verificar meu perfil gratuitamente
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* ── SPECIFIC PROFILES ─────────────────────────────────────────── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Perfis Específicos</span>
+            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O seu caso tem solução</h2>
+            <p className="text-muted text-sm">Cada perfil tem desafios próprios. A Vow Vistos tem experiência com as situações mais sensíveis.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              {
+                title: 'MEI e autônomos',
+                body: 'Comprovar renda estável sem holerite é o principal desafio para trabalhadores por conta própria. Extratos bancários consistentes, declaração do MEI, contrato com clientes e comprovantes do INSS são os documentos centrais. A Vow Vistos orienta exatamente quais usar para o seu caso.',
+              },
+              {
+                title: 'Aposentados e pensionistas',
+                body: 'Aposentados têm boas chances de aprovação. A renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
+              },
+              {
+                title: 'Quem teve visto negado',
+                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. E negativas anteriores não impedem novas tentativas — o importante é entender o que falhou. A Vow Vistos analisa o registro consular e reposiciona o perfil antes da próxima entrevista.',
+              },
+            ].map((p) => (
+              <div key={p.title} className="bg-light rounded-2xl p-7 hover:shadow-lg transition-shadow">
+                <h3 className="font-heading font-bold text-dark text-lg mb-3">{p.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{p.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Meu%20caso%20é%20específico,%20quero%20uma%20análise`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Meu caso é específico, quero uma análise
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ──────────────────────────────────────────────── */}
+      <section className="py-16 bg-light">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Processo</span>
+            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Como funciona a consultoria</h2>
+            <p className="text-muted text-sm">Do perfil à entrevista — cada etapa desenhada para eliminar o risco de negativa.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s) => (
+              <div key={s.num} className="bg-white rounded-2xl p-6 text-center">
+                <div className="text-5xl font-heading font-extrabold text-accent/20 mb-3 leading-none">{s.num}</div>
+                <h3 className="font-heading font-bold text-dark mb-2">{s.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Depoimentos</span>
+            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Histórias reais de aprovação</h2>
+            <p className="text-muted text-sm">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
+          </div>
+          <VideoCarousel />
         </div>
       </section>
 
@@ -237,111 +340,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ──────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Processo</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Como funciona a consultoria</h2>
-            <p className="text-muted text-sm">Do perfil à entrevista — cada etapa desenhada para eliminar o risco de negativa.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s) => (
-              <div key={s.num} className="bg-light rounded-2xl p-6 text-center">
-                <div className="text-5xl font-heading font-extrabold text-accent/20 mb-3 leading-none">{s.num}</div>
-                <h3 className="font-heading font-bold text-dark mb-2">{s.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SPECIFIC PROFILES ─────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Perfis Específicos</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O seu caso tem solução</h2>
-            <p className="text-muted text-sm">Cada perfil tem desafios próprios. A Vow Vistos tem experiência com as situações mais sensíveis.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                title: 'MEI e autônomos',
-                body: 'Comprovar renda estável sem holerite é o principal desafio para trabalhadores por conta própria. Extratos bancários consistentes, declaração do MEI, contrato com clientes e comprovantes do INSS são os documentos centrais. A Vow Vistos orienta exatamente quais usar para o seu caso.',
-              },
-              {
-                title: 'Aposentados e pensionistas',
-                body: 'Aposentados têm boas chances de aprovação. A renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
-              },
-              {
-                title: 'Quem teve visto negado',
-                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. E negativas anteriores não impedem novas tentativas — o importante é entender o que falhou. A Vow Vistos analisa o registro consular e reposiciona o perfil antes da próxima entrevista.',
-              },
-            ].map((p) => (
-              <div key={p.title} className="bg-white rounded-2xl p-7 hover:shadow-lg transition-shadow">
-                <h3 className="font-heading font-bold text-dark text-lg mb-3">{p.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{p.body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <a href={`https://wa.me/${wa}?text=Meu%20caso%20é%20específico,%20quero%20uma%20análise`}
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
-              Meu caso é específico, quero uma análise
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── REVIEWS ───────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Avaliações</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O que nossos clientes dizem</h2>
-            <div className="flex items-center justify-center gap-2">
-              <Stars />
-              <span className="font-heading font-bold text-dark">4.9</span>
-              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((r) => (
-              <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-dark text-sm">{r.name}</div>
-                    <div className="text-muted text-xs">{r.date}</div>
-                  </div>
-                </div>
-                <Stars />
-                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Depoimentos</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Histórias reais de aprovação</h2>
-            <p className="text-muted text-sm">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
-          </div>
-          <VideoCarousel />
-        </div>
-      </section>
-
       {/* ── PRICING ───────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-light">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center max-w-xl mx-auto mb-12">
             <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Planos</span>
@@ -382,7 +382,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
+      <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-10">
             <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Dúvidas</span>
@@ -390,7 +390,7 @@ export default function LandingPage() {
           </div>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
-              <details key={i} className="group bg-white rounded-2xl p-6 cursor-pointer [&[open]]:bg-primary [&[open]]:text-white transition-colors duration-200">
+              <details key={i} className="group bg-light rounded-2xl p-6 cursor-pointer [&[open]]:bg-primary [&[open]]:text-white transition-colors duration-200">
                 <summary className="font-heading font-bold text-dark group-open:text-white flex justify-between items-center gap-4 list-none cursor-pointer">
                   {faq.q}
                   <svg className="w-5 h-5 flex-shrink-0 text-accent group-open:rotate-45 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
