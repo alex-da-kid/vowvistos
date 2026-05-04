@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFab from '@/components/WhatsAppFab';
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Consultoria especializada em vistos americano, canadense, chinês e outros. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${montserrat.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
