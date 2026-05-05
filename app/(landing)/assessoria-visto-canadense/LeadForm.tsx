@@ -5,9 +5,9 @@ import { useState } from 'react';
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
 
 const situacaoOptions = [
-  { value: 'TRV — Visto de Turista', label: 'TRV — Visto de Turista' },
-  { value: 'Study Permit — Visto de Estudante', label: 'Study Permit — Visto de Estudante' },
-  { value: 'ETA — Autorização Eletrônica', label: 'ETA — Autorização Eletrônica' },
+  { value: 'TRV: Visto de Turista', label: 'TRV: Visto de Turista' },
+  { value: 'Study Permit: Visto de Estudante', label: 'Study Permit: Visto de Estudante' },
+  { value: 'ETA: Autorização Eletrônica', label: 'ETA: Autorização Eletrônica' },
   { value: 'Extensão ou renovação', label: 'Extensão ou renovação' },
   { value: 'Visto negado anteriormente', label: 'Visto negado anteriormente' },
 ];
@@ -54,7 +54,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {!compact && (
-        <p className="text-center text-muted text-sm">Preencha abaixo — responderemos em minutos.</p>
+        <p className="text-center text-muted text-sm">Preencha abaixo. Responderemos em minutos.</p>
       )}
 
       <div>

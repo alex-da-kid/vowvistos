@@ -35,7 +35,7 @@ const denialReasons = [
   {
     code: 'Docs',
     title: 'Documentação incompleta ou fraca',
-    desc: 'O IRCC analisa sua aplicação inteiramente pela documentação enviada — sem entrevista. Documentos faltando, desatualizados ou sem tradução certificada resultam em recusa imediata.',
+    desc: 'O IRCC analisa sua aplicação inteiramente pela documentação enviada, sem entrevista. Documentos faltando, desatualizados ou sem tradução certificada resultam em recusa imediata.',
   },
   {
     code: 'Formulário',
@@ -121,13 +121,13 @@ const plans = [
 ];
 
 const faqs = [
-  { q: 'Qual a diferença entre TRV, Study Permit e ETA?', a: 'O TRV (Temporary Resident Visa) é o visto de turismo padrão, emitido fisicamente no passaporte — necessário para a maioria dos brasileiros que visitam o Canadá. O Study Permit é para quem vai estudar por mais de 6 meses e exige carta de aceitação de uma instituição designada (DLI). A ETA (Electronic Travel Authorization) é uma autorização eletrônica para entradas por via aérea em viagens curtas — mais rápida e barata, mas com limitações de uso. A Vow Vistos identifica qual é o certo para o seu caso.' },
-  { q: 'Por que contratar uma consultoria para o visto canadense?', a: 'O processo canadense é 100% documental — sem entrevista. O IRCC decide exclusivamente com base no que você enviou. Um documento desatualizado, uma carta de apresentação mal estruturada ou uma inconsistência financeira resulta em recusa sem chance de explicação. A Vow Vistos garante que tudo chega ao IRCC na forma e ordem corretas, desde o primeiro envio.' },
-  { q: 'Preciso fazer entrevista para o visto canadense?', a: 'Na grande maioria dos casos, não. O processo canadense é totalmente online — você submete a documentação e o IRCC decide. A exceção é quando o IRCC solicita uma entrevista adicional, o que é raro. O que determina a aprovação é a qualidade da documentação, não uma entrevista presencial.' },
+  { q: 'Qual a diferença entre TRV, Study Permit e ETA?', a: 'O TRV (Temporary Resident Visa) é o visto de turismo padrão, emitido fisicamente no passaporte, necessário para a maioria dos brasileiros que visitam o Canadá. O Study Permit é para quem vai estudar por mais de 6 meses e exige carta de aceitação de uma instituição designada (DLI). A ETA (Electronic Travel Authorization) é uma autorização eletrônica para entradas por via aérea em viagens curtas, mais rápida e barata, mas com limitações de uso. A Vow Vistos identifica qual é o certo para o seu caso.' },
+  { q: 'Por que contratar uma consultoria para o visto canadense?', a: 'O processo canadense é 100% documental, sem entrevista. O IRCC decide exclusivamente com base no que você enviou. Um documento desatualizado, uma carta de apresentação mal estruturada ou uma inconsistência financeira resulta em recusa sem chance de explicação. A Vow Vistos garante que tudo chega ao IRCC na forma e ordem corretas, desde o primeiro envio.' },
+  { q: 'Preciso fazer entrevista para o visto canadense?', a: 'Na grande maioria dos casos, não. O processo canadense é totalmente online: você submete a documentação e o IRCC decide. A exceção é quando o IRCC solicita uma entrevista adicional, o que é raro. O que determina a aprovação é a qualidade da documentação, não uma entrevista presencial.' },
   { q: 'O que é biometria e onde faço?', a: 'A biometria (impressões digitais e foto) é obrigatória para a maioria dos solicitantes brasileiros. Ela é coletada presencialmente em um VFS (Visa Application Centre). No Brasil, os VFS ficam em São Paulo, Rio de Janeiro, Brasília e Curitiba. A Vow Vistos orienta sobre quando e como agendar conforme o andamento da sua aplicação.' },
   { q: 'Quanto tempo demora a aprovação do visto canadense?', a: 'O tempo médio de processamento do TRV é de 15 a 45 dias úteis, dependendo do volume e da época do ano. O Study Permit pode levar até 8 semanas. A ETA é aprovada geralmente em minutos, mas pode levar até 72 horas. Esses prazos não incluem o tempo de coleta de biometria, por isso o planejamento antecipado é fundamental.' },
-  { q: 'Meu visto foi negado. Posso tentar novamente?', a: 'Sim. Não há limite de tentativas para o visto canadense. O importante é entender o motivo da recusa — que aparece na carta do IRCC — e corrigir antes de tentar novamente. Tentar de novo sem corrigir os mesmos pontos resulta em nova recusa. A Vow Vistos analisa a carta de recusa e reposiciona o perfil.' },
-  { q: 'Como comprovar renda sendo MEI ou autônomo?', a: 'Para MEI e autônomos, a comprovação de renda exige mais atenção: extratos bancários dos últimos 6 meses, DECORE ou declaração do contador, comprovante de faturamento e, se possível, contratos com clientes. O IRCC busca consistência — renda que oscila abruptamente levanta suspeita. A Vow Vistos orienta exatamente o que usar para o seu perfil.' },
+  { q: 'Meu visto foi negado. Posso tentar novamente?', a: 'Sim. Não há limite de tentativas para o visto canadense. O importante é entender o motivo da recusa (que aparece na carta do IRCC) e corrigir antes de tentar novamente. Tentar de novo sem corrigir os mesmos pontos resulta em nova recusa. A Vow Vistos analisa a carta de recusa e reposiciona o perfil.' },
+  { q: 'Como comprovar renda sendo MEI ou autônomo?', a: 'Para MEI e autônomos, a comprovação de renda exige mais atenção: extratos bancários dos últimos 6 meses, DECORE ou declaração do contador, comprovante de faturamento e, se possível, contratos com clientes. O IRCC busca consistência. Renda que oscila abruptamente levanta suspeita. A Vow Vistos orienta exatamente o que usar para o seu perfil.' },
   { q: 'Quanto custa a taxa do governo canadense?', a: 'A taxa de processamento do TRV é CAD 100 por pessoa. O Study Permit custa CAD 150. A ETA custa CAD 7. Além disso, a biometria tem taxa separada: CAD 85 por pessoa ou CAD 170 para grupo familiar. Esses valores são pagos diretamente ao governo canadense e não estão incluídos na consultoria da Vow Vistos.' },
   { q: 'Por quanto tempo o visto canadense é válido?', a: 'O TRV é geralmente emitido com validade de 10 anos ou até o vencimento do passaporte (o que vier primeiro), com múltiplas entradas. Cada entrada permite estadia de até 6 meses, determinada pelo agente de fronteira na chegada. O Study Permit tem validade correspondente à duração do programa de estudos mais um período de graça.' },
   { q: 'Posso incluir minha família na solicitação?', a: 'Cada membro da família precisa de sua própria solicitação individual. No entanto, as aplicações podem ser vinculadas ao mesmo grupo familiar no sistema do IRCC, o que facilita o processo. A Vow Vistos orienta famílias completas em cada etapa, garantindo consistência entre todas as aplicações do grupo.' },
@@ -166,7 +166,7 @@ export default function LandingPage() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-6">
-                Assessoria de Visto Canadense —{' '}
+                Assessoria de Visto Canadense:{' '}
                 <span className="text-accent">Aprovado na Primeira Tentativa</span>
               </h1>
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
@@ -312,7 +312,7 @@ export default function LandingPage() {
           <div className="text-center max-w-xl mx-auto mb-12">
             <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Processo</span>
             <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Como funciona a consultoria</h2>
-            <p className="text-muted text-sm">Da análise ao acompanhamento no IRCC — cada etapa desenhada para eliminar o risco de negativa.</p>
+            <p className="text-muted text-sm">Da análise ao acompanhamento no IRCC, cada etapa desenhada para eliminar o risco de negativa.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((s) => (
@@ -344,10 +344,10 @@ export default function LandingPage() {
           <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Transparência</span>
           <h2 className="text-3xl font-heading font-bold mb-6">Nenhuma consultoria pode garantir a aprovação do seu visto. Desconfie de quem diz o contrário.</h2>
           <p className="text-white/75 text-lg leading-relaxed mb-6">
-            A decisão final é sempre do IRCC. Isso não muda, independente de quem te atende. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta — não de competência.
+            A decisão final é sempre do IRCC. Isso não muda, independente de quem te atende. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta, não de competência.
           </p>
           <p className="text-white/75 text-lg leading-relaxed mb-10">
-            O que uma consultoria séria pode fazer — e o que a Vow Vistos faz — é garantir que o seu perfil chegue ao IRCC da forma mais sólida possível. Documentação completa, carta de apresentação bem construída, sem improvisação.
+            O que uma consultoria séria pode fazer, e o que a Vow Vistos faz, é garantir que o seu perfil chegue ao IRCC da forma mais sólida possível. Documentação completa, carta de apresentação bem construída, sem improvisação.
           </p>
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
             <div className="flex items-start gap-4">
@@ -359,7 +359,7 @@ export default function LandingPage() {
               <div>
                 <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de anos de imersão no sistema canadense</p>
                 <p className="text-white/70 leading-relaxed">
-                  A forma como a Vow Vistos orienta a preparação documental — e a construção da carta de apresentação — foi desenvolvida com base no estudo aprofundado dos critérios reais do IRCC, análise de centenas de processos aprovados e negados, e colaboração com especialistas em imigração canadense.
+                  A forma como a Vow Vistos orienta a preparação documental e a construção da carta de apresentação foi desenvolvida com base no estudo aprofundado dos critérios reais do IRCC, análise de centenas de processos aprovados e negados, e colaboração com especialistas em imigração canadense.
                 </p>
                 <p className="text-white/70 leading-relaxed mt-3">
                   Sabemos exatamente o que o IRCC analisa, o que levanta suspeitas e o que passa direto. Esse conhecimento é o que repassamos aos nossos clientes em cada processo.
@@ -447,7 +447,7 @@ export default function LandingPage() {
                 Análise de perfil gratuita, sem compromisso. Respondemos em minutos.
               </p>
               <div className="flex flex-col gap-2">
-                {['TRV, Study Permit e ETA — todos os vistos canadenses', 'Garantia Vitalícia — sem custo extra se negar', '100% remoto, atendemos todo o Brasil'].map((t) => (
+                {['TRV, Study Permit e ETA: todos os vistos canadenses', 'Garantia Vitalícia: sem custo extra se negar', '100% remoto, atendemos todo o Brasil'].map((t) => (
                   <div key={t} className="flex items-center gap-2 text-white/80 text-sm">
                     <svg className="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
