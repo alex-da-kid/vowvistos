@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const nav = [
   {
@@ -19,10 +19,17 @@ const nav = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-dark/95 backdrop-blur-sm shadow-lg">
+    <header className={`sticky top-0 z-50 shadow-lg transition-colors duration-300 ${scrolled || open ? 'bg-dark/95 backdrop-blur-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 md:h-20">
 
         {/* Logo */}
@@ -32,10 +39,11 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {nav.map((item) =>
-            item.children ? (
+          {nav.map((item) => {
+            const linkCls = `px-4 py-2 text-sm font-heading font-semibold uppercase tracking-wide hover:text-accent transition-colors ${scrolled ? 'text-white' : 'text-dark'}`;
+            return item.children ? (
               <div key={item.label} className="relative group">
-                <button className="px-4 py-2 text-sm font-heading font-semibold text-white uppercase tracking-wide hover:text-accent transition-colors flex items-center gap-1">
+                <button className={`${linkCls} flex items-center gap-1`}>
                   {item.label}
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4.5L14.5 8H5.5z"/></svg>
                 </button>
@@ -50,26 +58,25 @@ export default function Header() {
                 </ul>
               </div>
             ) : (
-              <Link key={item.href} href={item.href}
-                className="px-4 py-2 text-sm font-heading font-semibold text-white uppercase tracking-wide hover:text-accent transition-colors">
+              <Link key={item.href} href={item.href} className={linkCls}>
                 {item.label}
               </Link>
-            )
-          )}
+            );
+          })}
         </nav>
 
         {/* WhatsApp CTA + hamburger */}
         <div className="flex items-center gap-3">
           <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-dark text-sm font-heading font-bold px-5 py-2 rounded-full transition-colors">
+            className="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-2 rounded-full transition-colors">
             <WaIcon /> WhatsApp
           </a>
           <button onClick={() => setOpen(!open)}
-            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-white/10 transition-colors"
+            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-black/10 transition-colors"
             aria-label="Menu">
-            <span className={`block w-5 h-0.5 bg-white transition-all ${open ? 'rotate-45 translate-y-2' : ''}`}/>
-            <span className={`block w-5 h-0.5 bg-white transition-all ${open ? 'opacity-0' : ''}`}/>
-            <span className={`block w-5 h-0.5 bg-white transition-all ${open ? '-rotate-45 -translate-y-2' : ''}`}/>
+            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'rotate-45 translate-y-2' : ''}`}/>
+            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'opacity-0' : ''}`}/>
+            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? '-rotate-45 -translate-y-2' : ''}`}/>
           </button>
         </div>
       </div>
@@ -95,7 +102,7 @@ export default function Header() {
             </Link>
           ))}
           <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer"
-            className="mt-3 flex justify-center items-center gap-2 bg-accent text-dark text-sm font-heading font-bold px-5 py-3 rounded-full">
+            className="mt-3 flex justify-center items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-3 rounded-full transition-colors">
             <WaIcon /> WhatsApp
           </a>
         </div>

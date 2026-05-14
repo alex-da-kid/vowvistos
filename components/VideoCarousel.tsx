@@ -56,7 +56,7 @@ export default function VideoCarousel() {
           <div key={i} className="snap-start flex-shrink-0 w-[85%] sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)] rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
             <iframe className="w-full h-full"
               src={`https://www.youtube.com/embed/${id}?rel=0`}
-              title={`Depoimento visto americano ${i + 1}`}
+              title={`Depoimento cliente Vow Vistos ${i + 1}`}
               style={{ border: 0 }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen loading="lazy"/>

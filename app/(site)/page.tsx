@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getPosts } from '@/lib/wordpress';
 import { getGooglePlacesData } from '@/lib/google-places';
 import ContactForm from '@/components/ContactForm';
+import VideoCarousel from '@/components/VideoCarousel';
 
 export const metadata: Metadata = {
   title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
@@ -184,10 +185,12 @@ const faqs = [
     q: 'O que é a Garantia Vitalícia da Vow Vistos?',
     a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias, sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Nenhuma outra consultoria no Brasil faz isso.',
   },
+  {
+    q: 'Meu visto foi negado antes. Ainda posso ser aprovado?',
+    a: 'Sim. Uma negativa anterior não impede a aprovação, mas deixa um registro no sistema consular que exige uma abordagem específica para ser contornada. Não é incomum que clientes cheguem até nós após uma ou mais negativas anteriores. O que fazemos é diferente de simplesmente tentar de novo: analisamos o motivo real da negativa, construímos uma estratégia personalizada para o seu caso, reforçamos a documentação ponto a ponto e acompanhamos o processo com a Garantia Vitalícia inclusa. É exatamente nisso que a Vow Vistos é especialista.',
+  },
 ];
 
-// ── REPLACE these with real YouTube video IDs when available ──────────────────
-const videos = ['YOUTUBE_ID_1', 'YOUTUBE_ID_2', 'YOUTUBE_ID_3'];
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]+>/g, '').trim();
@@ -250,8 +253,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
             {visaCards.map((c) => (
               <Link key={c.href} href={c.href}
-                className="bg-white/10 hover:bg-accent border border-white/20 hover:border-accent rounded-2xl p-4 md:p-5 flex flex-col items-center gap-2 transition-all duration-200 hover:-translate-y-1 font-heading font-semibold text-sm text-white hover:text-dark no-underline">
-                <span className="text-3xl">{c.flag}</span>
+                className="bg-white/10 hover:bg-accent border border-white/20 hover:border-accent rounded-2xl p-4 md:p-5 flex flex-col items-center gap-2 transition-all duration-200 hover:-translate-y-1 font-heading font-semibold text-sm text-white hover:text-dark no-underline group">
+                <span className="text-3xl group-hover:text-4xl transition-all duration-200">{c.flag}</span>
                 {c.label}
               </Link>
             ))}
@@ -260,7 +263,7 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={`https://wa.me/${wa}?text=Olá,%20quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
               target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-colors text-base shadow-lg">
+              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-all text-base shadow-lg shadow-green-500/40 hover:shadow-green-500/60 hover:scale-105">
               <WaIcon /> Análise de Perfil Gratuita
             </a>
             <a href="#como-funciona"
@@ -273,13 +276,17 @@ export default async function HomePage() {
 
       {/* ── TRUST STATS ───────────────────────────────────────────────────── */}
       <section className="bg-primary py-12" aria-label="Números da Vow Vistos">
-        <div className="max-w-3xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
           {stats.map((s) => (
             <div key={s.label} className="py-4 sm:py-0">
               <div className="text-4xl md:text-5xl font-heading font-bold text-accent">{s.value}</div>
               <div className="mt-2 text-sm text-white/70 leading-snug max-w-[180px] mx-auto">{s.label}</div>
             </div>
           ))}
+          <div className="py-4 sm:py-0">
+            <div className="text-4xl md:text-5xl font-heading font-bold text-accent">{placeData.rating} ★</div>
+            <div className="mt-2 text-sm text-white/70 leading-snug max-w-[180px] mx-auto">Nota média no Google — {placeData.reviewCount} avaliações verificadas</div>
+          </div>
         </div>
       </section>
 
@@ -309,17 +316,21 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {differentials.map((d) => (
-              <div key={d.title} className="bg-light rounded-2xl p-6 hover:shadow-lg transition-shadow duration-200">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                  </svg>
+            {differentials.map((d, i) => {
+              const iconBgs = ['bg-primary/10', 'bg-accent/15', 'bg-green-500/10', 'bg-purple-500/10'];
+              const iconColors = ['text-primary', 'text-accent', 'text-green-600', 'text-purple-600'];
+              return (
+                <div key={d.title} className="bg-light rounded-2xl p-6 border border-transparent hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(26,58,107,0.12)] transition-all duration-200">
+                  <div className={`w-10 h-10 rounded-full ${iconBgs[i % 4]} flex items-center justify-center mb-4`}>
+                    <svg className={`w-5 h-5 ${iconColors[i % 4]}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                  </div>
+                  <h3 className="font-heading font-bold text-dark mb-2">{d.title}</h3>
+                  <p className="text-muted text-sm leading-relaxed">{d.desc}</p>
                 </div>
-                <h3 className="font-heading font-bold text-dark mb-2">{d.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{d.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -443,7 +454,8 @@ export default async function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {placeData.reviews.map((r) => (
-              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow">
+              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow relative overflow-hidden">
+                <span className="absolute top-2 right-4 text-7xl font-serif text-accent/10 leading-none select-none pointer-events-none" aria-hidden>"</span>
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0 ${r.color}`}>
@@ -493,18 +505,7 @@ export default async function HomePage() {
               Cada aprovação é uma história real. Veja o que nossos clientes dizem sobre a experiência com a Vow Vistos, do medo da entrevista à passagem na mão.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((id, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden shadow-lg aspect-video bg-dark">
-                <iframe className="w-full h-full"
-                  src={`https://www.youtube.com/embed/${id}?rel=0`}
-                  title={`Depoimento de cliente Vow Vistos ${i + 1}`}
-                  style={{ border: 0 }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen loading="lazy"/>
-              </div>
-            ))}
-          </div>
+          <VideoCarousel />
           <p className="text-center text-muted text-sm mt-8">
             Veja mais histórias no nosso{' '}
             <a href="https://youtube.com/@vowvistos" target="_blank" rel="noopener noreferrer"
@@ -541,63 +542,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── VISTO NEGADO HOOK ─────────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-8 md:p-10">
-                <span className="inline-block bg-red-100 text-red-600 text-xs font-heading font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-5">
-                  Visto negado?
-                </span>
-                <h2 className="text-3xl font-heading font-bold text-dark mb-4 leading-tight">
-                  Uma negativa anterior não é o fim: é informação. E nós sabemos usá-la.
-                </h2>
-                <p className="text-muted leading-relaxed mb-6">
-                  Não é incomum que clientes cheguem até nós após uma negativa anterior. Uma negativa <strong className="text-dark">não impede a aprovação</strong>, mas deixa um registro no sistema consular que exige uma abordagem específica para ser contornada. É exatamente nisso que a Vow Vistos é especialista.
-                </p>
-                <ul className="space-y-2 mb-8">
-                  {[
-                    'Análise do motivo real da negativa',
-                    'Estratégia personalizada para o seu caso',
-                    'Documentação reforçada ponto a ponto',
-                    'Garantia Vitalícia inclusa',
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-muted">
-                      <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <a href={`https://wa.me/${wa}?text=Tive%20meu%20visto%20negado%20e%20quero%20uma%20análise%20gratuita`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-7 py-3.5 rounded-full transition-colors text-sm">
-                  <WaIcon /> Consultar meu caso gratuitamente
-                </a>
-              </div>
-              <div className="bg-gradient-to-br from-primary to-dark flex items-center justify-center p-10 text-white text-center">
-                <div>
-                  <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-5">
-                    <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                  </div>
-                  <div className="text-xl font-heading font-bold text-accent mb-3">Negativa anterior não é barreira</div>
-                  <p className="text-white/70 text-sm leading-relaxed max-w-xs">
-                    Com a estratégia certa e um dossiê bem construído, a aprovação é possível mesmo após uma ou mais negativas anteriores.
-                  </p>
-                  <div className="mt-8 pt-8 border-t border-white/10">
-                    <div className="text-3xl font-heading font-bold text-white mb-1">8 Anos</div>
-                    <p className="text-white/60 text-xs">Especialização exclusiva em consultoria consular, não somos agência de turismo.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
@@ -617,7 +561,9 @@ export default async function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"/>
                   </svg>
                 </summary>
-                <p className="mt-4 text-sm leading-relaxed text-muted group-open:text-white/80">{faq.a}</p>
+                <div className="faq-body mt-4">
+                  <p className="text-sm leading-relaxed text-muted group-open:text-white/80">{faq.a}</p>
+                </div>
               </details>
             ))}
           </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import LeadForm from './LeadForm';
-import VideoCarousel from '../../(site)/visto-americano/VideoCarousel';
+import VideoCarousel from '@/components/VideoCarousel';
 import { getGooglePlacesData } from '@/lib/google-places';
 
 export const metadata: Metadata = {

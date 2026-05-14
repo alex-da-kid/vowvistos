@@ -1,4 +1,4 @@
-const WP_URL = process.env.NEXT_PUBLIC_WP_URL!;
+const WP_URL = process.env.WP_URL ?? '';
 
 const fetchOpts = (revalidate = 3600) => ({
   next: { revalidate },

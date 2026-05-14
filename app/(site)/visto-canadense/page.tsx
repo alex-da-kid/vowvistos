@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import VideoCarousel from '../visto-americano/VideoCarousel';
+import Image from 'next/image';
+import VideoCarousel from '@/components/VideoCarousel';
 
 export const metadata: Metadata = {
   title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
@@ -173,10 +174,17 @@ export default async function VistoCanadensePage() {
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1533094602577-198d3beab8ea?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-4xl">🇨🇦</span>
-            <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-              Especialistas em Visto Canadense
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+            <div className="flex items-center gap-2">
+              <span className="text-4xl">🇨🇦</span>
+              <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                Especialistas em Visto Canadense
+              </span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
+              <GoogleStarsFull />
+              {placeData.rating} · {placeData.reviewCount} avaliações no
+              <GoogleGLogo />
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
@@ -212,6 +220,19 @@ export default async function VistoCanadensePage() {
           ))}
         </div>
       </div>
+
+      {/* ── AS SEEN IN ────────────────────────────────────────────────── */}
+      <section className="bg-white py-10 border-b border-light">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-muted whitespace-nowrap">Como visto em</span>
+          <div className="h-px sm:h-8 w-px bg-light hidden sm:block" aria-hidden />
+          <a href="https://diariodonordeste.verdesmares.com.br/negocios/suspensao-de-vistos-por-trump-e-copa-geram-corrida-que-ate-triplica-procura-em-fortaleza-1.3733229"
+            target="_blank" rel="noopener noreferrer"
+            className="opacity-70 hover:opacity-100 transition-opacity">
+            <Image src="/diario-do-nordeste.svg" alt="Diário do Nordeste" width={180} height={48} />
+          </a>
+        </div>
+      </section>
 
       {/* ── WHY VISAS GET DENIED ──────────────────────────────────────── */}
       <section className="py-20 bg-light">
