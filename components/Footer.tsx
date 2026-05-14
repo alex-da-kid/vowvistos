@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -6,8 +7,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
         <div>
-          <Link href="/" className="font-heading font-bold text-xl text-white">
-            Vow <span className="text-accent">Vistos</span>
+          <Link href="/" className="inline-flex">
+            <Image src="/logo.svg" alt="Vow Vistos" width={138} height={52} />
           </Link>
           <p className="mt-4 text-sm leading-relaxed">
             Consultoria Consular e Agência de Viagens.<br/>

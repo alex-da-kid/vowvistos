@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const nav = [
@@ -25,8 +26,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 md:h-20">
 
         {/* Logo */}
-        <Link href="/" className="font-heading font-bold text-xl text-white tracking-tight">
-          Vow <span className="text-accent">Vistos</span>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.svg" alt="Vow Vistos" width={140} height={53} priority />
         </Link>
 
         {/* Desktop nav */}

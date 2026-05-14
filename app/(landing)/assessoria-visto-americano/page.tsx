@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import LeadForm from './LeadForm';
 import VideoCarousel from '../../(site)/visto-americano/VideoCarousel';
+import { getGooglePlacesData } from '@/lib/google-places';
 
 export const metadata: Metadata = {
   title: 'Assessoria de Visto Americano | Aprovado na Primeira Tentativa | Vow Vistos',
@@ -10,14 +11,6 @@ export const metadata: Metadata = {
 
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
 
-const reviews = [
-  { name: 'Fernanda L.', date: 'novembro de 2024', color: 'bg-yellow-500', text: 'Contratei após duas negativas anteriores. Com o trabalho deles entendi exatamente onde estava errando. Aprovada! Não tenho palavras para agradecer.' },
-  { name: 'João P.',     date: 'fevereiro de 2025', color: 'bg-green-500',  text: 'Super profissionais. Já tinha tentado sozinho e levei negativa. Com a Vow Vistos aprovei em menos de 30 dias. A Garantia Vitalícia foi o que me convenceu.' },
-  { name: 'Ricardo T.',  date: 'outubro de 2024',   color: 'bg-indigo-500', text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva — cheguei ao consulado muito mais confiante. Vale cada centavo.' },
-  { name: 'Maria S.',    date: 'março de 2025',     color: 'bg-blue-500',   text: 'Atendimento incrível! Me ajudaram com todo o processo, desde a documentação até a simulação da entrevista. Aprovada na primeira tentativa!' },
-  { name: 'Ana C.',      date: 'janeiro de 2025',   color: 'bg-purple-500', text: 'O suporte foi excelente do início ao fim. Explicaram tudo com clareza, me prepararam muito bem para a entrevista e o visto saiu sem nenhum problema.' },
-  { name: 'Carlos M.',   date: 'dezembro de 2024',  color: 'bg-red-500',    text: 'Muito atenciosos e competentes. Responderam todas as minhas dúvidas rapidamente. Processo tranquilo do começo ao fim. Recomendo muito!' },
-];
 
 function Stars() {
   return (
@@ -103,7 +96,8 @@ const faqs = [
   { q: 'Posso solicitar o visto americano para meus filhos menores?', a: 'Sim. Menores de 14 anos geralmente não precisam comparecer à entrevista presencial, mas os documentos precisam estar em ordem. Entre 14 e 17 anos, a entrevista pode ou não ser exigida dependendo do caso. A Vow Vistos orienta famílias com dependentes em cada etapa.' },
 ];
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const placeData = await getGooglePlacesData();
   return (
     <>
       {/* ── NAV BAR ───────────────────────────────────────────────────── */}
@@ -186,12 +180,12 @@ export default function LandingPage() {
             <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O que nossos clientes dizem</h2>
             <div className="flex items-center justify-center gap-2">
               <Stars />
-              <span className="font-heading font-bold text-dark">4.9</span>
-              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
+              <span className="font-heading font-bold text-dark">{placeData.rating}</span>
+              <span className="text-muted text-sm">· {placeData.reviewCount} avaliações verificadas no Google</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((r) => (
+            {placeData.reviews.map((r) => (
               <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>

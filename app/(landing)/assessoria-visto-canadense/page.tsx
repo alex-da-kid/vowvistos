@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import LeadForm from './LeadForm';
 import VideoCarousel from '../../(site)/visto-americano/VideoCarousel';
+import { getGooglePlacesData } from '@/lib/google-places';
 
 export const metadata: Metadata = {
   title: 'Assessoria de Visto Canadense | TRV, Study Permit e ETA | Vow Vistos',
@@ -10,14 +11,6 @@ export const metadata: Metadata = {
 
 const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
 
-const reviews = [
-  { name: 'Beatriz A.', date: 'outubro de 2024',   color: 'bg-yellow-500', text: 'Consegui o Study Permit na primeira tentativa! A Vow Vistos organizou toda a documentação e me orientou em cada detalhe. Sem eles eu teria errado na carta de apresentação com certeza.' },
-  { name: 'Lucas M.',   date: 'janeiro de 2025',   color: 'bg-green-500',  text: 'TRV aprovado em 18 dias. Já tinha tentado sozinho e o visto negou. Com a Vow Vistos entendi o que estava errado e corrigi tudo. Recomendo muito.' },
-  { name: 'Camila R.',  date: 'dezembro de 2024',  color: 'bg-indigo-500', text: 'Processo todo muito tranquilo. Eles cuidaram de cada formulário com cuidado e me explicaram cada etapa. Aprovada sem nenhuma pendência.' },
-  { name: 'Pedro S.',   date: 'fevereiro de 2025', color: 'bg-blue-500',   text: 'Meu visto havia sido negado anteriormente. A Vow Vistos identificou exatamente o problema na documentação financeira. Resubmeti e aprovei. Garantia Vitalícia é real.' },
-  { name: 'Juliana F.', date: 'novembro de 2024',  color: 'bg-purple-500', text: 'Atendimento impecável do começo ao fim. Tiraram todas as minhas dúvidas sobre a biometria e o processo IRCC. Aprovada na primeira tentativa!' },
-  { name: 'Roberto C.', date: 'março de 2025',     color: 'bg-red-500',    text: 'Muito competentes e atenciosos. Me orientaram em tudo, desde a escolha entre TRV e ETA até a organização dos documentos. Processo aprovado sem nenhum problema.' },
-];
 
 function Stars() {
   return (
@@ -133,7 +126,8 @@ const faqs = [
   { q: 'Posso incluir minha família na solicitação?', a: 'Cada membro da família precisa de sua própria solicitação individual. No entanto, as aplicações podem ser vinculadas ao mesmo grupo familiar no sistema do IRCC, o que facilita o processo. A Vow Vistos orienta famílias completas em cada etapa, garantindo consistência entre todas as aplicações do grupo.' },
 ];
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const placeData = await getGooglePlacesData();
   return (
     <>
       {/* ── NAV BAR ───────────────────────────────────────────────────── */}
@@ -216,12 +210,12 @@ export default function LandingPage() {
             <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O que nossos clientes dizem</h2>
             <div className="flex items-center justify-center gap-2">
               <Stars />
-              <span className="font-heading font-bold text-dark">4.9</span>
-              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
+              <span className="font-heading font-bold text-dark">{placeData.rating}</span>
+              <span className="text-muted text-sm">· {placeData.reviewCount} avaliações verificadas no Google</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((r) => (
+            {placeData.reviews.map((r) => (
               <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>

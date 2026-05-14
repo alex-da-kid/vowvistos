@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getPosts } from '@/lib/wordpress';
+import { getGooglePlacesData } from '@/lib/google-places';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
@@ -31,8 +33,8 @@ const schemaOrg = {
       serviceType: 'Consultoria de Vistos',
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '11700',
+        ratingValue: '5.0',
+        reviewCount: '151',
       },
     },
     {
@@ -187,49 +189,6 @@ const faqs = [
 // ── REPLACE these with real YouTube video IDs when available ──────────────────
 const videos = ['YOUTUBE_ID_1', 'YOUTUBE_ID_2', 'YOUTUBE_ID_3'];
 
-// ── REPLACE with real reviews from Google Maps ────────────────────────────────
-// Replace GOOGLE_MAPS_URL with your actual Google Maps business profile link
-const GOOGLE_MAPS_URL = 'https://g.page/r/REPLACE_WITH_YOUR_PLACE_ID';
-
-const googleReviews = [
-  {
-    name: 'Maria S.',
-    date: 'março de 2025',
-    text: 'Atendimento incrível! Me ajudaram com todo o processo do visto americano, desde a documentação até a simulação da entrevista. Aprovada na primeira tentativa!',
-    color: 'bg-blue-500',
-  },
-  {
-    name: 'João P.',
-    date: 'fevereiro de 2025',
-    text: 'Super profissionais. Já tinha tentado sozinho e levei negativa. Com a Vow Vistos aprovei em menos de 30 dias. A Garantia Vitalícia foi o que me convenceu a contratar.',
-    color: 'bg-green-500',
-  },
-  {
-    name: 'Ana C.',
-    date: 'janeiro de 2025',
-    text: 'O suporte foi excelente do início ao fim. Explicaram tudo com clareza, me prepararam muito bem para a entrevista e o visto saiu sem nenhum problema.',
-    color: 'bg-purple-500',
-  },
-  {
-    name: 'Carlos M.',
-    date: 'dezembro de 2024',
-    text: 'Visto canadense aprovado! A equipe da Vow Vistos é muito atenciosa e competente. Responderam todas as minhas dúvidas rapidamente. Recomendo muito!',
-    color: 'bg-red-500',
-  },
-  {
-    name: 'Fernanda L.',
-    date: 'novembro de 2024',
-    text: 'Contratei para o visto americano após duas negativas anteriores. Com o trabalho deles entendi exatamente onde estava errando. Aprovada! Não tenho palavras para agradecer.',
-    color: 'bg-yellow-500',
-  },
-  {
-    name: 'Ricardo T.',
-    date: 'outubro de 2024',
-    text: 'Processo todo muito bem conduzido. A simulação de entrevista foi decisiva: cheguei ao consulado muito mais confiante. Vale cada centavo investido.',
-    color: 'bg-indigo-500',
-  },
-];
-
 function stripHtml(html: string) {
   return html.replace(/<[^>]+>/g, '').trim();
 }
@@ -246,6 +205,7 @@ export default async function HomePage() {
   } catch {
     blogPosts = [];
   }
+  const placeData = await getGooglePlacesData();
 
   return (
     <>
@@ -267,9 +227,15 @@ export default async function HomePage() {
             <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
               Líder em consultoria de vistos no Brasil há 4 anos
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
               <GoogleStars />
-              4.9 · 100+ avaliações no Google
+              {placeData.rating} · {placeData.reviewCount} avaliações no
+              <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
@@ -314,6 +280,19 @@ export default async function HomePage() {
               <div className="mt-2 text-sm text-white/70 leading-snug max-w-[180px] mx-auto">{s.label}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── AS SEEN IN ────────────────────────────────────────────────────── */}
+      <section className="bg-white py-10 border-b border-light">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-muted whitespace-nowrap">Como visto em</span>
+          <div className="h-px sm:h-8 w-px bg-light hidden sm:block" aria-hidden />
+          <a href="https://diariodonordeste.verdesmares.com.br/negocios/suspensao-de-vistos-por-trump-e-copa-geram-corrida-que-ate-triplica-procura-em-fortaleza-1.3733229"
+            target="_blank" rel="noopener noreferrer"
+            className="opacity-70 hover:opacity-100 transition-opacity">
+            <Image src="/diario-do-nordeste.svg" alt="Diário do Nordeste" width={180} height={48} />
+          </a>
         </div>
       </section>
 
@@ -458,12 +437,12 @@ export default async function HomePage() {
             </h2>
             <div className="flex items-center justify-center gap-2 mb-3">
               <GoogleStarsFull />
-              <span className="font-heading font-bold text-dark text-lg">4.9</span>
-              <span className="text-muted text-sm">· 100+ avaliações verificadas no Google</span>
+              <span className="font-heading font-bold text-dark text-lg">{placeData.rating}</span>
+              <span className="text-muted text-sm">· {placeData.reviewCount} avaliações verificadas no Google</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {googleReviews.map((r) => (
+            {placeData.reviews.map((r) => (
               <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
@@ -488,15 +467,17 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-primary/20 hover:border-primary text-primary font-heading font-semibold px-6 py-3 rounded-full transition-colors text-sm">
-              Ver todas as avaliações no Google
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
-          </div>
+          {placeData.mapsUrl && (
+            <div className="text-center mt-10">
+              <a href={placeData.mapsUrl} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-primary/20 hover:border-primary text-primary font-heading font-semibold px-6 py-3 rounded-full transition-colors text-sm">
+                Ver todas as avaliações no Google
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
