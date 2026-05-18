@@ -1,36 +1,28 @@
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
+
+const WP_URL = (process.env.WP_URL ?? '').trim();
+const SECRET = (process.env.VV_SUBMIT_SECRET ?? '').trim();
 
 export async function GET() {
-  const WP_URL   = (process.env.WP_URL   ?? '').trim();
-  const API_KEY  = (process.env.GF_API_KEY  ?? '').trim();
-  const PRIV_KEY = (process.env.GF_PRIVATE_KEY ?? '').trim();
-
-  const route = 'forms/36';
-  const expires = Math.floor(Date.now() / 1000) + 3600;
-  const stringToSign = `${API_KEY}:get:${route}:${expires}`;
-  const sig = crypto.createHmac('sha1', PRIV_KEY).update(stringToSign).digest('base64');
-  const url = `${WP_URL}/gravityformsapi/${route}?api_key=${API_KEY}&signature=${encodeURIComponent(sig)}&expires=${expires}`;
-
-  let rawText = '';
+  const testUrl = `${WP_URL}/wp-json/vowvistos/v1/submit`;
   let httpStatus = 0;
+  let rawText = '';
+
   try {
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(testUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-VV-Secret': SECRET },
+      body: JSON.stringify({ form_id: 36, values: { '1': 'Teste', '2': '85999999999', '3': 'teste@vowvistos.com.br', '4': 'Teste de integração' } }),
+      signal: AbortSignal.timeout(10000),
+    });
     httpStatus = res.status;
     rawText = await res.text();
   } catch (err) {
-    return NextResponse.json({ error: String(err), url });
+    return NextResponse.json({ error: String(err), testUrl, secretSet: !!SECRET });
   }
 
   let parsed: unknown = null;
   try { parsed = JSON.parse(rawText); } catch { /* not JSON */ }
 
-  return NextResponse.json({
-    apiKeyUsed: API_KEY,
-    privKeyLen: PRIV_KEY.length,
-    stringToSign,
-    httpStatus,
-    rawText: rawText.slice(0, 500),
-    parsed,
-  });
+  return NextResponse.json({ testUrl, secretSet: !!SECRET, httpStatus, rawText, parsed });
 }
