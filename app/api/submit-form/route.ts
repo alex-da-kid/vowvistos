@@ -4,7 +4,7 @@ const WP_URL = (process.env.WP_URL ?? '').trim();
 const SECRET = (process.env.VV_SUBMIT_SECRET ?? '').trim();
 
 const FIELD_MAP: Record<string, string> = {
-  name: '1', phone: '2', email: '3', message: '4',
+  name: '4', phone: '7', email: '11', message: '3',
 };
 
 export async function POST(req: NextRequest) {
