@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getGooglePlacesData } from '@/lib/google-places';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Vistos para Outros Países | Reino Unido, Austrália, Japão e mais | Vow Vistos',
@@ -122,6 +123,16 @@ export default async function OutrosPaisesPage() {
               Consultar meu destino pelo WhatsApp
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-light" id="contato">
+        <div className="max-w-2xl mx-auto px-4 text-center mb-10">
+          <h2 className="text-4xl font-heading font-bold text-dark mb-3">Fale com um especialista em vistos</h2>
+          <p className="text-muted">Respondemos em até 24 horas úteis com uma análise honesta do seu perfil.</p>
+        </div>
+        <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8">
+          <ContactForm />
         </div>
       </section>
 

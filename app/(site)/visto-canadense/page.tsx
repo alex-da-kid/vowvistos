@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import VideoCarousel from '@/components/VideoCarousel';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
@@ -538,17 +539,7 @@ export default async function VistoCanadensePage() {
           <p className="text-muted">Respondemos em até 24 horas úteis com uma análise honesta do seu perfil.</p>
         </div>
         <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8">
-          <p className="text-center text-muted text-sm mb-6">Formulário Gravity Forms: configure o ID em <code className="bg-light px-1 rounded text-xs">.env.local</code>.</p>
-          <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Canadense`}
-            target="_blank" rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-3 rounded-full transition-colors w-full">
-            Prefiro falar pelo WhatsApp
-          </a>
-          <p className="text-center text-xs text-muted mt-4">
-            Prefere visitar nossa{' '}
-            <a href="/contato" className="text-accent hover:underline">página de contato</a>
-            {' '}completa.
-          </p>
+          <ContactForm />
         </div>
       </section>
     </>
