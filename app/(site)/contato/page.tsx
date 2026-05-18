@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contato | Fale com um Especialista em Vistos | Vow Vistos',
@@ -131,9 +132,7 @@ export default function ContatoPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
             <h2 className="text-2xl font-heading font-bold text-dark mb-2">Envie uma mensagem</h2>
             <p className="text-muted text-sm mb-6">Preencha o formulário e entraremos em contato em até 24 horas úteis.</p>
-            <p className="text-center text-muted text-sm bg-light rounded-xl p-4">
-              Formulário Gravity Forms — configure o ID em <code className="bg-white px-1 rounded text-xs">.env.local</code>.
-            </p>
+            <ContactForm />
           </div>
 
         </div>
