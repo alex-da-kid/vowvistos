@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { getForm } from '@/lib/gravityforms';
-import GravityFormRenderer from '@/components/GravityFormRenderer';
+import EtaCanadenseForm from './EtaCanadenseForm';
 
 export const metadata: Metadata = {
   title: 'Formulário ETA Canadense | Vow Vistos',
@@ -9,9 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default async function FormularioEtaCanadensePage() {
-  const form = await getForm(10);
-
+export default function FormularioEtaCanadensePage() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center py-12 px-4">
       <a href="/" className="mb-8">
@@ -31,13 +28,7 @@ export default async function FormularioEtaCanadensePage() {
           </p>
         </div>
 
-        {form?.fields ? (
-          <GravityFormRenderer formId={10} fields={form.fields} />
-        ) : (
-          <p className="text-muted text-sm text-center py-8">
-            Formulário temporariamente indisponível. Entre em contato pelo WhatsApp.
-          </p>
-        )}
+        <EtaCanadenseForm />
       </div>
 
       <p className="text-xs text-muted mt-8">
