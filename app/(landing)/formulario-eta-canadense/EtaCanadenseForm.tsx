@@ -104,6 +104,7 @@ export default function EtaCanadenseForm() {
         setStatus('error');
         return;
       }
+      console.log('GF submit response:', JSON.stringify(data));
       setStatus('success');
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : 'Erro de rede');
