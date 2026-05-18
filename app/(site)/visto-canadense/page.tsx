@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 import { getGooglePlacesData } from '@/lib/google-places';
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
+const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
 
 function GoogleStarsFull() {
   return (

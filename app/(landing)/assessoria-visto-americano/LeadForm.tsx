@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '5511999999999';
+const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
 
 const situacaoOptions = [
   { value: 'Primeiro visto americano', label: 'Primeiro visto americano' },
