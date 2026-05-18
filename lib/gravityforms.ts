@@ -4,13 +4,12 @@ const WP_URL   = process.env.WP_URL ?? '';
 const API_KEY  = process.env.GF_API_KEY ?? '';
 const PRIV_KEY = process.env.GF_PRIVATE_KEY ?? '';
 
-// Field ID map for Form 36 (Contato Geral) — verify IDs in GF form editor
+// Field ID map for Form 36 (Contato Geral) — matches GF field order
 const FIELD_MAP: Record<string, string> = {
   name:    '1',
-  email:   '2',
-  phone:   '3',
-  visa:    '4',
-  message: '5',
+  phone:   '2',
+  email:   '3',
+  message: '4',
 };
 
 function buildAuth(method: 'GET' | 'POST', route: string) {

@@ -6,7 +6,7 @@ const wa = '558520186898';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [form, setForm] = useState({ name: '', email: '', phone: '', visa: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -46,33 +46,21 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">Nome completo *</label>
-          <input name="name" required value={form.name} onChange={handleChange}
-            placeholder="Seu nome" className={inputClass} />
-        </div>
-        <div>
-          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">E-mail *</label>
-          <input name="email" type="email" required value={form.email} onChange={handleChange}
-            placeholder="seu@email.com" className={inputClass} />
-        </div>
+      <div>
+        <label className="block text-xs font-heading font-semibold text-dark mb-1.5">Nome completo *</label>
+        <input name="name" required value={form.name} onChange={handleChange}
+          placeholder="Seu nome" className={inputClass} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">WhatsApp *</label>
+          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">Telefone *</label>
           <input name="phone" type="tel" required value={form.phone} onChange={handleChange}
-            placeholder="(11) 99999-9999" className={inputClass} />
+            placeholder="(85) 99999-9999" className={inputClass} />
         </div>
         <div>
-          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">Visto de interesse *</label>
-          <select name="visa" required value={form.visa} onChange={handleChange} className={inputClass}>
-            <option value="">Selecione...</option>
-            <option value="Americano">Visto Americano</option>
-            <option value="Canadense">Visto Canadense</option>
-            <option value="Chinês">Visto Chinês</option>
-            <option value="Outro">Outro destino</option>
-          </select>
+          <label className="block text-xs font-heading font-semibold text-dark mb-1.5">E-mail</label>
+          <input name="email" type="email" value={form.email} onChange={handleChange}
+            placeholder="seu@email.com" className={inputClass} />
         </div>
       </div>
       <div>
