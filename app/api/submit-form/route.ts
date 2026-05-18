@@ -10,7 +10,8 @@ export async function POST(req: NextRequest) {
     const result = await submitForm(Number(formId), fieldValues);
     return NextResponse.json(result);
   } catch (err) {
-    console.error('submit-form error:', err);
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('submit-form error:', message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

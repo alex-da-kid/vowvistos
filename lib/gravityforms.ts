@@ -61,5 +61,21 @@ export async function submitForm(formId: number, fieldValues: Record<string, str
     body: JSON.stringify(entry),
     signal: AbortSignal.timeout(8000),
   });
-  return res.json();
+
+  const text = await res.text();
+  console.log('GF submitForm HTTP status:', res.status);
+  console.log('GF submitForm raw response:', text);
+
+  let json: Record<string, unknown>;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error(`GF returned non-JSON (HTTP ${res.status}): ${text.slice(0, 300)}`);
+  }
+
+  if (json.status !== 200) {
+    throw new Error(`GF error ${json.status}: ${JSON.stringify(json.response)}`);
+  }
+
+  return json;
 }

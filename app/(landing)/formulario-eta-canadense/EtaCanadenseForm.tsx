@@ -77,6 +77,7 @@ export default function EtaCanadenseForm() {
   const [page, setPage] = useState<1 | 2>(1);
   const [values, setValues] = useState<Values>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   function set(id: string, v: string) {
     setValues(prev => ({ ...prev, [id]: v }));
@@ -97,9 +98,15 @@ export default function EtaCanadenseForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ formId: 10, fieldValues: values }),
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data?.error ?? 'Erro desconhecido');
+        setStatus('error');
+        return;
+      }
       setStatus('success');
-    } catch {
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Erro de rede');
       setStatus('error');
     }
   }
@@ -306,7 +313,8 @@ export default function EtaCanadenseForm() {
 
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-600">
-          Ocorreu um erro ao enviar. Tente novamente.
+          <p className="font-semibold mb-1">Erro ao enviar o formulário:</p>
+          <p className="font-mono text-xs break-all">{errorMsg}</p>
         </div>
       )}
 
