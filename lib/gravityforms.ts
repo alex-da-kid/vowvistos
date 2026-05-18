@@ -14,19 +14,29 @@ const FIELD_MAP: Record<string, string> = {
 
 function buildAuth(method: 'GET' | 'POST', route: string) {
   const expires = Math.floor(Date.now() / 1000) + 3600;
+  const stringToSign = `${API_KEY}:${method}:${route}:${expires}`.toLowerCase();
   const sig = crypto.createHmac('sha1', PRIV_KEY)
-    .update(`${API_KEY}:${method}:${route}:${expires}`)
+    .update(stringToSign)
     .digest('base64');
   return { expires, sig };
 }
 
 export async function getForm(formId: number) {
-  const route = `forms/${formId}`;
-  const { expires, sig } = buildAuth('GET', route);
-  const url = `${WP_URL}/gravityformsapi/${route}?api_key=${API_KEY}&signature=${encodeURIComponent(sig)}&expires=${expires}`;
-  const res = await fetch(url, { next: { revalidate: 3600 } });
-  const json = await res.json();
-  return json.response ?? null;
+  try {
+    const route = `forms/${formId}`;
+    const { expires, sig } = buildAuth('GET', route);
+    const url = `${WP_URL}/gravityformsapi/${route}?api_key=${API_KEY}&signature=${encodeURIComponent(sig)}&expires=${expires}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    const json = await res.json();
+    if (json.status !== 200) {
+      console.error('GF getForm error:', JSON.stringify(json));
+      return null;
+    }
+    return json.response ?? null;
+  } catch (err) {
+    console.error('GF getForm exception:', err);
+    return null;
+  }
 }
 
 export async function submitForm(formId: number, fieldValues: Record<string, string>) {
