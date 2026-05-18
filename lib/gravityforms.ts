@@ -36,8 +36,13 @@ export async function submitForm(formId: number, fieldValues: Record<string, str
 
   const entry: Record<string, string> = {};
   for (const [key, value] of Object.entries(fieldValues)) {
-    const id = FIELD_MAP[key];
-    if (id) entry[id] = value;
+    // If key is already a numeric field ID, use it directly
+    if (/^\d+(\.\d+)?$/.test(key)) {
+      entry[key] = value;
+    } else {
+      const id = FIELD_MAP[key];
+      if (id) entry[id] = value;
+    }
   }
 
   const res = await fetch(url, {
