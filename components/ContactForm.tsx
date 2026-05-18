@@ -19,7 +19,7 @@ export default function ContactForm() {
       const res = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ formId: 1, fieldValues: form }),
+        body: JSON.stringify({ formId: 36, fieldValues: form }),
       });
       if (!res.ok) throw new Error('failed');
       setStatus('success');
