@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 
-const WP_URL   = process.env.WP_URL ?? '';
-const API_KEY  = process.env.GF_API_KEY ?? '';
-const PRIV_KEY = process.env.GF_PRIVATE_KEY ?? '';
+const WP_URL   = (process.env.WP_URL   ?? '').trim();
+const API_KEY  = (process.env.GF_API_KEY  ?? '').trim();
+const PRIV_KEY = (process.env.GF_PRIVATE_KEY ?? '').trim();
 
 // Field ID map for Form 36 (Contato Geral) — matches GF field order
 const FIELD_MAP: Record<string, string> = {
