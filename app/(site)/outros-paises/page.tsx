@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: 'visto reino unido, visto australia, visto japão, visto portugal, consultoria vistos internacionais, visto nova zelândia',
 };
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 const countries = [
   { flag: '🇬🇧', name: 'Reino Unido',   desc: 'Standard Visitor Visa e demais categorias britânicas.' },

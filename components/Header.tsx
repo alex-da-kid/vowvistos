@@ -20,7 +20,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+  const wa = '558520186898';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);

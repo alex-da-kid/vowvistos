@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Entre em contato com a Vow Vistos. Respondemos em até 24 horas úteis. Fale pelo WhatsApp ou preencha o formulário para começar sua análise de perfil gratuita.',
 };
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 const channels = [
   {

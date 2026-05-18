@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 const situacaoOptions = [
   { value: 'TRV: Visto de Turista', label: 'TRV: Visto de Turista' },

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');

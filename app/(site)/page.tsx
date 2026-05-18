@@ -86,7 +86,7 @@ const schemaOrg = {
   ],
 };
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 const visaCards = [
   { flag: '🇺🇸', label: 'Visto Americano',  href: '/visto-americano' },

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: 'noindex',
 };
 
-const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? '558520186898';
+const wa = '558520186898';
 
 
 function Stars() {
