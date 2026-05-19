@@ -773,7 +773,7 @@ export default function VistoAmericanoForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Sel id="528" lab="Relação com você" req opts={['Cônjuge', 'Noivo(a)', 'Filho(a)', 'Irmão(ã)']} values={values} set={set} />
               <Sel id="647" lab="Situação nos EUA" req
-                opts={['Cidadão americano', 'Residente permanente (Greencard)', 'Não-imigrante', 'Outro/Não sei']}
+                opts={['Cididão americano', 'Residente permanente (Greencard)', 'Não-imigrante', 'Outro/Não sei']}
                 values={values} set={set} />
             </div>
           </>
