@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-heading', weight: ['600','700','800'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vowvistos.com.br'),
   title: { default: 'Vow Vistos — Consultoria de Vistos', template: '%s | Vow Vistos' },
   description: 'Consultoria especializada em vistos americano, canadense, chinês e outros. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia.',
 };
