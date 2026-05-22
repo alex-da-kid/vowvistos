@@ -49,7 +49,9 @@ export default async function OutrosPaisesPage() {
   const placeData = await getGooglePlacesData();
   return (
     <>
-      <section className="bg-gradient-to-br from-dark to-primary py-24 md:py-32 text-center text-white relative overflow-hidden">
+      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
+        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1600633349333-eebb43d01e23?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark/75 to-primary/65" aria-hidden />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
             <div className="flex items-center gap-2">

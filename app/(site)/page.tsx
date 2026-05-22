@@ -218,7 +218,7 @@ export default async function HomePage() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-36 text-center text-white relative overflow-hidden bg-dark"
+      <section className="pt-10 pb-12 md:pt-14 md:pb-16 text-center text-white relative overflow-hidden bg-dark"
         style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-dark/75 to-primary/65" aria-hidden />
         <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden>
@@ -226,7 +226,7 @@ export default async function HomePage() {
           <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-primary-light blur-3xl"/>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
               Líder em consultoria de vistos no Brasil há 4 anos
             </span>
@@ -241,16 +241,16 @@ export default async function HomePage() {
               </svg>
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-4">
             Seu Visto Aprovado. <br className="hidden md:block"/>
             <span className="text-accent">Não por acaso. Por conhecimento.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-2 leading-relaxed">
             A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia: vínculos, consistência e postura, com base em <strong className="text-white">mais de 7.000 aprovações reais de brasileiros</strong>. Expertise que não está em nenhum manual.
           </p>
-          <p className="text-sm text-white/50 mb-10">Especialização exclusiva em consultoria consular desde 2017.</p>
+          <p className="text-sm text-white/50 mb-5">Especialização exclusiva em consultoria consular desde 2017.</p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-5">
             {visaCards.map((c) => (
               <Link key={c.href} href={c.href}
                 className="bg-white/10 hover:bg-accent border border-white/20 hover:border-accent rounded-2xl p-4 md:p-5 flex flex-col items-center gap-2 transition-all duration-200 hover:-translate-y-1 font-heading font-semibold text-sm text-white hover:text-dark no-underline group">
