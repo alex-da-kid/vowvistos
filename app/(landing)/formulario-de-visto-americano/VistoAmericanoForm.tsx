@@ -133,8 +133,13 @@ function DynamicList({ id, lab, req, cols, values, set }: {
             {cols.map((col, ci) => (
               <div key={ci} className="flex-1 min-w-0">
                 {ri === 0 && <span className="text-xs text-muted mb-1 block truncate">{col}</span>}
-                <input value={row[ci] ?? ''} onChange={e => update(ri, ci, e.target.value)}
-                  placeholder={col} className={inp} />
+                <input
+                  value={row[ci] ?? ''}
+                  onChange={e => update(ri, ci, e.target.value)}
+                  placeholder={col}
+                  required={req && ci === 0}
+                  className={inp}
+                />
               </div>
             ))}
             {rows.length > 1 && (
@@ -189,10 +194,39 @@ export default function VistoAmericanoForm() {
   async function handleSubmit() {
     setStatus('sending');
     try {
+      const payload: Values = { ...values };
+
+      // GF date fields expect DD/MM/YYYY but <input type="date"> returns YYYY-MM-DD
+      const DATE_IDS = ['403','384','381','398','633','635','446','447',
+        '456','459','699','502','503','518','522','692','556','557'];
+      for (const id of DATE_IDS) {
+        const v = payload[id];
+        if (v && /^\d{4}-\d{2}-\d{2}$/.test(v)) {
+          const [y, m, d] = v.split('-');
+          payload[id] = `${d}/${m}/${y}`;
+        }
+      }
+
+      // GF list fields expect row/col notation; React stores them as JSON arrays
+      const LIST_IDS = ['436','489','496','539','541','545','546','548'];
+      for (const id of LIST_IDS) {
+        const v = payload[id];
+        if (!v) continue;
+        try {
+          const rows: string[][] = JSON.parse(v);
+          delete payload[id];
+          rows.forEach((row, ri) => {
+            row.forEach((cell, ci) => {
+              payload[`${id}_${ri}_${ci}`] = cell;
+            });
+          });
+        } catch { /* leave as-is if unparseable */ }
+      }
+
       const res = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ formId: 6, fieldValues: values }),
+        body: JSON.stringify({ formId: 6, fieldValues: payload }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -721,9 +755,9 @@ export default function VistoAmericanoForm() {
           <Textarea id="513" lab="Detalhes do ocorrido" req values={values} set={set} />
         )}
 
-        <Radio id="514" lab="Alguém já solicitou uma petição de imigração em seu nome no Departamento de Serviços de Cidadania e Imigração dos EUA?" values={values} set={set} />
+        <Radio id="514" lab="Alguém já solicitou uma petição de imigração em seu nome no Departamento de Serviços de Cidadania e Imigração dos EUA?" req values={values} set={set} />
         {values['514'] === 'Sim' && (
-          <Textarea id="515" lab="Detalhes do ocorrido" values={values} set={set} />
+          <Textarea id="515" lab="Detalhes do ocorrido" req values={values} set={set} />
         )}
 
         {navBtns}

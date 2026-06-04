@@ -20,6 +20,10 @@ export async function POST(req: NextRequest) {
       values[resolvedKey] = value;
     }
 
+    const fieldCount = Object.keys(values).length;
+    console.log(`[submit-form] formId=${formId} fields=${fieldCount}`);
+    console.log('[submit-form] payload:', JSON.stringify(values, null, 2));
+
     const res = await fetch(`${WP_URL}/wp-json/vowvistos/v1/submit`, {
       method: 'POST',
       headers: {
@@ -27,11 +31,12 @@ export async function POST(req: NextRequest) {
         'X-VV-Secret': SECRET,
       },
       body: JSON.stringify({ form_id: formId, values }),
-      signal: AbortSignal.timeout(10000),
+      signal: AbortSignal.timeout(30000),
     });
 
     const text = await res.text();
-    console.log('WP submit status:', res.status, text);
+    console.log('[submit-form] WP status:', res.status);
+    console.log('[submit-form] WP response:', text);
 
     if (!res.ok) {
       return NextResponse.json({ error: text }, { status: 500 });
@@ -42,7 +47,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(parsed);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error('submit-form error:', message);
+    console.error('[submit-form] error:', message);
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
