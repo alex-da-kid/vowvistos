@@ -1,5 +1,5 @@
 export default function WhatsAppFab() {
-  const wa = '558520186898';
+  const wa = '5585997164923';
   return (
     <a href={`https://wa.me/${wa}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20vistos`}
       target="_blank" rel="noopener noreferrer"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 import { getGooglePlacesData } from '@/lib/google-places';
 
-const wa = '558520186898';
+const wa = '5585997164923';
 
 function GoogleStarsFull() {
   return (

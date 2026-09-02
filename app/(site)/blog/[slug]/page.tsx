@@ -101,7 +101,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <h2 className="text-3xl font-heading font-bold mb-4">Precisa de ajuda com seu visto?</h2>
           <p className="text-white/70 mb-8">Fale com um especialista da Vow Vistos e faça sua análise de perfil gratuita.</p>
           <a
-            href={`https://wa.me/${'558520186898'}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
+            href={`https://wa.me/${'5585997164923'}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-colors"
           >

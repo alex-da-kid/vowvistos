@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Entre em contato com a Vow Vistos. Respondemos em até 24 horas úteis. Fale pelo WhatsApp ou preencha o formulário para começar sua análise de perfil gratuita.',
 };
 
-const wa = '558520186898';
+const wa = '5585997164923';
 
 const channels = [
   {
@@ -31,7 +31,7 @@ const channels = [
     bg: 'bg-primary/10',
     label: 'Telefone',
     value: '(85) 2018-6898',
-    href: 'tel:+558520186898',
+    href: 'tel:+5585997164923',
     target: '_self',
     cta: null,
   },

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: 'visto reino unido, visto australia, visto japão, visto portugal, consultoria vistos internacionais, visto nova zelândia',
 };
 
-const wa = '558520186898';
+const wa = '5585997164923';
 
 const countries = [
   { flag: '🇬🇧', name: 'Reino Unido',   desc: 'Standard Visitor Visa e demais categorias britânicas.' },

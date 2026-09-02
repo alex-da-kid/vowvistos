@@ -20,7 +20,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const wa = '558520186898';
+  const wa = '5585997164923';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
