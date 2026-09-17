@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: 'noindex',
 };
 
-const wa = '5585997164923';
+const wa = '558520186898';
 
 
 function Stars() {

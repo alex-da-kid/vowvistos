@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const wa = '5585997164923';
+const wa = '558520186898';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');

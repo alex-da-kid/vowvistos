@@ -86,7 +86,7 @@ const schemaOrg = {
   ],
 };
 
-const wa = '5585997164923';
+const wa = '558520186898';
 
 const visaCards = [
   { flag: '🇺🇸', label: 'Visto Americano',  href: '/visto-americano' },
