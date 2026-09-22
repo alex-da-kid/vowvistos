@@ -153,7 +153,6 @@ export default async function VistoAmericanoPage() {
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
             <div className="flex items-center gap-2">
-              <span className="text-4xl">🇺🇸</span>
               <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
                 Especialistas em Visto Americano
               </span>
@@ -407,7 +406,6 @@ export default async function VistoAmericanoPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
             {consulates.map((c) => (
               <div key={c.city} className="bg-light rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
-                <div className="text-2xl mb-2">🇺🇸</div>
                 <div className="font-heading font-bold text-dark">{c.city}</div>
                 <div className="text-xs text-accent font-heading font-semibold mb-1">{c.state}</div>
                 <p className="text-muted text-xs leading-snug">{c.note}</p>
