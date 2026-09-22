@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackEvent } from './ConversionTracker';
 
 const wa = '558520186898';
 
@@ -25,7 +26,25 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
     const url = `https://wa.me/${wa}?text=${text}`;
     setWaUrl(url);
     setSubmitted(true);
+    trackEvent('lead_form_submit', { situacao });
+
+    // Open WhatsApp synchronously so the popup isn't blocked by the browser
+    // (must happen before any await breaks the user-gesture chain).
     window.open(url, '_blank');
+
+    // Save the lead to the Gravity Forms pipeline in the background, so it's
+    // captured even if the visitor never actually sends the WhatsApp message.
+    fetch('/api/submit-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formId: 36,
+        fieldValues: { name: nome, phone: telefone, message: `Situação: ${situacao}` },
+      }),
+    }).catch(() => {
+      // Silent: the visitor already has what they need (WhatsApp open).
+      // A background pipeline hiccup shouldn't surface as an error to them.
+    });
   };
 
   const inputCls = 'w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-sm font-sans focus:outline-none focus:border-primary transition-colors';
@@ -96,6 +115,13 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
         </svg>
         Falar pelo WhatsApp agora
       </a>
+
+      <p className="text-center text-xs text-muted">
+        Prefere ligar?{' '}
+        <a href="tel:+558520186898" className="font-heading font-semibold text-primary hover:underline">
+          (85) 2018-6898
+        </a>
+      </p>
     </form>
   );
 }

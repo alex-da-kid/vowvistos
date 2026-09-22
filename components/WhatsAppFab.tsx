@@ -1,9 +1,9 @@
-export default function WhatsAppFab() {
+export default function WhatsAppFab({ hideOnMobile = false }: { hideOnMobile?: boolean }) {
   const wa = '558520186898';
   return (
     <a href={`https://wa.me/${wa}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20vistos`}
       target="_blank" rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center"
+      className={`fixed bottom-6 right-6 z-50 items-center justify-center ${hideOnMobile ? 'hidden md:flex' : 'flex'}`}
       aria-label="WhatsApp">
       <span
         className="absolute w-14 h-14 rounded-full bg-green-500 opacity-60"

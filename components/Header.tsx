@@ -16,11 +16,12 @@ const nav = [
   { label: 'Contato', href: '/contato' },
 ];
 
-export default function Header() {
+export default function Header({ variant = 'full' }: { variant?: 'full' | 'minimal' }) {
   const [open, setOpen] = useState(false);
   const [dropOpen, setDropOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const wa = '558520186898';
+  const minimal = variant === 'minimal';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -38,51 +39,55 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
-          {nav.map((item) => {
-            const linkCls = `px-4 py-2 text-sm font-heading font-semibold uppercase tracking-wide hover:text-accent transition-colors ${scrolled ? 'text-white' : 'text-dark'}`;
-            return item.children ? (
-              <div key={item.label} className="relative group">
-                <button className={`${linkCls} flex items-center gap-1`}>
+        {!minimal && (
+          <nav className="hidden md:flex items-center gap-1">
+            {nav.map((item) => {
+              const linkCls = `px-4 py-2 text-sm font-heading font-semibold uppercase tracking-wide hover:text-accent transition-colors ${scrolled ? 'text-white' : 'text-dark'}`;
+              return item.children ? (
+                <div key={item.label} className="relative group">
+                  <button className={`${linkCls} flex items-center gap-1`}>
+                    {item.label}
+                    <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4.5L14.5 8H5.5z"/></svg>
+                  </button>
+                  <ul className="absolute left-0 top-full min-w-48 bg-dark border-t-2 border-accent py-2 hidden group-hover:block shadow-xl rounded-b-xl">
+                    {item.children.map((c) => (
+                      <li key={c.href}>
+                        <Link href={c.href} className="block px-5 py-2 text-sm text-gray-300 hover:text-accent hover:bg-white/5 transition-colors">
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <Link key={item.href} href={item.href} className={linkCls}>
                   {item.label}
-                  <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.5 8l4.5 4.5L14.5 8H5.5z"/></svg>
-                </button>
-                <ul className="absolute left-0 top-full min-w-48 bg-dark border-t-2 border-accent py-2 hidden group-hover:block shadow-xl rounded-b-xl">
-                  {item.children.map((c) => (
-                    <li key={c.href}>
-                      <Link href={c.href} className="block px-5 py-2 text-sm text-gray-300 hover:text-accent hover:bg-white/5 transition-colors">
-                        {c.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <Link key={item.href} href={item.href} className={linkCls}>
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+                </Link>
+              );
+            })}
+          </nav>
+        )}
 
         {/* WhatsApp CTA + hamburger */}
         <div className="flex items-center gap-3">
           <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-2 rounded-full transition-colors">
+            className={`${minimal ? 'inline-flex' : 'hidden sm:inline-flex'} items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-heading font-bold px-5 py-2 rounded-full transition-colors`}>
             <WaIcon /> WhatsApp
           </a>
-          <button onClick={() => setOpen(!open)}
-            className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-black/10 transition-colors"
-            aria-label="Menu">
-            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'rotate-45 translate-y-2' : ''}`}/>
-            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'opacity-0' : ''}`}/>
-            <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? '-rotate-45 -translate-y-2' : ''}`}/>
-          </button>
+          {!minimal && (
+            <button onClick={() => setOpen(!open)}
+              className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg hover:bg-black/10 transition-colors"
+              aria-label="Menu">
+              <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'rotate-45 translate-y-2' : ''}`}/>
+              <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? 'opacity-0' : ''}`}/>
+              <span className={`block w-5 h-0.5 transition-all ${scrolled || open ? 'bg-white' : 'bg-dark'} ${open ? '-rotate-45 -translate-y-2' : ''}`}/>
+            </button>
+          )}
         </div>
       </div>
 
       {/* Mobile menu */}
-      {open && (
+      {!minimal && open && (
         <div className="md:hidden bg-dark border-t border-white/10 px-4 py-4 flex flex-col gap-1">
           <button onClick={() => setDropOpen(!dropOpen)}
             className="flex justify-between items-center px-3 py-2 text-sm font-heading font-semibold text-white uppercase tracking-wide hover:text-accent transition-colors">

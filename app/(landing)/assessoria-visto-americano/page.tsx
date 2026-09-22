@@ -1,28 +1,87 @@
 import type { Metadata } from 'next';
-import LeadForm from './LeadForm';
+import Image from 'next/image';
 import VideoCarousel from '@/components/VideoCarousel';
-import { getGooglePlacesData } from '@/lib/google-places';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import WhatsAppFab from '@/components/WhatsAppFab';
+import ConversionTracker from './ConversionTracker';
+import LeadForm from './LeadForm';
+import StickyMobileCTA from './StickyMobileCTA';
+import TrackedContactForm from './TrackedContactForm';
+import GoogleTag from './GoogleTag';
 
 export const metadata: Metadata = {
-  title: 'Assessoria de Visto Americano | Aprovado na Primeira Tentativa | Vow Vistos',
-  description: 'Assessoria completa para o visto americano: DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. Mais de 7.000 vistos aprovados. Análise de perfil gratuita.',
+  title: 'Visto Americano | Consultoria Especializada para Brasileiros | Vow Vistos',
+  description: 'Consultoria completa para visto americano: análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. Mais de 7.000 vistos aprovados. Fale agora.',
+  keywords: 'visto americano, consultoria visto americano, como tirar visto americano, visto americano negado, entrevista visto americano, DS-160, visto B1 B2, código 214b',
   robots: 'noindex',
 };
 
+import { getGooglePlacesData } from '@/lib/google-places';
+
 const wa = '558520186898';
 
-
-function Stars() {
+function GoogleStarsFull() {
   return (
     <span className="flex gap-0.5">
       {[...Array(5)].map((_, i) => (
-        <svg key={i} className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+        <svg key={i} className="w-5 h-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
         </svg>
       ))}
     </span>
   );
 }
+
+function GoogleGLogo() {
+  return (
+    <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+    </svg>
+  );
+}
+
+const steps = [
+  { num: '01', title: 'Análise de Perfil', desc: 'Avaliamos seu histórico, vínculos com o Brasil, situação financeira e objetivos de viagem para identificar e neutralizar qualquer risco de negativa.' },
+  { num: '02', title: 'Preenchimento do DS-160', desc: 'Cuidamos de cada campo do formulário consular com precisão. Um erro ou inconsistência no DS-160 pode resultar em negativa imediata.' },
+  { num: '03', title: 'Agendamento Estratégico', desc: 'Orientamos sobre o melhor consulado, período e estratégia de agendamento para maximizar suas chances e reduzir o tempo de espera.' },
+  { num: '04', title: 'Simulação de Entrevista', desc: 'Realizamos uma simulação completa com as perguntas reais do consulado americano. Você chega preparado, confiante e sem surpresas.' },
+];
+
+const features = [
+  'Análise completa de perfil antes de iniciar',
+  'Preenchimento do formulário DS-160',
+  'Checklist de documentação personalizado',
+  'Agendamento no consulado',
+  'Simulação de entrevista consular',
+  'Orientação sobre vínculos com o Brasil',
+  'Acompanhamento em tempo real do processo',
+  'Garantia Vitalícia de reaprovação',
+];
+
+const plans = [
+  {
+    name: 'Primeiro Visto',
+    subtitle: 'Para quem nunca obteve o visto americano',
+    price: 'R$ 430',
+    installment: '6x de R$ 71,67 sem juros',
+    featured: false,
+    cta: 'Contratar Primeiro Visto',
+    msg: 'Quero%20contratar%20a%20consultoria%20para%20Primeiro%20Visto%20Americano',
+  },
+  {
+    name: 'Renovação',
+    subtitle: 'Para quem já teve visto e precisa renovar',
+    price: 'R$ 530',
+    installment: '6x de R$ 88,34 sem juros',
+    featured: true,
+    cta: 'Contratar Renovação',
+    msg: 'Quero%20contratar%20a%20consultoria%20de%20Renovação%20do%20Visto%20Americano',
+  },
+];
 
 const denialReasons = [
   {
@@ -47,104 +106,89 @@ const denialReasons = [
   },
 ];
 
-const steps = [
-  { num: '01', title: 'Análise de Perfil', desc: 'Avaliamos seu histórico, vínculos com o Brasil e situação financeira para identificar e neutralizar qualquer risco de negativa antes da entrevista.' },
-  { num: '02', title: 'DS-160 Sem Erros', desc: 'Cuidamos de cada campo do formulário consular com precisão. Um erro ou inconsistência pode resultar em negativa imediata.' },
-  { num: '03', title: 'Agendamento Estratégico', desc: 'Orientamos o melhor consulado e período para maximizar suas chances e reduzir o tempo de espera.' },
-  { num: '04', title: 'Simulação de Entrevista', desc: 'Realizamos uma simulação completa com as perguntas reais do consulado. Você chega preparado, confiante e sem surpresas.' },
+const consulates = [
+  { city: 'São Paulo', state: 'SP', note: 'Maior volume de atendimentos do Brasil' },
+  { city: 'Rio de Janeiro', state: 'RJ', note: 'Atende todo o estado do Rio' },
+  { city: 'Brasília', state: 'DF', note: 'Atende o Distrito Federal e entorno' },
+  { city: 'Recife', state: 'PE', note: 'Atende o Nordeste' },
+  { city: 'Porto Alegre', state: 'RS', note: 'Atende o Sul do país' },
 ];
 
-const features = [
-  'Análise completa de perfil antes de iniciar',
-  'Preenchimento do formulário DS-160',
-  'Checklist de documentação personalizado',
-  'Agendamento no consulado',
-  'Simulação de entrevista consular',
-  'Acompanhamento em tempo real do processo',
-  'Garantia Vitalícia de reaprovação',
-];
-
-const plans = [
-  {
-    name: 'Primeiro Visto',
-    subtitle: 'Para quem nunca obteve o visto americano',
-    price: 'R$ 430',
-    installment: '6x de R$ 71,67 sem juros',
-    featured: false,
-    msg: 'Quero%20contratar%20a%20consultoria%20para%20Primeiro%20Visto%20Americano',
-  },
-  {
-    name: 'Renovação',
-    subtitle: 'Para quem já teve visto e precisa renovar',
-    price: 'R$ 530',
-    installment: '6x de R$ 88,34 sem juros',
-    featured: true,
-    msg: 'Quero%20contratar%20a%20consultoria%20de%20Renova%C3%A7%C3%A3o%20do%20Visto%20Americano',
-  },
+const visaTypes = [
+  { code: 'B1/B2', desc: 'Turismo e negócios, o mais solicitado por brasileiros' },
+  { code: 'F-1',   desc: 'Estudo em instituição americana credenciada' },
+  { code: 'J-1',   desc: 'Intercâmbio cultural ou treinamento profissional' },
+  { code: 'O-1',   desc: 'Habilidade extraordinária: artistas, atletas, acadêmicos' },
+  { code: 'L-1',   desc: 'Transferência de executivo ou especialista dentro da mesma empresa' },
+  { code: 'E-2',   desc: 'Investidor em empresa americana' },
 ];
 
 const faqs = [
-  { q: 'Por que contratar uma consultoria em vez de fazer sozinho?', a: 'O DS-160 parece simples, mas qualquer inconsistência — uma data errada, uma resposta ambígua — pode resultar em negativa imediata. Além disso, a maioria das negativas acontece por vínculos insuficientes com o Brasil, algo que precisa ser trabalhado antes da entrevista, não durante. A Vow Vistos avalia seu perfil completo e prepara cada detalhe para maximizar suas chances.' },
-  { q: 'O que é o código 214(b) e como evitá-lo?', a: 'É a negativa mais comum para brasileiros. Significa que o cônsul não ficou convencido de que você vai voltar ao Brasil. A solução é comprovar vínculos sólidos: emprego formal, imóvel, família dependente, renda consistente. A Vow Vistos orienta exatamente o que usar no seu caso.' },
-  { q: 'Quem já teve visto negado pode contratar?', a: 'Sim, e é exatamente para isso que a Vow Vistos existe. Não há limite de tentativas — o importante é entender o motivo da negativa e corrigir antes de agendar nova entrevista. Analisamos o registro consular e reposicionamos seu perfil.' },
-  { q: 'A Vow Vistos garante a aprovação do visto?', a: 'A decisão final é sempre do cônsul americano — nenhuma consultoria no mundo pode mudar isso. O que garantimos é reconsultoria gratuita e ilimitada (Garantia Vitalícia) se o visto for negado: você volta sem custo adicional de consultoria até a aprovação, pagando apenas as taxas do governo.' },
-  { q: 'Como funciona o atendimento 100% remoto?', a: 'Todo o processo é feito online: análise de perfil, preenchimento do DS-160, orientações de documentação e simulação de entrevista por videochamada. Você não precisa sair de casa para nada, exceto comparecer à entrevista no consulado. Atendemos clientes em todo o Brasil.' },
-  { q: 'Quanto tempo demora para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa, por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
-  { q: 'Quais documentos preciso para solicitar o visto americano?', a: 'Os documentos base são: passaporte válido, foto padrão 5×5 cm fundo branco, confirmação do DS-160 e comprovante de pagamento da taxa MRV. Além disso: extratos bancários, declaração de IR, comprovante de renda, carta do empregador ou escritura de imóvel, e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil.' },
-  { q: 'Quanto custa a taxa do governo americano?', a: 'A taxa MRV é de US$ 185, obrigatória para todos os solicitantes e não reembolsável mesmo em caso de negativa. Para vistos de estudo (F-1) e intercâmbio (J-1), há ainda a taxa SEVIS de US$ 350. Esses valores são pagos diretamente ao governo americano e não estão incluídos na consultoria da Vow Vistos.' },
-  { q: 'Por quanto tempo o visto americano é válido?', a: 'Para brasileiros, o visto B1/B2 é normalmente emitido com validade de 10 anos e entradas múltiplas. A validade do visto não define quanto tempo você pode ficar nos EUA — isso é determinado pelo agente de imigração na chegada, geralmente até 6 meses por entrada.' },
+  { q: 'Qual a diferença entre visto B1 e B2?', a: 'O visto B1 é para viagens de negócios e o B2 para turismo. Na prática, os consulados americanos costumam emitir o visto B1/B2 combinado, que permite ambas as finalidades.' },
+  { q: 'O que é o código 214(b) e como evitá-lo?', a: 'O código 214(b) é a negativa mais comum para brasileiros. Significa que o cônsul não ficou convencido de que você voltará ao Brasil. A chave é comprovar vínculos sólidos: emprego formal, imóveis, família. A Vow Vistos orienta exatamente como fazer isso antes da sua entrevista.' },
+  { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há limite de tentativas. O importante é entender o motivo da negativa e corrigi-lo antes de agendar nova entrevista. A Vow Vistos realiza essa análise e reposiciona o perfil para a próxima tentativa.' },
+  { q: 'Preciso comparecer pessoalmente ao consulado?', a: 'Sim, a entrevista presencial é obrigatória para a maioria dos solicitantes. Brasileiros adultos precisam comparecer ao consulado americano na cidade agendada. A Vow Vistos cuida de toda a preparação para esse momento.' },
+  { q: 'Qual consulado americano devo escolher para agendar?', a: 'Você pode agendar em qualquer um dos cinco consulados no Brasil, independente de onde mora. A escolha estratégica depende da disponibilidade de datas, do histórico consular e do perfil do solicitante. A Vow Vistos orienta qual opção faz mais sentido para cada caso.' },
+  { q: 'Quanto tempo leva para receber o passaporte após a entrevista?', a: 'Em geral, o passaporte com o visto aprovado é devolvido em 5 a 10 dias úteis após a entrevista. Não há aceleração possível nessa etapa, por isso o planejamento antecipado é fundamental, especialmente para viagens próximas.' },
+  { q: 'Quais documentos preciso para solicitar o visto americano?', a: 'Os documentos base são: passaporte válido com pelo menos 6 meses de validade além da data de retorno, foto padrão 5×5 cm fundo branco, confirmação do DS-160 e comprovante de pagamento da taxa MRV. Além disso, documentos financeiros (extratos bancários, declaração de IR, comprovante de renda), vínculos com o Brasil (carta do empregador, escritura de imóvel, certidão de dependentes) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil específico.' },
+  { q: 'Quanto custa o visto americano?', a: 'Além da consultoria da Vow Vistos, você pagará a taxa MRV de US$ 185 diretamente ao governo americano, obrigatória para todos os solicitantes e não reembolsável mesmo em caso de negativa. Para vistos de estudo (F-1) e intercâmbio (J-1), há ainda a taxa SEVIS de US$ 350.' },
+  { q: 'Por quanto tempo o visto americano é válido?', a: 'Para brasileiros, o visto B1/B2 é normalmente emitido com validade de 10 anos e entradas múltiplas. A validade do visto não define quanto tempo você pode ficar nos EUA. Isso é determinado pelo agente de imigração na chegada, geralmente até 6 meses por entrada.' },
   { q: 'Posso solicitar o visto americano para meus filhos menores?', a: 'Sim. Menores de 14 anos geralmente não precisam comparecer à entrevista presencial, mas os documentos precisam estar em ordem. Entre 14 e 17 anos, a entrevista pode ou não ser exigida dependendo do caso. A Vow Vistos orienta famílias com dependentes em cada etapa.' },
+  { q: 'Qual a diferença entre ESTA e visto americano?', a: 'O ESTA é exclusivo para cidadãos de países participantes do Programa de Isenção de Vistos. O Brasil não faz parte dessa lista. Brasileiros sempre precisam de visto para entrar nos Estados Unidos, independente do motivo da viagem.' },
 ];
 
-export default async function LandingPage() {
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+export default async function AssessoriaVistoAmericanoPage() {
   const placeData = await getGooglePlacesData();
   return (
     <>
-      {/* ── NAV BAR ───────────────────────────────────────────────────── */}
-      <nav className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="/" className="font-heading font-extrabold text-xl text-primary tracking-tight">
-            Vow <span className="text-accent">Vistos</span>
-          </a>
-          <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Americano`}
-            target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-4 py-2 rounded-full transition-colors text-sm">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            <span className="hidden sm:inline">Falar pelo WhatsApp</span>
-            <span className="sm:hidden">WhatsApp</span>
-          </a>
-        </div>
-      </nav>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
+      <GoogleTag />
+      <ConversionTracker />
+      <Header variant="minimal" />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-dark to-primary py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-16 md:py-24 text-white relative overflow-hidden bg-dark"
+        style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <div className="inline-flex items-center gap-2 mb-6">
-                <span className="text-3xl">🇺🇸</span>
-                <span className="bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-                  Especialistas em Visto Americano
+            <div className="text-center lg:text-left">
+              <div className="flex justify-center lg:justify-start mb-6">
+                <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
+                  <GoogleStarsFull />
+                  {placeData.rating} · {placeData.reviewCount} avaliações no
+                  <GoogleGLogo />
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-6">
-                Assessoria de Visto Americano —{' '}
-                <span className="text-accent">Aprovado na Primeira Tentativa</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
+                Visto <span className="text-accent">Americano</span><br/>
+                Aprovado na Primeira
               </h1>
-              <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                DS-160 sem erros, simulação de entrevista completa e Garantia Vitalícia. Mais de 7.000 vistos aprovados para brasileiros.
+              <p className="text-xl text-white/80 mb-4 leading-relaxed">
+                Análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. A consultoria mais completa do Brasil para o visto americano.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {['8 anos de experiência', '100% remoto', 'Garantia Vitalícia'].map((t) => (
-                  <span key={t} className="flex items-center gap-1.5 bg-white/10 text-white/90 text-sm px-3 py-1.5 rounded-full">
-                    <svg className="w-3.5 h-3.5 text-accent flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    {t}
-                  </span>
-                ))}
+              <p className="text-sm text-white/50 mb-10">Mais de 7.000 vistos aprovados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
+              <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
+                <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Americano`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-colors text-base shadow-lg">
+                  Análise de Perfil Gratuita
+                </a>
+                <a href="#planos"
+                  className="inline-block border-2 border-white/30 hover:border-accent text-white hover:text-accent font-heading font-semibold px-8 py-4 rounded-full transition-colors text-base">
+                  Ver Preços
+                </a>
               </div>
             </div>
             <div className="bg-white rounded-2xl shadow-2xl p-8">
@@ -157,60 +201,36 @@ export default async function LandingPage() {
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <div className="bg-primary py-8">
-        <div className="max-w-4xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-x divide-white/10">
-          {[
-            ['8 Anos', 'Especialização exclusiva'],
-            ['7.000+', 'Vistos aprovados'],
-            ['Garantia', 'Vitalícia de reaprovação'],
-            ['100%', 'Remoto, todo o Brasil'],
-          ].map(([v, l]) => (
+        <div className="max-w-4xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
+          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
-              <div className="text-xs text-white/60 mt-1">{l}</div>
+              <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── REVIEWS ───────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Avaliações</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O que nossos clientes dizem</h2>
-            <div className="flex items-center justify-center gap-2">
-              <Stars />
-              <span className="font-heading font-bold text-dark">{placeData.rating}</span>
-              <span className="text-muted text-sm">· {placeData.reviewCount} avaliações verificadas no Google</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {placeData.reviews.map((r) => (
-              <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-dark text-sm">{r.name}</div>
-                    <div className="text-muted text-xs">{r.date}</div>
-                  </div>
-                </div>
-                <Stars />
-                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
-              </div>
-            ))}
-          </div>
+      {/* ── AS SEEN IN ────────────────────────────────────────────────── */}
+      <section className="bg-white py-10 border-b border-light">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-muted whitespace-nowrap">Como visto em</span>
+          <div className="h-px sm:h-8 w-px bg-light hidden sm:block" aria-hidden />
+          <a href="https://diariodonordeste.verdesmares.com.br/negocios/suspensao-de-vistos-por-trump-e-copa-geram-corrida-que-ate-triplica-procura-em-fortaleza-1.3733229"
+            target="_blank" rel="noopener noreferrer"
+            className="opacity-70 hover:opacity-100 transition-opacity">
+            <Image src="/diario-do-nordeste.svg" alt="Diário do Nordeste" width={180} height={48} />
+          </a>
         </div>
       </section>
 
       {/* ── WHY VISAS GET DENIED ──────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Negativas</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Por que o visto americano é negado?</h2>
-            <p className="text-muted text-sm">A maioria das negativas tem causas previsíveis. Identificar e corrigir esses pontos antes da entrevista é exatamente o que fazemos.</p>
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Negativas</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Por que o visto americano é negado?</h2>
+            <p className="text-muted">A maioria das negativas tem causas previsíveis. Identificar e corrigir esses pontos antes da entrevista é o que fazemos.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {denialReasons.map((r) => (
@@ -231,27 +251,229 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* ── HOW IT WORKS ──────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Processo</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Como funciona a consultoria de visto americano</h2>
+            <p className="text-muted">Cada etapa foi desenhada para eliminar os riscos de negativa e colocar você diante do cônsul com o perfil mais forte possível.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s) => (
+              <div key={s.num} className="bg-light rounded-2xl p-6 text-center">
+                <div className="text-5xl font-heading font-extrabold text-accent/20 mb-3 leading-none">{s.num}</div>
+                <h3 className="font-heading font-bold text-dark mb-2">{s.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRANSPARENCY ──────────────────────────────────────────────── */}
+      <section className="py-20 bg-dark text-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="mb-12">
+            <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Transparência</span>
+            <h2 className="text-4xl font-heading font-bold mb-6">Nenhuma consultoria pode garantir a aprovação do seu visto. Desconfie de quem diz o contrário.</h2>
+            <p className="text-white/75 text-lg leading-relaxed mb-6">
+              A decisão final é sempre do cônsul americano. Isso não muda, independente de quem te atende, qual formulário foi preenchido ou qual argumento foi usado. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta. Não de competência.
+            </p>
+            <p className="text-white/75 text-lg leading-relaxed">
+              O que uma consultoria séria pode fazer, e o que a Vow Vistos faz, é garantir que o seu perfil chegue ao consulado da forma mais sólida possível. Sem improvisação, sem achismos, sem "fórmulas secretas".
+            </p>
+          </div>
+
+          <div className="border-t border-white/10 pt-12">
+            <h3 className="text-2xl font-heading font-bold mb-4">O DS-160 não é o bicho de sete cabeças que a internet faz parecer</h3>
+            <p className="text-white/75 leading-relaxed mb-6">
+              O formulário DS-160 é, na prática, um documento padronizado. Com o conhecimento certo, não existe mistério. O problema é que a internet está cheia de tutoriais desatualizados, interpretações equivocadas e "dicas" que podem, na realidade, prejudicar a sua solicitação. A desinformação cria uma ansiedade desnecessária, e é exatamente por isso que tantas pessoas buscam ajuda profissional.
+            </p>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
+                  <p className="text-white/70 leading-relaxed">
+                    A forma como a Vow Vistos orienta o preenchimento do DS-160, e todo o preparo da solicitação, foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
+                  </p>
+                  <p className="text-white/70 leading-relaxed mt-3">
+                    Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── INTERVIEW PREP ────────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Entrevista</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">O que esperar da entrevista no consulado americano</h2>
+            <p className="text-muted">A entrevista costuma durar entre 2 e 5 minutos. O cônsul já analisou seu DS-160 antes de te receber. O objetivo é confirmar o que está no formulário, não fazer uma conversa longa.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl p-7 shadow-sm">
+              <h3 className="font-heading font-bold text-dark text-lg mb-4">Perguntas mais comuns na entrevista</h3>
+              <ul className="space-y-3">
+                {[
+                  'Qual é o objetivo da sua viagem?',
+                  'Quanto tempo pretende ficar nos EUA?',
+                  'Quem vai custear a viagem?',
+                  'Você tem familiares nos Estados Unidos?',
+                  'Qual é a sua profissão e situação de emprego atual?',
+                  'Você já teve visto americano antes? Foi negado?',
+                ].map((q) => (
+                  <li key={q} className="flex items-start gap-3 text-sm text-muted">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl p-7 shadow-sm">
+              <h3 className="font-heading font-bold text-dark text-lg mb-4">Dicas para o dia da entrevista</h3>
+              <ul className="space-y-3">
+                {[
+                  'Chegue 30 minutos antes do horário agendado',
+                  'Leve o passaporte e a confirmação impressa do DS-160',
+                  'Responda com objetividade: respostas longas podem gerar dúvidas',
+                  'Não leve documentos que não foram solicitados',
+                  'Vista-se de forma profissional',
+                  'Não minta: inconsistências são detectadas imediatamente',
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-muted">
+                    <svg className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <a href={`https://wa.me/${wa}?text=Quero%20me%20preparar%20para%20a%20entrevista%20do%20visto%20americano`}
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-heading font-bold px-8 py-4 rounded-full transition-colors">
+              Quero me preparar para a entrevista
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ───────────────────────────────────────────────────── */}
+      <section className="py-20 bg-white" id="planos">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Planos</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Preços da consultoria de visto americano</h2>
+            <p className="text-muted">Parcelamos em até 6x sem juros. Escolha o plano ideal para o seu caso.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            {plans.map((p) => (
+              <div key={p.name}
+                className={`rounded-2xl p-8 flex flex-col shadow-lg ${p.featured ? 'bg-dark ring-2 ring-accent' : 'bg-white'}`}>
+                {p.featured && (
+                  <span className="inline-block bg-accent text-dark text-xs font-heading font-bold uppercase px-3 py-1 rounded-full mb-4 self-start">Mais popular</span>
+                )}
+                <h3 className={`font-heading font-bold text-xl mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>{p.name}</h3>
+                <p className={`text-sm mb-6 ${p.featured ? 'text-white/60' : 'text-muted'}`}>{p.subtitle}</p>
+                <div className={`text-4xl font-heading font-extrabold mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>{p.price}<span className="text-base font-normal">,00</span></div>
+                <p className={`text-xs mb-8 ${p.featured ? 'text-white/50' : 'text-muted'}`}>ou {p.installment}</p>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${p.featured ? 'text-accent' : 'text-green-500'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                      </svg>
+                      <span className={p.featured ? 'text-white/80' : 'text-muted'}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
+                  className={`block text-center font-heading font-bold px-6 py-3 rounded-full transition-colors ${p.featured ? 'bg-accent hover:bg-accent-light text-dark' : 'bg-primary hover:bg-primary-light text-white'}`}>
+                  {p.cta}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONSULATES ────────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Onde Agendar</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Consulados americanos no Brasil</h2>
+            <p className="text-muted">O Brasil tem cinco consulados americanos. Você pode agendar em qualquer um, independente de onde mora. A Vow Vistos orienta qual escolher para o seu perfil.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            {consulates.map((c) => (
+              <div key={c.city} className="bg-light rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
+                <div className="text-2xl mb-2">🇺🇸</div>
+                <div className="font-heading font-bold text-dark">{c.city}</div>
+                <div className="text-xs text-accent font-heading font-semibold mb-1">{c.state}</div>
+                <p className="text-muted text-xs leading-snug">{c.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-muted text-sm mt-8">A escolha do consulado pode influenciar o tempo de espera para agendamento. Consulte-nos antes de marcar.</p>
+        </div>
+      </section>
+
+      {/* ── VISA TYPES ────────────────────────────────────────────────── */}
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Categorias</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Outros tipos de visto americano</h2>
+            <p className="text-muted">O B1/B2 cobre turismo e negócios, mas existem categorias específicas para outros objetivos. Cada uma tem critérios e etapas próprias.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {visaTypes.map((v) => (
+              <div key={v.code} className="bg-white rounded-2xl p-5 flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="font-heading font-extrabold text-primary text-sm">{v.code}</span>
+                </div>
+                <p className="text-muted text-sm leading-relaxed pt-1">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20americano%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
+        </div>
+      </section>
+
       {/* ── SPECIFIC PROFILES ─────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Perfis Específicos</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">O seu caso tem solução</h2>
-            <p className="text-muted text-sm">Cada perfil tem desafios próprios. A Vow Vistos tem experiência com as situações mais sensíveis.</p>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Perfis Específicos</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Situações especiais no visto americano</h2>
+            <p className="text-muted">Cada perfil tem desafios próprios. A Vow Vistos tem experiência com as situações mais sensíveis.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
                 title: 'MEI e autônomos',
-                body: 'Comprovar renda estável sem holerite é o principal desafio para trabalhadores por conta própria. Extratos bancários consistentes, declaração do MEI, contrato com clientes e comprovantes do INSS são os documentos centrais. A Vow Vistos orienta exatamente quais usar para o seu caso.',
+                body: 'Trabalhadores por conta própria enfrentam um desafio comum: comprovar renda estável e vínculo com o Brasil sem um holerite tradicional. Extratos bancários consistentes, declaração do MEI, contrato com clientes e comprovantes de pagamento do INSS são os principais documentos. A Vow Vistos orienta exatamente quais usar para o seu caso.',
               },
               {
                 title: 'Aposentados e pensionistas',
-                body: 'Aposentados têm boas chances de aprovação. A renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
+                body: 'Aposentados têm boas chances de aprovação. A renda regular e a ausência de emprego formal não são obstáculos. O foco é demonstrar os vínculos afetivos e patrimoniais com o Brasil: família, imóvel, rotina estabelecida. Com a documentação certa, o perfil de aposentado é frequentemente bem recebido pelo consulado.',
               },
               {
-                title: 'Quem teve visto negado',
-                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. E negativas anteriores não impedem novas tentativas — o importante é entender o que falhou. A Vow Vistos analisa o registro consular e reposiciona o perfil antes da próxima entrevista.',
+                title: 'Quem tem dívidas ou restrições financeiras',
+                body: 'Dívidas e nome negativado não causam negativa automática, mas exigem atenção. O cônsul avalia a capacidade financeira para custear a viagem, não o histórico de crédito. O que importa é demonstrar que você tem recursos suficientes para a viagem declarada, e que vai voltar. A Vow Vistos analisa cada caso antes de qualquer recomendação.',
               },
             ].map((p) => (
               <div key={p.title} className="bg-light rounded-2xl p-7 hover:shadow-lg transition-shadow">
@@ -270,119 +492,68 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ──────────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Processo</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Como funciona a consultoria</h2>
-            <p className="text-muted text-sm">Do perfil à entrevista — cada etapa desenhada para eliminar o risco de negativa.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s) => (
-              <div key={s.num} className="bg-white rounded-2xl p-6 text-center">
-                <div className="text-5xl font-heading font-extrabold text-accent/20 mb-3 leading-none">{s.num}</div>
-                <h3 className="font-heading font-bold text-dark mb-2">{s.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── VIDEO TESTIMONIALS ────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Depoimentos</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Histórias reais de aprovação</h2>
-            <p className="text-muted text-sm">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
+      <section className="py-20 bg-light">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação do visto americano</h2>
+            <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
           <VideoCarousel />
         </div>
       </section>
 
-      {/* ── CREDIBILITY ───────────────────────────────────────────────── */}
-      <section className="py-16 bg-dark text-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Transparência</span>
-          <h2 className="text-3xl font-heading font-bold mb-6">Nenhuma consultoria pode garantir a aprovação do seu visto. Desconfie de quem diz o contrário.</h2>
-          <p className="text-white/75 text-lg leading-relaxed mb-6">
-            A decisão final é sempre do cônsul americano. Isso não muda, independente de quem te atende. Se alguém te prometeu aprovação garantida ou exibiu uma taxa de aprovação extraordinária como argumento de venda, isso é um sinal de alerta — não de competência.
-          </p>
-          <p className="text-white/75 text-lg leading-relaxed mb-10">
-            O que uma consultoria séria pode fazer — e o que a Vow Vistos faz — é garantir que o seu perfil chegue ao consulado da forma mais sólida possível. Sem improvisação, sem achismos.
-          </p>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-1">
-                <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg>
-              </div>
-              <div>
-                <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
-                <p className="text-white/70 leading-relaxed">
-                  A forma como a Vow Vistos orienta o preenchimento do DS-160 — e todo o preparo da solicitação — foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
-                </p>
-                <p className="text-white/70 leading-relaxed mt-3">
-                  Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
-                </p>
-              </div>
+      {/* ── GOOGLE REVIEWS ────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Avaliações</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">O que nossos clientes dizem</h2>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <GoogleStarsFull />
+              <span className="text-muted text-sm">{placeData.rating} · {placeData.reviewCount} avaliações verificadas no Google</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── PRICING ───────────────────────────────────────────────────── */}
-      <section className="py-16 bg-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Planos</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2 mb-3">Preços da consultoria</h2>
-            <p className="text-muted text-sm">Parcelamos em até 6x sem juros no cartão.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {plans.map((p) => (
-              <div key={p.name}
-                className={`rounded-2xl p-8 flex flex-col shadow-lg ${p.featured ? 'bg-dark ring-2 ring-accent' : 'bg-white border border-light'}`}>
-                {p.featured && (
-                  <span className="inline-block bg-accent text-dark text-xs font-heading font-bold uppercase px-3 py-1 rounded-full mb-4 self-start">Mais popular</span>
-                )}
-                <h3 className={`font-heading font-bold text-xl mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>{p.name}</h3>
-                <p className={`text-sm mb-6 ${p.featured ? 'text-white/60' : 'text-muted'}`}>{p.subtitle}</p>
-                <div className={`text-4xl font-heading font-extrabold mb-1 ${p.featured ? 'text-white' : 'text-dark'}`}>
-                  {p.price}<span className="text-base font-normal">,00</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {placeData.reviews.map((r) => (
+              <div key={r.name} className="bg-light rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full ${r.color} flex items-center justify-center text-white font-heading font-bold text-sm flex-shrink-0`}>
+                      {r.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-heading font-bold text-dark text-sm">{r.name}</div>
+                      <div className="text-muted text-xs">{r.date}</div>
+                    </div>
+                  </div>
+                  <GoogleGLogo />
                 </div>
-                <p className={`text-xs mb-8 ${p.featured ? 'text-white/50' : 'text-muted'}`}>ou {p.installment}</p>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${p.featured ? 'text-accent' : 'text-green-500'}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                      </svg>
-                      <span className={p.featured ? 'text-white/80' : 'text-muted'}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a href={`https://wa.me/${wa}?text=${p.msg}`} target="_blank" rel="noopener noreferrer"
-                  className={`block text-center font-heading font-bold px-6 py-3 rounded-full transition-colors ${p.featured ? 'bg-accent hover:bg-accent-light text-dark' : 'bg-primary hover:bg-primary-light text-white'}`}>
-                  Contratar {p.name}
-                </a>
+                <GoogleStarsFull />
+                <p className="text-muted text-sm leading-relaxed">{r.text}</p>
               </div>
             ))}
           </div>
+          {placeData.mapsUrl && (
+            <div className="text-center mt-10">
+              <a href={placeData.mapsUrl} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-heading font-bold px-8 py-3 rounded-full transition-colors">
+                Ver todas as avaliações no Google
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <span className="text-accent text-xs font-heading font-bold uppercase tracking-widest">Dúvidas</span>
-            <h2 className="text-3xl font-heading font-bold text-dark mt-2">Perguntas frequentes</h2>
+          <div className="text-center mb-12">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Dúvidas</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Perguntas frequentes sobre o visto americano</h2>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqs.map((faq, i) => (
               <details key={i} className="group bg-light rounded-2xl p-6 cursor-pointer [&[open]]:bg-primary [&[open]]:text-white transition-colors duration-200">
                 <summary className="font-heading font-bold text-dark group-open:text-white flex justify-between items-center gap-4 list-none cursor-pointer">
@@ -398,43 +569,41 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ─────────────────────────────────────────────────── */}
-      <section className="py-16 bg-dark text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-heading font-extrabold mb-4">
-                Pronto para tirar o visto americano?
-              </h2>
-              <p className="text-white/75 text-lg leading-relaxed mb-6">
-                Análise de perfil gratuita, sem compromisso. Respondemos em minutos.
-              </p>
-              <div className="flex flex-col gap-2">
-                {['Mais de 7.000 vistos aprovados', 'Garantia Vitalícia — sem custo extra se negar', '100% remoto, atendemos todo o Brasil'].map((t) => (
-                  <div key={t} className="flex items-center gap-2 text-white/80 text-sm">
-                    <svg className="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    {t}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl shadow-2xl p-8">
-              <h3 className="font-heading font-extrabold text-dark text-xl mb-4 text-center">Fale com um especialista agora</h3>
-              <LeadForm compact />
-            </div>
+      {/* ── GUARANTEE ─────────────────────────────────────────────────── */}
+      <section className="bg-dark py-20 text-center text-white">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
           </div>
+          <h2 className="text-4xl font-heading font-bold mb-4">Garantia Vitalícia</h2>
+          <p className="text-white/75 text-lg mb-8 leading-relaxed">
+            Se o seu visto americano for negado, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até a sua aprovação. Você paga apenas as taxas consulares.
+          </p>
+          <a href={`https://wa.me/${wa}?text=Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Americano`}
+            target="_blank" rel="noopener noreferrer"
+            className="inline-block bg-accent hover:bg-accent-light text-dark font-heading font-bold px-10 py-4 rounded-full transition-colors text-lg">
+            Começar agora
+          </a>
         </div>
       </section>
 
-      {/* ── FOOTER ────────────────────────────────────────────────────── */}
-      <footer className="bg-dark border-t border-white/10 py-6 text-center">
-        <p className="text-white/40 text-xs">
-          © 2025 Vow Vistos · Todos os direitos reservados ·{' '}
-          <a href="/contato" className="hover:text-white/70 transition-colors">Contato</a>
-        </p>
-      </footer>
+      {/* ── CONTACT ───────────────────────────────────────────────────── */}
+      <section className="py-20 bg-light" id="contato">
+        <div className="max-w-2xl mx-auto px-4 text-center mb-10">
+          <h2 className="text-4xl font-heading font-bold text-dark mb-3">Fale com um especialista em visto americano</h2>
+          <p className="text-muted">Respondemos em até 24 horas úteis com uma análise honesta do seu perfil.</p>
+        </div>
+        <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8">
+          <TrackedContactForm />
+        </div>
+      </section>
+
+      <div className="h-16 md:hidden" aria-hidden />
+      <StickyMobileCTA />
+      <Footer variant="minimal" />
+      <WhatsAppFab hideOnMobile />
     </>
   );
 }

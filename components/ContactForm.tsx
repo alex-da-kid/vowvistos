@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const wa = '558520186898';
 
-export default function ContactForm() {
+export default function ContactForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
 
@@ -23,6 +23,7 @@ export default function ContactForm() {
       });
       if (!res.ok) throw new Error('failed');
       setStatus('success');
+      onSuccess?.();
     } catch {
       setStatus('error');
     }
