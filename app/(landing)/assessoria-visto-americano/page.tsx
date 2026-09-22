@@ -159,7 +159,7 @@ export default async function AssessoriaVistoAmericanoPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24 text-white relative overflow-hidden bg-dark"
-        style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        style={{ backgroundImage: 'url(/hero-visto-americano.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
