@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import VideoCarousel from '@/components/VideoCarousel';
 import ContactForm from '@/components/ContactForm';
+import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
   title: 'Visto Chinês | Consultoria Especializada para Brasileiros | Vow Vistos',
-  description: 'Consultoria completa para o visto chinês: análise de perfil, documentação sem erros, orientação no CVASC e Garantia Vitalícia. Mais de 7.000 vistos aprovados.',
-  keywords: 'visto chinês, visto para China, consultoria visto chinês, como tirar visto da China, CVASC, visto China brasileiro, visto L China, visto M China',
+  description: 'Consultoria completa para o visto chinês: análise de perfil, documentação sem erros, orientação no CVASC e Garantia Vitalícia. Mais de 7.000 processos acompanhados desde 2017.',
+  keywords: 'visto chinês, visto para China, consultoria visto chinês, assessoria visto chinês, CVASC, visto China brasileiro, visto L China, visto M China',
 };
 
 import { getGooglePlacesData } from '@/lib/google-places';
@@ -40,7 +41,7 @@ const steps = [
   { num: '01', title: 'Análise de Perfil e Categoria', desc: 'Identificamos a categoria correta para o seu objetivo: turismo (L) ou negócios (M). A categoria errada resulta em recusa automática.' },
   { num: '02', title: 'Preparação da Documentação', desc: 'Cuidamos de toda a documentação exigida pelo consulado chinês, incluindo formulário, carta de apresentação, comprovantes financeiros e fotos no padrão exigido.' },
   { num: '03', title: 'Orientação no CVASC', desc: 'O visto chinês é solicitado presencialmente no CVASC. Orientamos sobre o agendamento, o que levar e o procedimento completo para a entrega dos documentos.' },
-  { num: '04', title: 'Acompanhamento até a Aprovação', desc: 'Monitoramos o andamento da solicitação e mantemos você informado. Se houver qualquer solicitação adicional do consulado, respondemos juntos.' },
+  { num: '04', title: 'Acompanhamento até a decisão', desc: 'Monitoramos o andamento da solicitação e mantemos você informado. Se houver qualquer solicitação adicional do consulado, respondemos juntos.' },
 ];
 
 const features = [
@@ -146,7 +147,6 @@ export default async function VistoChinesPage() {
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
             <div className="flex items-center gap-2">
-              <span className="text-4xl">🇨🇳</span>
               <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
                 Especialistas em Visto Chinês
               </span>
@@ -158,13 +158,13 @@ export default async function VistoChinesPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
-            Visto <span className="text-accent">Chinês</span><br/>
-            Aprovado sem Burocracia
+            Assessoria para o <span className="text-accent">Visto Chinês</span><br/>
+            <span className="text-3xl md:text-4xl">Documentação organizada, sem complicação</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-            Documentação completa, orientação no CVASC e Garantia Vitalícia. A consultoria mais confiável do Brasil para o visto chinês.
+            Assessoria privada para o visto chinês, com documentação revisada e orientação no CVASC.
           </p>
-          <p className="text-sm text-white/50 mb-10">Mais de 7.000 vistos aprovados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
+          <p className="text-sm text-white/50 mb-10">Mais de 7.000 processos acompanhados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Chinês`}
               target="_blank" rel="noopener noreferrer"
@@ -182,7 +182,7 @@ export default async function VistoChinesPage() {
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <div className="bg-primary py-8">
         <div className="max-w-4xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
+          {[['9 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Processos acompanhados desde 2017'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
@@ -278,9 +278,9 @@ export default async function VistoChinesPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
+                  <p className="text-white font-heading font-bold text-lg mb-2">Metodologia própria, construída ao longo de mais de 7.000 processos desde 2017</p>
                   <p className="text-white/70 leading-relaxed">
-                    A forma como a Vow Vistos prepara cada solicitação foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação, aliada ao conhecimento profundo dos critérios do consulado chinês. Sabemos o que um oficial de imigração procura, o que levanta suspeitas e o que fortalece a solicitação.
+                    A forma como a Vow Vistos prepara cada solicitação vem de anos de prática e do estudo aprofundado dos critérios publicados pelo consulado chinês. Sabemos o que um oficial de imigração procura, o que levanta suspeitas e o que fortalece a solicitação.
                   </p>
                   <p className="text-white/70 leading-relaxed mt-3">
                     Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
@@ -386,6 +386,7 @@ export default async function VistoChinesPage() {
               </div>
             ))}
           </div>
+          <FeeNote>Os valores acima são honorários da Vow Vistos. As taxas do CVASC são pagas por você diretamente no centro de vistos.</FeeNote>
         </div>
       </section>
 
@@ -400,7 +401,10 @@ export default async function VistoChinesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
             {cvacs.map((c) => (
               <div key={c.city} className="bg-white rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
-                <div className="text-2xl mb-2">🇨🇳</div>
+                <svg className="w-7 h-7 text-primary mx-auto mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
                 <div className="font-heading font-bold text-dark">{c.city}</div>
                 <div className="text-xs text-accent font-heading font-semibold mb-1">{c.state}</div>
                 <p className="text-muted text-xs leading-snug">{c.note}</p>
@@ -422,7 +426,7 @@ export default async function VistoChinesPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Categorias</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Os vistos que oferecemos para a China</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Os tipos de visto chinês que assessoramos</h2>
             <p className="text-muted">Trabalhamos com turismo e negócios. A Vow Vistos identifica a categoria certa e prepara tudo antes de qualquer submissão.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
@@ -568,7 +572,7 @@ export default async function VistoChinesPage() {
           </div>
           <h2 className="text-4xl font-heading font-bold mb-4">Garantia Vitalícia</h2>
           <p className="text-white/75 text-lg mb-8 leading-relaxed">
-            Se o seu visto chinês for recusado, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até a sua aprovação. Você paga apenas as taxas do consulado.
+            Se o seu visto chinês for negado, a Vow Vistos <strong className="text-white">refaz a assessoria sem custo</strong>, quantas vezes forem necessárias, a cada nova tentativa. As taxas do consulado são pagas por você diretamente no CVASC.
           </p>
           <a href={`https://wa.me/${wa}?text=Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Chinês`}
             target="_blank" rel="noopener noreferrer"

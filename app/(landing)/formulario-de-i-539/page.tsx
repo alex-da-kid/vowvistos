@@ -5,7 +5,7 @@ import I539Form from './I539Form';
 export const metadata: Metadata = {
   title: 'Formulário I-539 | Vow Vistos',
   description: 'Preencha o formulário para solicitar extensão de permanência nos EUA (Formulário I-539) com a Vow Vistos.',
-  robots: { index: false },
+  robots: { index: false, follow: false },
 };
 
 export default function FormularioI539Page() {

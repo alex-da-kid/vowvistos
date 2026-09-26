@@ -12,7 +12,7 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
             <Image src="/logo.svg" alt="Vow Vistos" width={138} height={52} />
           </Link>
           <p className="mt-4 text-sm leading-relaxed">
-            Consultoria Consular e Agência de Viagens.<br/>
+            Assessoria e Consultoria de Vistos.<br/>
             CNPJ 27.297.742/0001-87
           </p>
           {!minimal && (
@@ -66,9 +66,13 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
 
       </div>
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-5 text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 pt-6 pb-2">
+          <p className="text-sm text-gray-300 leading-relaxed max-w-4xl">
+            Vow Vistos Consultoria Consular e Agência de Viagens Ltda., CNPJ 27.297.742/0001-87, é uma empresa privada, sem vínculo com qualquer governo, embaixada ou consulado. Vistos e documentos de viagem são emitidos exclusivamente pelos órgãos oficiais de cada país. Taxas governamentais são pagas pelo cliente diretamente a esses órgãos. Conteúdo protegido pela Lei nº 9.610/1998.
+          </p>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 py-5 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Vow Vistos Consultoria Consular e Agência de Viagens Ltda. Todos os direitos reservados.</p>
-          <p className="text-center">Não somos órgão governamental. Conteúdo protegido pela Lei nº 9.610/1998.</p>
         </div>
       </div>
     </footer>

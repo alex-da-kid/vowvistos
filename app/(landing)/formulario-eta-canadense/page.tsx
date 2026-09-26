@@ -5,7 +5,7 @@ import EtaCanadenseForm from './EtaCanadenseForm';
 export const metadata: Metadata = {
   title: 'Formulário eTA Canadense | Vow Vistos',
   description: 'Preencha o formulário para solicitar sua assessoria de eTA canadense com a Vow Vistos.',
-  robots: { index: false },
+  robots: { index: false, follow: false },
 };
 
 export default function FormularioEtaCanadensePage() {

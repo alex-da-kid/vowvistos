@@ -8,11 +8,11 @@ import VideoCarousel from '@/components/VideoCarousel';
 
 export const metadata: Metadata = {
   title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
-  description: 'A Vow Vistos analisa seu perfil com base nas práticas reais dos consulados. Mais de 7.000 vistos aprovados para brasileiros. Garantia Vitalícia. Fale agora.',
-  keywords: 'consultoria de vistos, visto americano, visto canadense, visto chinês, análise de perfil visto, assessoria de vistos, como tirar visto, visto negado',
+  description: 'Consultoria privada de vistos para brasileiros: EUA, Canadá, China e outros destinos. Mais de 7.000 processos acompanhados desde 2017.',
+  keywords: 'consultoria de vistos, visto americano, visto canadense, visto chinês, análise de perfil visto, assessoria de vistos, visto negado',
   openGraph: {
     title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
-    description: 'A Vow Vistos analisa seu perfil com honestidade, com base nas práticas reais dos consulados. Mais de 7.000 vistos aprovados e Garantia Vitalícia.',
+    description: 'Consultoria privada de vistos para brasileiros: EUA, Canadá, China e outros destinos. Mais de 7.000 processos acompanhados desde 2017.',
     url: 'https://vowvistos.com.br',
     siteName: 'Vow Vistos',
     locale: 'pt_BR',
@@ -78,7 +78,7 @@ const schemaOrg = {
           name: 'O que é a Garantia Vitalícia da Vow Vistos?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias, sem custo adicional com a Vow Vistos, para sempre. É o nosso compromisso de não te abandonar.',
+            text: 'Se o seu visto for negado após a nossa consultoria, a Vow Vistos refaz a assessoria sem custo, a cada nova tentativa, sem prazo e sem letras miúdas. Você paga apenas as taxas obrigatórias de cada país, diretamente ao governo, sem custo adicional com a Vow Vistos, para sempre. É o nosso compromisso de não te abandonar.',
           },
         },
       ],
@@ -89,15 +89,15 @@ const schemaOrg = {
 const wa = '558520186898';
 
 const visaCards = [
-  { flag: '🇺🇸', label: 'Visto Americano',  href: '/visto-americano' },
-  { flag: '🇨🇦', label: 'Visto Canadense',  href: '/visto-canadense' },
-  { flag: '🇨🇳', label: 'Visto Chinês',     href: '/visto-chines' },
-  { flag: '🌍',   label: 'Outros Países',    href: '/outros-paises' },
+  { label: 'Visto Americano',  href: '/visto-americano' },
+  { label: 'Visto Canadense',  href: '/visto-canadense' },
+  { label: 'Visto Chinês',     href: '/visto-chines' },
+  { label: 'Outros Países',    href: '/outros-paises' },
 ];
 
 const stats = [
-  { value: '8 Anos', label: 'Especialização exclusiva em consultoria consular' },
-  { value: '7.000+', label: 'Vistos aprovados para brasileiros desde 2017' },
+  { value: '9 Anos', label: 'Especialização exclusiva em consultoria consular' },
+  { value: '7.000+', label: 'Processos acompanhados desde 2017' },
 ];
 
 const scenarios = [
@@ -146,7 +146,7 @@ const steps = [
   { num: '01', title: 'Análise de Perfil', desc: 'Não é uma triagem genérica. Mapeamos vínculos com o Brasil, histórico de viagens, consistência financeira e relações familiares internacionais. É aqui que a maioria das negativas poderia ter sido evitada.' },
   { num: '02', title: 'Dossiê Estratégico', desc: 'Cada documento é selecionado com um propósito. Não enviamos pilhas de papel: enviamos evidências organizadas para responder às dúvidas do consulado antes de qualquer entrevista.' },
   { num: '03', title: 'Simulação de Entrevista', desc: 'Reproduzimos a dinâmica real do consulado: as perguntas difíceis, os silêncios, as inconsistências que derrubam candidatos bem-documentados. Você entra na sala sem surpresas.' },
-  { num: '04', title: 'Aprovação com Garantia', desc: 'Acompanhamos em tempo real até a concessão. Se o visto for negado, a Garantia Vitalícia entra em ação: reconsultoria gratuita e ilimitada até a aprovação.' },
+  { num: '04', title: 'Acompanhamento e Garantia', desc: 'Acompanhamos você até a decisão do consulado. Se o visto for negado, refazemos a assessoria sem custo, a cada nova tentativa.' },
 ];
 
 const differentials = [
@@ -156,7 +156,7 @@ const differentials = [
   },
   {
     title: 'Sabemos o que Cada Processo Exige',
-    desc: 'Cada país tem critérios, formulários e etapas diferentes. O que não muda é o que os consulados avaliam: consistência, vínculos e intenção. Conhecemos esse processo por dentro, para cada destino que atendemos.',
+    desc: 'Cada país tem critérios, formulários e etapas diferentes. O que não muda é o que os consulados avaliam: consistência, vínculos e intenção. Conhecemos esse processo em detalhe, para cada destino que atendemos.',
   },
   {
     title: 'Documentação que Convence',
@@ -164,7 +164,7 @@ const differentials = [
   },
   {
     title: 'Garantia Vitalícia',
-    desc: 'Se o visto for negado, reconsultoria gratuita ilimitada, para sempre. Nenhuma outra consultoria no Brasil faz isso porque nenhuma outra tem nossa confiança na própria análise.',
+    desc: 'Se o visto for negado, refazemos a assessoria sem custo, a cada nova tentativa, para sempre. Oferecemos essa garantia porque confiamos no método que construímos ao longo de mais de 7.000 processos.',
   },
 ];
 
@@ -183,7 +183,7 @@ const faqs = [
   },
   {
     q: 'O que é a Garantia Vitalícia da Vow Vistos?',
-    a: 'Se o seu visto for negado após a nossa consultoria, oferecemos reconsultoria gratuita e ilimitada até que você seja aprovado. Você paga apenas as taxas consulares obrigatórias, sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Nenhuma outra consultoria no Brasil faz isso.',
+    a: 'Se o seu visto for negado após a nossa consultoria, a Vow Vistos refaz a assessoria sem custo, a cada nova tentativa, sem prazo e sem letras miúdas. Você paga apenas as taxas obrigatórias de cada país, diretamente ao governo, sem custo adicional com a Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise.',
   },
   {
     q: 'Meu visto foi negado antes. Ainda posso ser aprovado?',
@@ -228,7 +228,7 @@ export default async function HomePage() {
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-              Líder em consultoria de vistos no Brasil há 4 anos
+              Consultoria de vistos desde 2017
             </span>
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
               <GoogleStars />
@@ -242,11 +242,11 @@ export default async function HomePage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-4">
-            Seu Visto Aprovado. <br className="hidden md:block"/>
+            Seu visto bem preparado. <br className="hidden md:block"/>
             <span className="text-accent">Não por acaso. Por conhecimento.</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-2 leading-relaxed">
-            A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia: vínculos, consistência e postura, com base em <strong className="text-white">mais de 7.000 aprovações reais de brasileiros</strong>. Expertise que não está em nenhum manual.
+            A maioria das consultorias preenche formulários. A Vow Vistos analisa o que o cônsul <em>realmente</em> avalia: vínculos, consistência e postura, com base em <strong className="text-white">mais de 7.000 processos de brasileiros</strong>. Expertise que não está em nenhum manual.
           </p>
           <p className="text-sm text-white/50 mb-5">Especialização exclusiva em consultoria consular desde 2017.</p>
 
@@ -254,7 +254,10 @@ export default async function HomePage() {
             {visaCards.map((c) => (
               <Link key={c.href} href={c.href}
                 className="bg-white/10 hover:bg-accent border border-white/20 hover:border-accent rounded-2xl p-4 md:p-5 flex flex-col items-center gap-2 transition-all duration-200 hover:-translate-y-1 font-heading font-semibold text-sm text-white hover:text-dark no-underline group">
-                <span className="text-3xl group-hover:text-4xl transition-all duration-200">{c.flag}</span>
+                <svg className="w-8 h-8 text-accent group-hover:text-dark transition-colors duration-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
                 {c.label}
               </Link>
             ))}
@@ -499,7 +502,7 @@ export default async function HomePage() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos em Vídeo</span>
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">
-              Mais de 7.000 sonhos realizados. <br className="hidden md:block"/>Ouça quem já passou por isso.
+              Mais de 7.000 clientes atendidos. <br className="hidden md:block"/>Ouça quem já passou por isso.
             </h2>
             <p className="text-muted leading-relaxed">
               Cada aprovação é uma história real. Veja o que nossos clientes dizem sobre a experiência com a Vow Vistos, do medo da entrevista à passagem na mão.
@@ -529,10 +532,10 @@ export default async function HomePage() {
           </span>
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">Garantia Vitalícia</h2>
           <p className="text-white/75 text-lg md:text-xl mb-4 leading-relaxed">
-            Se o seu visto for negado após a nossa consultoria, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até que você seja aprovado. Sem prazo. Sem letras miúdas.
+            Se o seu visto for negado após a nossa consultoria, a Vow Vistos <strong className="text-white">refaz a assessoria sem custo</strong>, a cada nova tentativa, sem prazo e sem letras miúdas.
           </p>
           <p className="text-white/50 text-base mb-10">
-            Você paga apenas as taxas consulares obrigatórias, nada mais à Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Simples assim.
+            Você paga apenas as taxas obrigatórias de cada país, diretamente ao governo, nada mais à Vow Vistos, para sempre. Oferecemos essa garantia porque confiamos na nossa análise. Simples assim.
           </p>
           <a href={`https://wa.me/${wa}?text=Quero%20saber%20mais%20sobre%20a%20Garantia%20Vitalícia`}
             target="_blank" rel="noopener noreferrer"

@@ -9,11 +9,13 @@ import LeadForm from './LeadForm';
 import StickyMobileCTA from './StickyMobileCTA';
 import TrackedContactForm from './TrackedContactForm';
 import GoogleTag from './GoogleTag';
+import DisclaimerBar from '@/components/DisclaimerBar';
+import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
   title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
-  description: 'Consultoria completa para visto canadense: TRV, ETA e Study Permit. Análise de perfil, formulários IRCC, biometria e Garantia Vitalícia. Mais de 7.000 vistos aprovados.',
-  keywords: 'visto canadense, consultoria visto canadense, TRV Canada, visto turismo Canada, como tirar visto canadense, visto negado Canada, IRCC, ETA Canada, Study Permit Canada',
+  description: 'Assessoria privada para visto canadense de turismo (TRV) e de estudos (Study Permit): análise de perfil, revisão de formulários, orientação na biometria e Garantia Vitalícia de reconsultoria.',
+  keywords: 'assessoria visto canadense, consultoria visto canadense, visto de turismo Canadá, Study Permit',
   robots: 'noindex',
 };
 
@@ -45,10 +47,10 @@ function GoogleGLogo() {
 }
 
 const steps = [
-  { num: '01', title: 'Análise de Elegibilidade', desc: 'Identificamos o documento certo para o seu caso: TRV, ETA ou Study Permit. A categoria errada leva à recusa automática.' },
+  { num: '01', title: 'Análise de Elegibilidade', desc: 'Identificamos o tipo de visto certo para o seu caso: TRV ou Study Permit. A categoria errada leva à recusa automática.' },
   { num: '02', title: 'Formulários IRCC', desc: 'Cuidamos do preenchimento de todos os formulários online da IRCC com precisão. Cada inconsistência pode resultar em recusa sem direito a reembolso da taxa.' },
   { num: '03', title: 'Biometria e Documentação', desc: 'A maioria dos solicitantes precisa fornecer dados biométricos. Orientamos sobre o agendamento no CVAC e preparamos toda a documentação de suporte.' },
-  { num: '04', title: 'Acompanhamento da Aplicação', desc: 'Monitoramos o andamento da sua solicitação na IRCC e mantemos você informado a cada atualização até a decisão final.' },
+  { num: '04', title: 'Acompanhamento da Aplicação', desc: 'Acompanhamos com você o andamento da solicitação no portal da IRCC e mantemos você informado a cada atualização até a decisão final.' },
 ];
 
 const plans = [
@@ -64,7 +66,7 @@ const plans = [
     features: [
       'Orientação passo a passo do começo ao fim',
       'Análise de Perfil',
-      'Preparação dos formulários consulares',
+      'Preenchimento dos formulários da IRCC',
       'Elaboração de lista personalizada de documentos',
       'Agendamento e preparação de visita ao VFS',
       'Acompanhamento do seu processo em tempo real',
@@ -82,27 +84,10 @@ const plans = [
     features: [
       'Orientação passo a passo do começo ao fim',
       'Análise de Perfil',
-      'Preparação dos formulários consulares',
+      'Preenchimento dos formulários da IRCC',
       'Elaboração de lista personalizada de documentos',
       'Agendamento e preparação de visita ao VFS',
       'Preparação para consulta médica (se necessária)',
-      'Acompanhamento do seu processo em tempo real',
-    ],
-  },
-  {
-    name: 'ETA',
-    badge: 'Electronic Travel Authorization',
-    subtitle: 'Para passaportes elegíveis à autorização eletrônica',
-    price: 'R$ 257,00',
-    installment: '6x de R$ 42,83 sem juros',
-    featured: false,
-    cta: 'Contratar ETA',
-    msg: 'Quero%20contratar%20a%20consultoria%20para%20o%20ETA%20Canadense',
-    features: [
-      'Orientação passo a passo do começo ao fim',
-      'Análise de Perfil',
-      'Elaboração de lista personalizada de documentos',
-      'Preparação dos formulários consulares',
       'Acompanhamento do seu processo em tempo real',
     ],
   },
@@ -140,14 +125,14 @@ const cvacs = [
 ];
 
 const faqs = [
-  { q: 'Brasileiros precisam de visto para entrar no Canadá?', a: 'Sim. Brasileiros precisam do TRV (Temporary Resident Visa) para entrar no Canadá. O ETA é uma autorização eletrônica disponível apenas para cidadãos de países específicos, e o Brasil não está na lista. A Vow Vistos confirma o documento correto para o seu passaporte.' },
+  { q: 'Brasileiros precisam de visto para entrar no Canadá?', a: 'Brasileiros com visto americano válido, ou que tiveram visto canadense nos últimos 10 anos, podem solicitar a eTA diretamente no site oficial do governo do Canadá (canada.ca), pela taxa de CAD $7. Os demais precisam do visto de turismo (TRV).' },
   { q: 'O que acontece se meu TRV canadense for recusado?', a: 'A IRCC envia uma carta de recusa informando o artigo da lei citado. Os motivos mais comuns são: perfil de risco de imigração, documentação insuficiente e capacidade financeira não comprovada. Não há prazo de bloqueio para nova tentativa, mas submeter uma aplicação idêntica tende a gerar o mesmo resultado. A Vow Vistos analisa a carta de recusa e reposiciona o perfil antes da próxima submissão.' },
-  { q: 'Preciso ir ao consulado para tirar o visto canadense?', a: 'Na maioria dos casos, não há entrevista presencial. A aplicação é feita online pelo portal da IRCC. No entanto, a biometria é obrigatória para a maioria dos solicitantes e é coletada nos CVACs (Canada Visa Application Centres) no Brasil.' },
+  { q: 'Preciso ir ao consulado para solicitar o visto canadense?', a: 'Na maioria dos casos, não há entrevista presencial. A aplicação é feita online pelo portal da IRCC. No entanto, a biometria é obrigatória para a maioria dos solicitantes e é coletada nos CVACs (Canada Visa Application Centres) no Brasil.' },
   { q: 'O que é biometria e quando é necessária?', a: 'A biometria consiste na coleta de impressões digitais e foto, realizada em um CVAC (Canada Visa Application Centre). É obrigatória para a maioria dos solicitantes e tem validade de 10 anos. A Vow Vistos orienta sobre o agendamento e o que levar no dia.' },
   { q: 'Qual a diferença entre TRV e ETA?', a: 'O TRV é um visto adesivado no passaporte, exigido para nacionais de países como o Brasil. O ETA é uma autorização eletrônica vinculada ao passaporte, disponível apenas para cidadãos de países isentos de visto para o Canadá. Brasileiros, em geral, precisam do TRV.' },
   { q: 'Quanto tempo demora a aprovação do visto canadense?', a: 'O tempo varia conforme o tipo de visto e o volume de solicitações da IRCC. Vistos de turismo levam em média de 2 a 8 semanas. Study Permits podem levar mais tempo. A Vow Vistos orienta sobre como preparar uma aplicação robusta para evitar atrasos.' },
   { q: 'Quais documentos preciso para o TRV canadense?', a: 'Os documentos base são: passaporte válido, fotos recentes, comprovante de vínculos com o Brasil (emprego, imóvel, família), documentos financeiros (extratos bancários, declaração de IR, comprovante de renda) e itinerário de viagem. A Vow Vistos entrega um checklist personalizado para o seu perfil.' },
-  { q: 'Quanto custam as taxas do governo canadense?', a: 'As taxas pagas diretamente ao governo canadense são: TRV: CAD $100, ETA: CAD $7, Study Permit: CAD $150, Biometria: CAD $85. Essas taxas não são reembolsáveis em caso de recusa e não estão incluídas na consultoria da Vow Vistos.' },
+  { q: 'Quanto custam as taxas do governo canadense?', a: 'As taxas pagas diretamente ao governo canadense são: TRV: CAD $100, Study Permit: CAD $150, Biometria: CAD $85. Essas taxas não são reembolsáveis em caso de recusa e não estão incluídas na consultoria da Vow Vistos.' },
   { q: 'Por quanto tempo o TRV canadense é válido?', a: 'O TRV de turismo costuma ser emitido com validade de até 10 anos ou até o vencimento do passaporte, o que ocorrer primeiro. O prazo de permanência em cada entrada é determinado pelo agente de fronteira canadense, geralmente 6 meses.' },
   { q: 'Posso estudar no Canadá com visto de turismo?', a: 'Apenas em cursos de curta duração (até 6 meses). Para programas mais longos, é necessário o Study Permit. Estudar além do autorizado com TRV configura violação das condições do visto.' },
   { q: 'Quem já teve visto negado pode tentar novamente?', a: 'Sim. Não há limite de tentativas. O importante é entender o motivo da recusa e corrigir os pontos antes de submeter nova aplicação. A Vow Vistos analisa a decisão anterior e reposiciona o perfil para a próxima tentativa.' },
@@ -187,13 +172,13 @@ export default async function AssessoriaVistoCanadensePage() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                Visto <span className="text-accent">Canadense</span><br/>
-                Aprovado com Segurança
+                Assessoria para o <span className="text-accent">Visto Canadense</span><br/>
+                <span className="text-3xl md:text-4xl lg:text-5xl">Seu processo organizado do início ao fim</span>
               </h1>
               <p className="text-xl text-white/80 mb-4 leading-relaxed">
-                Análise de perfil, formulários IRCC sem erros, orientação na biometria e Garantia Vitalícia. A consultoria mais completa do Brasil para o visto canadense.
+                Análise de perfil, revisão dos formulários da IRCC, orientação na biometria e Garantia Vitalícia de reconsultoria.
               </p>
-              <p className="text-sm text-white/50 mb-10">Mais de 7.000 vistos aprovados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
+              <p className="text-sm text-white/50 mb-10">Mais de 7.000 processos acompanhados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
               <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
                 <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Canadense`}
                   target="_blank" rel="noopener noreferrer"
@@ -214,10 +199,12 @@ export default async function AssessoriaVistoCanadensePage() {
         </div>
       </section>
 
+      <DisclaimerBar />
+
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <div className="bg-primary py-8">
         <div className="max-w-4xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
+          {[['9 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Processos acompanhados desde 2017'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
@@ -335,7 +322,7 @@ export default async function AssessoriaVistoCanadensePage() {
             <h2 className="text-4xl font-heading font-bold text-dark mb-4">Escolha o tipo de serviço</h2>
             <p className="text-muted">Parcelamos em até 6x sem juros no cartão. Clique em qualquer plano para falar com um especialista.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {plans.map((p) => (
               <div key={p.name}
                 className={`rounded-2xl p-8 flex flex-col shadow-lg ${p.featured ? 'bg-dark ring-2 ring-accent' : 'bg-white'}`}>
@@ -367,8 +354,9 @@ export default async function AssessoriaVistoCanadensePage() {
             ))}
           </div>
           <p className="text-center text-muted text-xs mt-10 max-w-2xl mx-auto">
-            Preparamos seu processo de acordo com os requisitos da IRCC, proporcionando a melhor chance de aprovação. Orientamos do início ao fim. Nosso trabalho só está completo quando você tiver o seu visto canadense em mãos.
+            Preparamos seu processo de acordo com os requisitos da IRCC, proporcionando a melhor chance de aprovação. Orientamos do início ao fim. Nosso trabalho só termina quando o seu processo estiver concluído.
           </p>
+          <FeeNote>Os valores acima são honorários da Vow Vistos. As taxas do governo canadense (TRV CAD $100, Study Permit CAD $150, biometria CAD $85) são pagas por você diretamente à IRCC.</FeeNote>
         </div>
       </section>
 
@@ -398,7 +386,7 @@ export default async function AssessoriaVistoCanadensePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de clientes da Vow Vistos</h2>
             <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
           <VideoCarousel />
@@ -519,7 +507,7 @@ export default async function AssessoriaVistoCanadensePage() {
           </div>
           <h2 className="text-4xl font-heading font-bold mb-4">Garantia Vitalícia</h2>
           <p className="text-white/75 text-lg mb-8 leading-relaxed">
-            Se o seu visto canadense for recusado, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até a sua aprovação. Você paga apenas as taxas do governo.
+            Se o seu visto canadense for negado, a Vow Vistos <strong className="text-white">refaz a assessoria sem custo</strong>, quantas vezes forem necessárias, a cada nova tentativa. As taxas do governo canadense são pagas por você diretamente à IRCC.
           </p>
           <a href={`https://wa.me/${wa}?text=Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Canadense`}
             target="_blank" rel="noopener noreferrer"

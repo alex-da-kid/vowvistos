@@ -5,7 +5,7 @@ import PassaporteForm from './PassaporteForm';
 export const metadata: Metadata = {
   title: 'Formulário Passaporte | Vow Vistos',
   description: 'Preencha o formulário para solicitar seu passaporte com a Vow Vistos.',
-  robots: { index: false },
+  robots: { index: false, follow: false },
 };
 
 export default function FormularioPassaportePage() {

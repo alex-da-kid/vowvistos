@@ -5,7 +5,7 @@ import VistoMexicanoForm from './VistoMexicanoForm';
 export const metadata: Metadata = {
   title: 'Formulário Visto Mexicano | Vow Vistos',
   description: 'Preencha o formulário para solicitar sua assessoria de visto mexicano com a Vow Vistos.',
-  robots: { index: false },
+  robots: { index: false, follow: false },
 };
 
 export default function FormularioVistoMexicanoPage() {

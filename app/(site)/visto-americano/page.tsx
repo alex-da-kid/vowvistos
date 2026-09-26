@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import VideoCarousel from '@/components/VideoCarousel';
 import ContactForm from '@/components/ContactForm';
+import DisclaimerBar from '@/components/DisclaimerBar';
+import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
-  title: 'Visto Americano | Consultoria Especializada para Brasileiros | Vow Vistos',
-  description: 'Consultoria completa para visto americano: análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. Mais de 7.000 vistos aprovados. Fale agora.',
-  keywords: 'visto americano, consultoria visto americano, como tirar visto americano, visto americano negado, entrevista visto americano, DS-160, visto B1 B2, código 214b',
+  title: 'Assessoria para Visto Americano | Consultoria Privada | Vow Vistos',
+  description: 'Assessoria privada para o visto americano: análise de perfil, preenchimento do DS-160, simulação de entrevista e Garantia Vitalícia de reconsultoria. Mais de 7.000 processos acompanhados desde 2017.',
+  keywords: 'assessoria visto americano, consultoria visto americano, preparação entrevista consular, visto B1 B2',
 };
 
 import { getGooglePlacesData } from '@/lib/google-places';
@@ -47,11 +49,11 @@ const features = [
   'Análise completa de perfil antes de iniciar',
   'Preenchimento do formulário DS-160',
   'Checklist de documentação personalizado',
-  'Agendamento no consulado',
+  'Orientação para o agendamento da entrevista',
   'Simulação de entrevista consular',
   'Orientação sobre vínculos com o Brasil',
   'Acompanhamento em tempo real do processo',
-  'Garantia Vitalícia de reaprovação',
+  'Garantia Vitalícia de reconsultoria',
 ];
 
 const plans = [
@@ -89,7 +91,7 @@ const denialReasons = [
   {
     code: 'Histórico',
     title: 'Negativa anterior sem estratégia',
-    desc: 'Tentar novamente sem entender o motivo da negativa anterior é o erro mais comum. A Vow Vistos analisa o registro consular e repositiona o perfil antes da nova tentativa.',
+    desc: 'Tentar novamente sem entender o motivo da negativa anterior é o erro mais comum. A Vow Vistos analisa o histórico do seu caso e reposiciona o seu perfil antes da nova tentativa.',
   },
   {
     code: 'Perfil',
@@ -164,13 +166,13 @@ export default async function VistoAmericanoPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
-            Visto <span className="text-accent">Americano</span><br/>
-            Aprovado na Primeira
+            Assessoria para o <span className="text-accent">Visto Americano</span><br/>
+            <span className="text-3xl md:text-4xl">Preparação completa para a sua entrevista</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-            Análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. A consultoria mais completa do Brasil para o visto americano.
+            Análise de perfil, DS-160 sem erros, simulação de entrevista e Garantia Vitalícia. Consultoria privada especializada no visto americano desde 2017.
           </p>
-          <p className="text-sm text-white/50 mb-10">Mais de 7.000 vistos aprovados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
+          <p className="text-sm text-white/50 mb-10">Mais de 7.000 processos acompanhados · Especialização exclusiva desde 2017 · 100% remoto, atendemos todo o Brasil</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20para%20o%20Visto%20Americano`}
               target="_blank" rel="noopener noreferrer"
@@ -185,10 +187,12 @@ export default async function VistoAmericanoPage() {
         </div>
       </section>
 
+      <DisclaimerBar />
+
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <div className="bg-primary py-8">
         <div className="max-w-4xl mx-auto px-4 grid grid-cols-3 gap-4 text-center divide-x divide-white/10">
-          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
+          {[['9 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Processos acompanhados desde 2017'],['100% Remoto','Atendemos clientes em todo o Brasil']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
@@ -284,9 +288,9 @@ export default async function VistoAmericanoPage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-heading font-bold text-lg mb-2">Nossa metodologia vem de dentro do consulado</p>
+                  <p className="text-white font-heading font-bold text-lg mb-2">Metodologia desenvolvida com um ex-oficial consular</p>
                   <p className="text-white/70 leading-relaxed">
-                    A forma como a Vow Vistos orienta o preenchimento do DS-160, e todo o preparo da solicitação, foi desenvolvida com base na experiência de um ex-oficial do consulado americano com mais de 10 anos de atuação. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido.
+                    Nossa equipe foi treinada por um ex-oficial consular americano, com mais de 10 anos de experiência. Alguém que avaliou milhares de candidaturas do outro lado da mesa. Que sabe exatamente o que chama atenção, o que levanta dúvidas e o que passa despercebido. A Vow Vistos não tem qualquer vínculo com consulados ou com o governo dos EUA.
                   </p>
                   <p className="text-white/70 leading-relaxed mt-3">
                     Esse conhecimento não está em nenhum guia gratuito na internet. E é exatamente ele que repassamos aos nossos clientes.
@@ -392,6 +396,7 @@ export default async function VistoAmericanoPage() {
               </div>
             ))}
           </div>
+          <FeeNote>Os valores acima são honorários da Vow Vistos. A taxa consular MRV (US$ 185) é paga por você diretamente ao governo dos EUA.</FeeNote>
         </div>
       </section>
 
@@ -488,7 +493,7 @@ export default async function VistoAmericanoPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Depoimentos</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de aprovação do visto americano</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Histórias reais de clientes da Vow Vistos</h2>
             <p className="text-muted">Veja o que nossos clientes falam sobre a experiência com a Vow Vistos.</p>
           </div>
           <VideoCarousel />
@@ -570,7 +575,7 @@ export default async function VistoAmericanoPage() {
           </div>
           <h2 className="text-4xl font-heading font-bold mb-4">Garantia Vitalícia</h2>
           <p className="text-white/75 text-lg mb-8 leading-relaxed">
-            Se o seu visto americano for negado, a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até a sua aprovação. Você paga apenas as taxas consulares.
+            Se o seu visto americano for negado, a Vow Vistos <strong className="text-white">refaz a assessoria sem custo</strong>, quantas vezes forem necessárias, a cada nova tentativa. As taxas do governo americano, como a MRV, são pagas por você diretamente ao governo.
           </p>
           <a href={`https://wa.me/${wa}?text=Quero%20contratar%20a%20consultoria%20para%20o%20Visto%20Americano`}
             target="_blank" rel="noopener noreferrer"

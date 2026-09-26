@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getGooglePlacesData } from '@/lib/google-places';
 import ContactForm from '@/components/ContactForm';
+import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
   title: 'Vistos para Outros Países | Reino Unido, Austrália, Japão e mais | Vow Vistos',
@@ -12,14 +13,14 @@ export const metadata: Metadata = {
 const wa = '558520186898';
 
 const countries = [
-  { flag: '🇬🇧', name: 'Reino Unido',   desc: 'Standard Visitor Visa e demais categorias britânicas.' },
-  { flag: '🇦🇺', name: 'Austrália',      desc: 'Tourist visa (subclass 600), Working Holiday e mais.' },
-  { flag: '🇯🇵', name: 'Japão',          desc: 'Visto de turismo, negócios e trabalho no Japão.' },
-  { flag: '🇳🇿', name: 'Nova Zelândia',  desc: 'Visitor Visa e Working Holiday para jovens profissionais.' },
-  { flag: '🇵🇹', name: 'Portugal',       desc: 'D7, Golden Visa e residência europeia.' },
-  { flag: '🇩🇪', name: 'Alemanha',       desc: 'Visto Schengen e autorização de residência.' },
-  { flag: '🇮🇹', name: 'Itália',         desc: 'Visto Schengen para turismo, estudo e trabalho.' },
-  { flag: '🌍',  name: 'Outros destinos', desc: 'Consulte-nos sobre qualquer outro destino.' },
+  { name: 'Reino Unido',   desc: 'Standard Visitor Visa e demais categorias britânicas.' },
+  { name: 'Austrália',      desc: 'Tourist visa (subclass 600), Working Holiday e mais.' },
+  { name: 'Japão',          desc: 'Visto de turismo, negócios e trabalho no Japão.' },
+  { name: 'Nova Zelândia',  desc: 'Visitor Visa e Working Holiday para jovens profissionais.' },
+  { name: 'Portugal',       desc: 'D7, Golden Visa e residência europeia.' },
+  { name: 'Alemanha',       desc: 'Visto Schengen e autorização de residência.' },
+  { name: 'Itália',         desc: 'Visto Schengen para turismo, estudo e trabalho.' },
+  { name: 'Outros destinos', desc: 'Consulte-nos sobre qualquer outro destino.' },
 ];
 
 function GoogleStarsFull() {
@@ -65,7 +66,7 @@ export default async function OutrosPaisesPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
-            Vistos para o <span className="text-accent">Mundo Inteiro</span>
+            Assessoria de Vistos para <span className="text-accent">Outros Destinos</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Além dos Estados Unidos, Canadá e China, a Vow Vistos assessora brasileiros com vistos para dezenas de países — com a mesma excelência e Garantia Vitalícia.
@@ -80,7 +81,7 @@ export default async function OutrosPaisesPage() {
 
       <div className="bg-primary py-8">
         <div className="max-w-3xl mx-auto px-4 grid grid-cols-2 gap-4 text-center divide-x divide-white/10">
-          {[['8 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Vistos aprovados para brasileiros']].map(([v,l])=>(
+          {[['9 Anos','Especialização exclusiva em consultoria consular'],['7.000+','Processos acompanhados desde 2017']].map(([v,l])=>(
             <div key={l}>
               <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{v}</div>
               <div className="text-xs text-white/60 mt-1 hidden sm:block">{l}</div>
@@ -112,7 +113,6 @@ export default async function OutrosPaisesPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {countries.map((c) => (
               <div key={c.name} className="bg-light rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
-                <span className="text-4xl mb-3">{c.flag}</span>
                 <h3 className="font-heading font-bold text-dark mb-1">{c.name}</h3>
                 <p className="text-muted text-xs">{c.desc}</p>
               </div>
@@ -125,6 +125,7 @@ export default async function OutrosPaisesPage() {
               Consultar meu destino pelo WhatsApp
             </a>
           </div>
+          <FeeNote>Os valores da Vow Vistos são honorários de assessoria. As taxas de cada governo são pagas por você diretamente ao órgão oficial.</FeeNote>
         </div>
       </section>
 
@@ -141,7 +142,7 @@ export default async function OutrosPaisesPage() {
       <section className="bg-dark py-20 text-center text-white">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-heading font-bold mb-4">Garantia Vitalícia em todos os destinos</h2>
-          <p className="text-white/75 text-lg mb-8 leading-relaxed">Independente do país, se o seu visto for negado a Vow Vistos oferece <strong className="text-white">reconsultoria gratuita e ilimitada</strong> até a aprovação.</p>
+          <p className="text-white/75 text-lg mb-8 leading-relaxed">Garantia Vitalícia de reconsultoria: se o seu visto for negado, a Vow Vistos <strong className="text-white">refaz a assessoria sem custo</strong> a cada nova tentativa, em qualquer destino.</p>
           <a href={`https://wa.me/${wa}?text=Quero%20saber%20sobre%20a%20Garantia%20Vitalícia`} target="_blank" rel="noopener noreferrer"
             className="inline-block bg-accent hover:bg-accent-light text-dark font-heading font-bold px-10 py-4 rounded-full transition-colors text-lg">
             Falar com especialista

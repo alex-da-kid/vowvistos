@@ -8,7 +8,6 @@ const wa = '558520186898';
 const situacaoOptions = [
   { value: 'TRV: Visto de Turista', label: 'TRV: Visto de Turista' },
   { value: 'Study Permit: Visto de Estudante', label: 'Study Permit: Visto de Estudante' },
-  { value: 'ETA: Autorização Eletrônica', label: 'ETA: Autorização Eletrônica' },
   { value: 'Extensão ou renovação', label: 'Extensão ou renovação' },
   { value: 'Visto negado anteriormente', label: 'Visto negado anteriormente' },
 ];

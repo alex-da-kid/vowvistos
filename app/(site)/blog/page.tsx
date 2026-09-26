@@ -4,8 +4,8 @@ import { getPosts } from '@/lib/wordpress';
 
 export const metadata: Metadata = {
   title: 'Blog | Dicas e Informações sobre Vistos | Vow Vistos',
-  description: 'Artigos, guias e dicas sobre vistos americano, canadense, chinês e mais. Saiba como preparar sua documentação, entender as exigências e maximizar suas chances de aprovação.',
-  keywords: 'blog vistos, dicas visto americano, como tirar visto, entrevista visto americano, documentação visto',
+  description: 'Dicas e orientações de quem acompanha processos de visto desde 2017.',
+  keywords: 'blog vistos, dicas visto americano, entrevista visto americano, documentação visto',
 };
 
 function formatDate(dateStr: string) {

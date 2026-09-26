@@ -84,7 +84,7 @@ export default function ContatoPage() {
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="text-5xl font-heading font-extrabold mb-4">Fale <span className="text-accent">Conosco</span></h1>
           <p className="text-xl text-white/80 leading-relaxed">
-            Respondemos em até 24 horas úteis. Nossos especialistas estão prontos para fazer uma análise honesta do seu perfil e indicar o melhor caminho para a aprovação.
+            Respondemos em até 24 horas úteis. Nossos especialistas estão prontos para fazer uma análise honesta do seu perfil e indicar o melhor caminho para o seu processo.
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function ContatoPage() {
             <div className="mt-8 bg-dark rounded-2xl p-6 text-white">
               <h3 className="font-heading font-bold mb-2">Análise de Perfil Gratuita</h3>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
-                Antes de contratar qualquer serviço, a Vow Vistos oferece uma análise de perfil gratuita para entender suas chances reais de aprovação.
+                Antes de contratar qualquer serviço, a Vow Vistos oferece uma análise de perfil gratuita para entender o seu perfil com honestidade.
               </p>
               <a href={`https://wa.me/${wa}?text=Quero%20fazer%20minha%20análise%20de%20perfil%20gratuita`}
                 target="_blank" rel="noopener noreferrer"
