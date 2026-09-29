@@ -7,7 +7,7 @@ import ContactForm from '@/components/ContactForm';
 import VideoCarousel from '@/components/VideoCarousel';
 
 export const metadata: Metadata = {
-  title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais',
+  title: 'Consultoria de Vistos para Brasileiros | EUA, Canadá, China e mais | Vow Vistos',
   description: 'Consultoria privada de vistos para brasileiros: EUA, Canadá, China e outros destinos. Mais de 7.000 processos acompanhados desde 2017.',
   keywords: 'consultoria de vistos, visto americano, visto canadense, visto chinês, análise de perfil visto, assessoria de vistos, visto negado',
   openGraph: {
