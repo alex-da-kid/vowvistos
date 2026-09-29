@@ -5,7 +5,7 @@ import ContactForm from '@/components/ContactForm';
 import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
-  title: 'Visto Chinês | Consultoria Especializada para Brasileiros | Vow Vistos',
+  title: 'Visto Chinês | Consultoria Especializada para Brasileiros',
   description: 'Consultoria completa para o visto chinês: análise de perfil, documentação sem erros, orientação no CVASC e Garantia Vitalícia. Mais de 7.000 processos acompanhados desde 2017.',
   keywords: 'visto chinês, visto para China, consultoria visto chinês, assessoria visto chinês, CVASC, visto China brasileiro, visto L China, visto M China',
 };

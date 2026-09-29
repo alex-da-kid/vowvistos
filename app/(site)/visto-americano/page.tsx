@@ -6,7 +6,7 @@ import DisclaimerBar from '@/components/DisclaimerBar';
 import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
-  title: 'Assessoria para Visto Americano | Consultoria Privada | Vow Vistos',
+  title: 'Assessoria para Visto Americano | Consultoria Privada',
   description: 'Assessoria privada para o visto americano: análise de perfil, preenchimento do DS-160, simulação de entrevista e Garantia Vitalícia de reconsultoria. Mais de 7.000 processos acompanhados desde 2017.',
   keywords: 'assessoria visto americano, consultoria visto americano, preparação entrevista consular, visto B1 B2',
 };
@@ -446,6 +446,7 @@ export default async function VistoAmericanoPage() {
             ))}
           </div>
           <p className="text-center text-muted text-sm mt-10">Não sabe qual categoria se aplica ao seu caso? <a href={`https://wa.me/${wa}?text=Quero%20saber%20qual%20tipo%20de%20visto%20americano%20preciso`} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">Fale conosco.</a></p>
+          <p className="text-center text-muted text-sm mt-3">Já está nos EUA e precisa ficar mais tempo? Veja nossa consultoria de <a href="/assessoria-i-539" className="text-accent font-semibold hover:underline">extensão de permanência e mudança de status (Form I-539)</a>.</p>
         </div>
       </section>
 

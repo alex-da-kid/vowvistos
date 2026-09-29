@@ -10,7 +10,7 @@ const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-heading', 
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vowvistos.com.br'),
-  title: { default: 'Vow Vistos — Consultoria de Vistos', template: '%s | Vow Vistos' },
+  title: { default: 'Vow Vistos | Consultoria de Vistos', template: '%s | Vow Vistos' },
   description: 'Consultoria privada de vistos para brasileiros. Mais de 7.000 processos acompanhados desde 2017.',
 };
 

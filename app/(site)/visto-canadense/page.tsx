@@ -6,7 +6,7 @@ import DisclaimerBar from '@/components/DisclaimerBar';
 import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
-  title: 'Visto Canadense | Consultoria Especializada para Brasileiros | Vow Vistos',
+  title: 'Visto Canadense | Consultoria Especializada para Brasileiros',
   description: 'Assessoria privada para visto canadense de turismo (TRV) e de estudos (Study Permit): análise de perfil, revisão de formulários, orientação na biometria e Garantia Vitalícia de reconsultoria.',
   keywords: 'assessoria visto canadense, consultoria visto canadense, visto de turismo Canadá, Study Permit',
 };

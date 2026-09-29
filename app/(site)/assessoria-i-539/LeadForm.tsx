@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { trackEvent } from '../assessoria-visto-americano/ConversionTracker';
+import { trackEvent } from '@/app/(landing)/assessoria-visto-americano/ConversionTracker';
 
 const wa = '558520186898';
 

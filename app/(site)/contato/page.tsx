@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contato | Fale com um Especialista em Vistos | Vow Vistos',
+  title: 'Contato | Fale com um Especialista em Vistos',
   description: 'Entre em contato com a Vow Vistos. Respondemos em até 24 horas úteis. Fale pelo WhatsApp ou preencha o formulário para começar sua análise de perfil gratuita.',
 };
 

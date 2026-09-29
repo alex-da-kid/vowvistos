@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!post) return {};
     const thumb = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
     return {
-      title: `${post.title?.rendered?.replace(/<[^>]+>/g, '') ?? ''} | Vow Vistos`,
+      title: post.title?.rendered?.replace(/<[^>]+>/g, '') ?? '',
       description: post.excerpt?.rendered?.replace(/<[^>]+>/g, '').slice(0, 160) ?? '',
       openGraph: thumb ? { images: [thumb] } : undefined,
     };

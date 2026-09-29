@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getPosts } from '@/lib/wordpress';
 
 export const metadata: Metadata = {
-  title: 'Blog | Dicas e Informações sobre Vistos | Vow Vistos',
+  title: 'Blog | Dicas e Informações sobre Vistos',
   description: 'Dicas e orientações de quem acompanha processos de visto desde 2017.',
   keywords: 'blog vistos, dicas visto americano, entrevista visto americano, documentação visto',
 };

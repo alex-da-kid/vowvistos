@@ -1,19 +1,23 @@
 import type { Metadata } from 'next';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppFab from '@/components/WhatsAppFab';
+import Image from 'next/image';
 import FeeNote from '@/components/FeeNote';
-import ConversionTracker from '../assessoria-visto-americano/ConversionTracker';
-import GoogleTag from '../assessoria-visto-americano/GoogleTag';
-import TrackedContactForm from '../assessoria-visto-americano/TrackedContactForm';
 import LeadForm from './LeadForm';
-import StickyMobileCTA from './StickyMobileCTA';
 import { getGooglePlacesData } from '@/lib/google-places';
 
 export const metadata: Metadata = {
-  title: 'Extensão e Mudança de Status nos EUA (Form I-539) | Vow Vistos',
-  description: 'Consultoria para brasileiros que já estão nos Estados Unidos: extensão de permanência B1/B2, mudança de status para F-1 e de F-1 para B1/B2. Da análise inicial à decisão da USCIS, 100% online.',
-  keywords: 'I-539, extensão de permanência EUA, estender visto de turista, mudança de status F-1, extensão B2, extensão B1, I-94 vencendo',
+  // The (site) layout's title template appends "| Vow Vistos".
+  title: 'Como Estender sua Estadia nos EUA (Form I-539)',
+  description: 'Precisa ficar mais tempo nos EUA com visto de turista ou de negócios? Consultoria para brasileiros: extensão de permanência B1/B2 e mudança de status para F-1, da análise inicial à decisão da USCIS.',
+  alternates: { canonical: '/assessoria-i-539' },
+  openGraph: {
+    title: 'Precisa ficar mais tempo nos Estados Unidos?',
+    description: 'Extensão de permanência e mudança de status (Form I-539) para brasileiros que já estão nos EUA. 100% online, em português.',
+    url: '/assessoria-i-539',
+    siteName: 'Vow Vistos',
+    locale: 'pt_BR',
+    type: 'website',
+    images: [{ url: '/hero-airport.jpg', alt: 'Vow Vistos: extensão e mudança de status nos EUA' }],
+  },
 };
 
 const wa = '558520186898';
@@ -146,6 +150,7 @@ const questions = [
 ];
 
 const faqs = [
+  { q: 'Dá para prorrogar o visto de turista nos EUA?', a: 'Tecnicamente, o que se estende não é o visto, e sim o tempo de permanência. O visto no passaporte serve para entrar no país. O tempo que você pode ficar é definido pelo I-94. Para estender a estadia como turista (B2) ou a negócios (B1), o pedido é feito à USCIS com o Form I-539, antes do vencimento do I-94.' },
   { q: 'O que é o Form I-539?', a: 'É o formulário da USCIS (Application to Extend/Change Nonimmigrant Status) usado por quem já está legalmente nos Estados Unidos para pedir mais tempo de permanência ou trocar de categoria, por exemplo de turista (B2) para estudante (F-1).' },
   { q: 'Quando devo fazer o pedido?', a: 'Sempre antes da data do seu I-94. A USCIS recomenda protocolar com pelo menos 45 dias de antecedência. Pedidos feitos depois do vencimento, em regra, não são aceitos, salvo circunstâncias extraordinárias.' },
   { q: 'Onde vejo a data do meu I-94?', a: 'No site oficial i94.cbp.dhs.gov. A data que vale é a do I-94, e não a validade do visto no passaporte. Muita gente confunde as duas.' },
@@ -170,53 +175,66 @@ const schemaOrg = {
   })),
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Consultoria para extensão e mudança de status nos EUA (Form I-539)',
+  serviceType: 'Preparação e acompanhamento de processos I-539',
+  url: 'https://www.vowvistos.com.br/assessoria-i-539',
+  areaServed: { '@type': 'Country', name: 'Estados Unidos' },
+  availableLanguage: 'pt-BR',
+  provider: { '@type': 'Organization', name: 'Vow Vistos', url: 'https://www.vowvistos.com.br' },
+  offers: plans.map((p) => ({
+    '@type': 'Offer',
+    name: p.name,
+    price: p.price.replace(/[^\d]/g, ''),
+    priceCurrency: 'BRL',
+  })),
+};
+
+// Content review date shown on the page; bump it whenever facts or fees are rechecked.
+const lastReviewed = 'setembro de 2026';
+
 export default async function AssessoriaI539Page() {
   const placeData = await getGooglePlacesData();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
-      <GoogleTag />
-      <ConversionTracker />
-      <Header variant="minimal" />
-
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 text-white relative overflow-hidden bg-dark"
+      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
         style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
-        <div className="max-w-6xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <div className="flex justify-center lg:justify-start mb-6">
-                <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
-                  <GoogleStarsFull />
-                  {placeData.rating} · {placeData.reviewCount} avaliações no
-                  <GoogleGLogo />
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-                Precisa ficar mais tempo nos <span className="text-accent">Estados Unidos?</span><br/>
-                <span className="text-3xl md:text-4xl lg:text-5xl">Extensão e mudança de status com o Form I-539</span>
-              </h1>
-              <p className="text-xl text-white/80 mb-4 leading-relaxed">
-                Para brasileiros que já estão nos EUA. Cuidamos de todo o processo, da análise inicial até a decisão da USCIS.
-              </p>
-              <p className="text-sm text-white/50 mb-10">Mais de 500 processos I-539 preparados · 100% online, em qualquer estado · Em português</p>
-              <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
-                <a href={`https://wa.me/${wa}?text=Estou%20nos%20EUA%20e%20quero%20uma%20avaliação%20para%20o%20I-539`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-colors text-base shadow-lg">
-                  Falar no WhatsApp
-                </a>
-                <a href="#planos"
-                  className="inline-block border-2 border-white/30 hover:border-accent text-white hover:text-accent font-heading font-semibold px-8 py-4 rounded-full transition-colors text-base">
-                  Ver preços
-                </a>
-              </div>
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+            <div className="flex items-center gap-2">
+              <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                Para brasileiros nos EUA
+              </span>
             </div>
-            <div className="bg-white rounded-2xl shadow-2xl p-8 scroll-mt-24" id="avaliacao">
-              <h2 className="font-heading font-extrabold text-dark text-2xl mb-1 text-center">Avaliação Inicial</h2>
-              <LeadForm />
-            </div>
+            <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-heading font-semibold text-white border border-white/20">
+              <GoogleStarsFull />
+              {placeData.rating} · {placeData.reviewCount} avaliações no
+              <GoogleGLogo />
+            </span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
+            Precisa ficar mais tempo nos <span className="text-accent">Estados Unidos?</span>{' '}<br/>
+            <span className="text-3xl md:text-4xl">Estenda sua estadia ou mude de status com o Form I-539</span>
+          </h1>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
+            Para brasileiros que já estão nos EUA. Cuidamos de todo o processo, da análise inicial até a decisão da USCIS.
+          </p>
+          <p className="text-sm text-white/50 mb-10">Mais de 500 processos I-539 preparados · 100% online, em qualquer estado · Em português</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#avaliacao"
+              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-heading font-bold px-8 py-4 rounded-full transition-colors text-base shadow-lg">
+              Avaliação Inicial
+            </a>
+            <a href="#planos"
+              className="inline-block border-2 border-white/30 hover:border-accent text-white hover:text-accent font-heading font-semibold px-8 py-4 rounded-full transition-colors text-base">
+              Ver Preços
+            </a>
           </div>
         </div>
       </section>
@@ -246,6 +264,19 @@ export default async function AssessoriaI539Page() {
         </div>
       </div>
 
+      {/* ── AS SEEN IN ────────────────────────────────────────────────── */}
+      <section className="bg-white py-10 border-b border-light">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-muted whitespace-nowrap">Como visto em</span>
+          <div className="h-px sm:h-8 w-px bg-light hidden sm:block" aria-hidden />
+          <a href="https://diariodonordeste.verdesmares.com.br/negocios/suspensao-de-vistos-por-trump-e-copa-geram-corrida-que-ate-triplica-procura-em-fortaleza-1.3733229"
+            target="_blank" rel="noopener noreferrer"
+            className="opacity-70 hover:opacity-100 transition-opacity">
+            <Image src="/diario-do-nordeste.svg" alt="Diário do Nordeste" width={180} height={48} />
+          </a>
+        </div>
+      </section>
+
       {/* ── I-94 DEADLINE ─────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4">
@@ -259,7 +290,7 @@ export default async function AssessoriaI539Page() {
               <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Prazo</span>
               <h2 className="text-3xl font-heading font-bold text-dark mb-4">A data que manda é a do I-94, não a do visto</h2>
               <p className="text-muted leading-relaxed mb-4">
-                O visto no passaporte pode valer 10 anos, mas o tempo que você pode ficar nos EUA é definido pelo I-94, registrado na sua entrada. O pedido de extensão ou mudança de status precisa ser protocolado antes dessa data. A USCIS recomenda pelo menos 45 dias de antecedência.
+                Muita gente procura como prorrogar o visto de turista, mas o que se estende é a estadia. O visto no passaporte pode valer 10 anos, mas o tempo que você pode ficar nos EUA é definido pelo I-94, registrado na sua entrada. O pedido de extensão ou mudança de status precisa ser protocolado antes dessa data. A USCIS recomenda pelo menos 45 dias de antecedência.
               </p>
               <p className="text-muted leading-relaxed mb-6">
                 Quanto antes começarmos, mais tempo há para montar um processo bem documentado.
@@ -491,15 +522,27 @@ export default async function AssessoriaI539Page() {
               </details>
             ))}
           </div>
+          <p className="text-center text-xs text-muted mt-10 leading-relaxed">
+            Conteúdo revisado em {lastReviewed}. Fontes oficiais:{' '}
+            <a href="https://www.uscis.gov/i-539" target="_blank" rel="noopener noreferrer" className="text-primary underline">USCIS (Form I-539)</a>,{' '}
+            <a href="https://i94.cbp.dhs.gov" target="_blank" rel="noopener noreferrer" className="text-primary underline">CBP (I-94)</a> e{' '}
+            <a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noopener noreferrer" className="text-primary underline">prazos de processamento da USCIS</a>.
+            Regras e taxas mudam com frequência: confirme sempre nos sites oficiais.
+          </p>
         </div>
       </section>
 
       {/* ── FINAL CTA ─────────────────────────────────────────────────── */}
       <section className="bg-dark py-20 text-center text-white">
         <div className="max-w-3xl mx-auto px-4">
+          <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
           <h2 className="text-4xl font-heading font-bold mb-4">Seu I-94 tem data para vencer. Não deixe para a última semana.</h2>
           <p className="text-white/75 text-lg mb-8 leading-relaxed">
-            Conte sua situação e receba uma avaliação inicial honesta: se o seu caso tem base, qual o caminho e quais documentos você vai precisar.
+            O pedido precisa ser protocolado antes do vencimento. Quanto antes começarmos, mais tempo há para montar um processo <strong className="text-white">bem documentado e sem pressa</strong>.
           </p>
           <a href="#avaliacao"
             className="inline-block bg-accent hover:bg-accent-light text-dark font-heading font-bold px-10 py-4 rounded-full transition-colors text-lg">
@@ -509,20 +552,15 @@ export default async function AssessoriaI539Page() {
       </section>
 
       {/* ── CONTACT ───────────────────────────────────────────────────── */}
-      <section className="py-20 bg-light" id="contato">
+      <section className="py-20 bg-light scroll-mt-20" id="avaliacao">
         <div className="max-w-2xl mx-auto px-4 text-center mb-10">
-          <h2 className="text-4xl font-heading font-bold text-dark mb-3">Prefere mandar uma mensagem?</h2>
-          <p className="text-muted">Respondemos em até 24 horas úteis com uma análise honesta da sua situação.</p>
+          <h2 className="text-4xl font-heading font-bold text-dark mb-3">Faça sua avaliação inicial</h2>
+          <p className="text-muted">Conte sua situação e receba uma análise honesta: se o seu caso tem base, qual o caminho e quais documentos você vai precisar.</p>
         </div>
         <div className="max-w-xl mx-auto px-4 bg-white rounded-2xl shadow-lg p-8">
-          <TrackedContactForm />
+          <LeadForm />
         </div>
       </section>
-
-      <div className="h-16 md:hidden" aria-hidden />
-      <StickyMobileCTA />
-      <Footer variant="minimal" />
-      <WhatsAppFab hideOnMobile />
     </>
   );
 }

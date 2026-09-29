@@ -5,7 +5,7 @@ import ContactForm from '@/components/ContactForm';
 import FeeNote from '@/components/FeeNote';
 
 export const metadata: Metadata = {
-  title: 'Vistos para Outros Países | Reino Unido, Austrália, Japão e mais | Vow Vistos',
+  title: 'Vistos para Outros Países | Reino Unido, Austrália, Japão e mais',
   description: 'Consultoria de vistos para Reino Unido, Austrália, Japão, Nova Zelândia, Portugal e outros países. Especialistas com Garantia Vitalícia. Fale agora.',
   keywords: 'visto reino unido, visto australia, visto japão, visto portugal, consultoria vistos internacionais, visto nova zelândia',
 };
