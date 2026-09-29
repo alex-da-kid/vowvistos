@@ -10,6 +10,7 @@ const nav = [
       { label: 'Visto Canadense',  href: '/visto-canadense' },
       { label: 'Visto Chinês',     href: '/visto-chines' },
       { label: 'Outros Países',    href: '/outros-paises' },
+      { label: 'Extensão e Mudança de Status (EUA)', href: '/assessoria-i-539' },
     ],
   },
   { label: 'Blog',    href: '/blog' },
