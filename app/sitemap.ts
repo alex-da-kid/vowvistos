@@ -10,6 +10,7 @@ const staticPages: { path: string; priority: number; changeFrequency: MetadataRo
   { path: '/visto-americano',        priority: 0.9, changeFrequency: 'monthly' },
   { path: '/assessoria-i-539',       priority: 0.9, changeFrequency: 'monthly' },
   { path: '/visto-canadense',        priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/extensao-de-status-canada', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/visto-chines',           priority: 0.7, changeFrequency: 'monthly' },
   { path: '/outros-paises',          priority: 0.7, changeFrequency: 'monthly' },
   { path: '/blog',                   priority: 0.6, changeFrequency: 'weekly' },

@@ -37,7 +37,7 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
           <div>
             <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Vistos</h3>
             <ul className="space-y-2 text-sm">
-              {[['Visto Americano','/visto-americano'],['Visto Canadense','/visto-canadense'],['Visto Chinês','/visto-chines'],['Outros Países','/outros-paises'],['Extensão e Mudança de Status (EUA)','/assessoria-i-539']].map(([l,h])=>(
+              {[['Visto Americano','/visto-americano'],['Visto Canadense','/visto-canadense'],['Visto Chinês','/visto-chines'],['Outros Países','/outros-paises'],['Extensão e Mudança de Status (EUA)','/assessoria-i-539'],['Extensão de Status (Canadá)','/extensao-de-status-canada']].map(([l,h])=>(
                 <li key={h}><Link href={h} className="hover:text-accent transition-colors">{l}</Link></li>
               ))}
             </ul>
