@@ -357,7 +357,7 @@ export default async function VistoCanadensePage() {
             <a href="/visto-chines" className="text-accent font-semibold hover:underline">China</a> e{' '}
             <a href="/outros-paises" className="text-accent font-semibold hover:underline">outros países</a>.
           </div>
-          <p className="mt-3 text-center text-sm text-muted">Já está no Canadá e precisa ficar mais tempo? Veja nossa assessoria de <a href="/extensao-de-status-canada" className="text-accent font-semibold hover:underline">extensão de status no Canadá (visitante ou estudante)</a>.</p>
+          <p className="mt-3 text-center text-sm text-muted">Já está no Canadá e precisa ficar mais tempo? Veja nossa assessoria de <a href="/extensao-de-estadia-canada" className="text-accent font-semibold hover:underline">extensão de estadia no Canadá (visitante ou estudante)</a>.</p>
         </div>
       </section>
 

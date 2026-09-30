@@ -35,9 +35,9 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
 
         {!minimal && (
           <div>
-            <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Vistos</h3>
+            <p className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Vistos</p>
             <ul className="space-y-2 text-sm">
-              {[['Visto Americano','/visto-americano'],['Visto Canadense','/visto-canadense'],['Visto Chinês','/visto-chines'],['Outros Países','/outros-paises'],['Extensão e Mudança de Status (EUA)','/assessoria-i-539'],['Extensão de Status (Canadá)','/extensao-de-status-canada']].map(([l,h])=>(
+              {[['Visto Americano','/visto-americano'],['Visto Canadense','/visto-canadense'],['Visto Chinês','/visto-chines'],['Outros Países','/outros-paises'],['Extensão e Mudança de Status (EUA)','/assessoria-i-539'],['Extensão de Estadia (Canadá)','/extensao-de-estadia-canada']].map(([l,h])=>(
                 <li key={h}><Link href={h} className="hover:text-accent transition-colors">{l}</Link></li>
               ))}
             </ul>
@@ -46,7 +46,7 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
 
         {!minimal && (
           <div>
-            <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Empresa</h3>
+            <p className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Empresa</p>
             <ul className="space-y-2 text-sm">
               {[['Blog','/blog'],['Contato','/contato']].map(([l,h])=>(
                 <li key={h}><Link href={h} className="hover:text-accent transition-colors">{l}</Link></li>
@@ -56,7 +56,7 @@ export default function Footer({ variant = 'full' }: { variant?: 'full' | 'minim
         )}
 
         <div>
-          <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Legal</h3>
+          <p className="font-heading font-semibold text-white text-sm uppercase tracking-widest mb-4">Legal</p>
           <ul className="space-y-2 text-sm">
             {[['Política de Privacidade','/politica-de-privacidade'],['Termos de Uso','/termos-de-uso'],['Política de Cookies','/politica-de-cookies']].map(([l,h])=>(
               <li key={h}><Link href={h} className="hover:text-accent transition-colors">{l}</Link></li>

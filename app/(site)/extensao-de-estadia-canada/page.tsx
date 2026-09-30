@@ -3,24 +3,28 @@ import Image from 'next/image';
 import FeeNote from '@/components/FeeNote';
 import LeadForm from './LeadForm';
 import { getGooglePlacesData } from '@/lib/google-places';
+import { CANADA_EXTENSION_REVIEWED } from '@/lib/content-dates';
 
+const PATH = '/extensao-de-estadia-canada';
+const BASE = 'https://www.vowvistos.com.br';
+const PAGE_URL = `${BASE}${PATH}`;
+const PRICE = 'R$ 2.300';
+
+// The share image comes from opengraph-image.tsx / twitter-image.tsx in this folder.
 export const metadata: Metadata = {
   // The (site) layout's title template appends "| Vow Vistos".
-  title: 'Como Estender sua Estadia no Canadá (Visitor Record e Study Permit)',
-  description: 'Precisa ficar mais tempo no Canadá? Extensão de estadia como visitante (visitor record) ou estudante (study permit) para brasileiros. 100% online, em português.',
-  alternates: { canonical: '/extensao-de-status-canada' },
+  title: 'Prorrogar Estadia no Canadá: Visitante e Study Permit',
+  description: `Precisa ficar mais tempo no Canadá? Prorrogação de estadia como visitante (visitor record) ou estudante (study permit). ${PRICE}, 100% online e em português.`,
+  alternates: { canonical: PATH },
   openGraph: {
     title: 'Precisa ficar mais tempo no Canadá?',
-    description: 'Extensão de status para brasileiros que já estão no Canadá. 100% online, em português.',
-    url: '/extensao-de-status-canada',
+    description: 'Extensão de estadia para brasileiros que já estão no Canadá, como visitante ou estudante. 100% online, em português.',
+    url: PATH,
     siteName: 'Vow Vistos',
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: '/hero-visto-canadense.jpg', alt: 'Vow Vistos: extensão de status no Canadá' }],
   },
 };
-
-const PRICE = 'R$ 2.300';
 
 const wa = '558520186898';
 const irccExtend = 'https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/extend-stay.html';
@@ -98,7 +102,7 @@ const included = [
 
 const plans = [
   {
-    name: 'Extensão de Status',
+    name: 'Extensão de Estadia',
     subtitle: 'Para visitantes (visitor record) ou estudantes (study permit) que precisam ficar mais tempo no Canadá',
     price: PRICE,
     featured: true,
@@ -149,40 +153,86 @@ const faqs = [
   { q: 'Todo o processo é online?', a: 'Sim. Atendemos por WhatsApp, Google Meet e e-mail, em qualquer província do Canadá.' },
 ];
 
+const compareRows: [string, string, string][] = [
+  ['Para quem', 'Turistas, familiares em visita e alunos de cursos curtos que entraram como visitantes', 'Estudantes com study permit válido cujo curso vai além da data de validade'],
+  ['O que você recebe', 'Visitor record, com uma nova data de permanência', 'Um novo study permit, com nova validade'],
+  ['Quando pedir', 'Antes do vencimento do status. A IRCC recomenda pelo menos 30 dias antes', 'Antes do vencimento do permit. A IRCC recomenda pelo menos 30 dias antes'],
+  ['Enquanto a IRCC decide', 'Você pode continuar no Canadá como visitante (maintained status)', 'Em geral, você pode continuar estudando nas mesmas condições (maintained status)'],
+  ['Documentos centrais', 'Motivo da extensão, recursos para se manter e vínculos com o Brasil', 'Comprovante de matrícula da instituição e recursos para se manter'],
+  ['Taxa do governo', 'Paga à IRCC, à parte dos honorários', 'Paga à IRCC, à parte dos honorários'],
+];
+
+const studyPermitPoints = [
+  { title: 'Carta da instituição', desc: 'A instituição de ensino confirma a matrícula e a nova previsão de conclusão. É ela que justifica o novo prazo.' },
+  { title: 'Recursos para se manter', desc: 'Você precisa mostrar que consegue pagar o curso e se manter no Canadá durante o período adicional.' },
+  { title: 'Histórico acadêmico', desc: 'Reprovações, trancamentos ou troca de programa não impedem o pedido, mas precisam ser explicados com coerência.' },
+  { title: 'Estudantes em Quebec', desc: 'Em Quebec, o estudante também precisa de um CAQ válido para o novo período, o que costuma ser o primeiro passo.' },
+];
+
+const reviewedDate = new Date(`${CANADA_EXTENSION_REVIEWED}T12:00:00`);
+const lastReviewed = reviewedDate.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
 const schemaOrg = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${PAGE_URL}#webpage`,
+      url: PAGE_URL,
+      name: 'Prorrogar estadia no Canadá: visitante e study permit',
+      inLanguage: 'pt-BR',
+      dateModified: CANADA_EXTENSION_REVIEWED,
+      breadcrumb: { '@id': `${PAGE_URL}#breadcrumb` },
+      mainEntity: { '@id': `${PAGE_URL}#service` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${PAGE_URL}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: BASE },
+        { '@type': 'ListItem', position: 2, name: 'Extensão de estadia no Canadá', item: PAGE_URL },
+      ],
+    },
+    {
+      '@type': 'Service',
+      '@id': `${PAGE_URL}#service`,
+      name: 'Extensão de estadia no Canadá para brasileiros',
+      serviceType: 'Extensão de visitor record e study permit',
+      description: 'Assessoria em português para brasileiros que já estão no Canadá e precisam prorrogar a estadia como visitante (visitor record) ou estudante (study permit), da análise do caso até a decisão da IRCC.',
+      url: PAGE_URL,
+      areaServed: { '@type': 'Country', name: 'Canadá' },
+      availableLanguage: 'pt-BR',
+      // Same @id as the LocalBusiness on the home page, so both refer to one entity.
+      provider: { '@type': 'LocalBusiness', '@id': 'https://vowvistos.com.br/#business', name: 'Vow Vistos', url: BASE },
+      offers: {
+        '@type': 'Offer',
+        price: PRICE.replace(/[^\d]/g, ''),
+        priceCurrency: 'BRL',
+        url: `${PAGE_URL}#planos`,
+        availability: 'https://schema.org/InStock',
+        description: 'Honorários por pedido. Taxas da IRCC pagas à parte, direto ao governo.',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${PAGE_URL}#faq`,
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ],
 };
-
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Extensão de status no Canadá para brasileiros',
-  serviceType: 'Extensão de visitor record e study permit',
-  url: 'https://www.vowvistos.com.br/extensao-de-status-canada',
-  areaServed: { '@type': 'Country', name: 'Canadá' },
-  availableLanguage: 'pt-BR',
-  provider: { '@type': 'Organization', name: 'Vow Vistos', url: 'https://www.vowvistos.com.br' },
-  offers: { '@type': 'Offer', price: PRICE.replace(/[^\d]/g, ''), priceCurrency: 'BRL' },
-};
-
-// Content review date shown on the page; bump it whenever facts or fees are rechecked.
-const lastReviewed = 'setembro de 2026';
 
 export default async function ExtensaoStatusCanadaPage() {
   const placeData = await getGooglePlacesData();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
-        style={{ backgroundImage: 'url(/hero-visto-canadense.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark">
+        <Image src="/hero-visto-canadense.jpg" alt="" fill preload sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
@@ -199,7 +249,7 @@ export default async function ExtensaoStatusCanadaPage() {
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
             Precisa ficar mais tempo no <span className="text-accent">Canadá?</span>{' '}<br/>
-            <span className="text-3xl md:text-4xl">Estenda sua estadia como visitante ou estudante</span>
+            <span className="text-3xl md:text-4xl">Extensão de estadia como visitante ou estudante</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-4 leading-relaxed">
             Para brasileiros que já estão no Canadá. Atendimento em português e acompanhamento do início até a decisão da IRCC.
@@ -269,7 +319,7 @@ export default async function ExtensaoStatusCanadaPage() {
               <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Prazo</span>
               <h2 className="text-3xl font-heading font-bold text-dark mb-4">A data que manda é a do seu status, não a do visto</h2>
               <p className="text-muted leading-relaxed mb-4">
-                O visto canadense pode valer 10 anos, mas o tempo que você pode ficar no país é outro. Como visitante, em geral são até 6 meses a partir da entrada, salvo outra data definida pelo oficial de fronteira. Estudantes seguem a data do próprio study permit.
+                O <a href="/visto-canadense" className="font-semibold text-primary underline">visto canadense</a> pode valer 10 anos, mas o tempo que você pode ficar no país é outro. Como visitante, em geral são até 6 meses a partir da entrada, salvo outra data definida pelo oficial de fronteira. Estudantes seguem a data do próprio study permit.
               </p>
               <p className="text-muted leading-relaxed mb-4">
                 Se o pedido de extensão for feito antes dessa data, você mantém o seu status (maintained status) e pode aguardar a decisão no Canadá. A IRCC recomenda pedir com pelo menos 30 dias de antecedência.
@@ -291,7 +341,7 @@ export default async function ExtensaoStatusCanadaPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Serviços</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Em que situação você está?</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Extensão como visitante ou extensão do study permit?</h2>
             <p className="text-muted">Cada pedido tem requisitos e evidências próprias. Trabalhamos cada caso de forma individual.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -307,6 +357,60 @@ export default async function ExtensaoStatusCanadaPage() {
                 </a>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── VISITOR VS STUDENT ────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Comparativo</span>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Visitante ou estudante: o que muda na extensão</h2>
+            <p className="text-muted">Os dois pedidos são feitos de dentro do Canadá, à IRCC, antes do vencimento. O que muda é o documento, as evidências e o que você pode fazer enquanto espera.</p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-light">
+            <table className="w-full min-w-[640px] text-sm text-left">
+              <caption className="sr-only">Comparação entre a extensão como visitante e a extensão do study permit</caption>
+              <thead className="bg-primary text-white font-heading">
+                <tr>
+                  <th scope="col" className="px-5 py-4 w-1/5"><span className="sr-only">Critério</span></th>
+                  <th scope="col" className="px-5 py-4">Visitante (visitor record)</th>
+                  <th scope="col" className="px-5 py-4">Estudante (study permit)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {compareRows.map(([label, visitor, student], i) => (
+                  <tr key={label} className={i % 2 ? 'bg-light' : 'bg-white'}>
+                    <th scope="row" className="px-5 py-4 font-heading font-bold text-dark align-top">{label}</th>
+                    <td className="px-5 py-4 text-muted align-top leading-relaxed">{visitor}</td>
+                    <td className="px-5 py-4 text-muted align-top leading-relaxed">{student}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted mt-4 text-center">
+            Valores das taxas em{' '}
+            <a href={irccFees} target="_blank" rel="noopener noreferrer" className="text-primary underline">canada.ca</a>. Visitantes não podem trabalhar no Canadá enquanto aguardam a decisão.
+          </p>
+
+          <div className="mt-16">
+            <h3 className="text-2xl font-heading font-bold text-dark mb-3">Como renovar o study permit</h3>
+            <p className="text-muted leading-relaxed mb-8 max-w-3xl">
+              Se o seu programa vai terminar depois da validade do permit atual, o pedido de extensão precisa mostrar por que você precisa de mais tempo e que continua cumprindo as condições de estudante. Os pontos que mais pesam:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {studyPermitPoints.map((p) => (
+                <div key={p.title} className="bg-light rounded-2xl p-6">
+                  <h4 className="font-heading font-bold text-dark mb-2">{p.title}</h4>
+                  <p className="text-muted text-sm leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted text-sm leading-relaxed mt-6 max-w-3xl">
+              As regras para estudantes internacionais mudaram várias vezes desde 2024. Na avaliação inicial, conferimos quais exigências valem para o seu programa, sua instituição e sua província.
+            </p>
           </div>
         </div>
       </section>
@@ -338,7 +442,7 @@ export default async function ExtensaoStatusCanadaPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Processo</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Como funciona, do início até a decisão</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Como funciona a extensão de estadia no Canadá</h2>
             <p className="text-muted">A contratação não termina na submissão. Acompanhamos você até a resposta da IRCC.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -358,7 +462,7 @@ export default async function ExtensaoStatusCanadaPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Planos</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Preços da extensão de status no Canadá</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Preços da extensão de estadia no Canadá</h2>
             <p className="text-muted">Sem cobranças-surpresa. Antes de começar, você sabe exatamente quais custos externos podem existir no seu caso.</p>
           </div>
           <div className="max-w-md mx-auto">
@@ -497,7 +601,7 @@ export default async function ExtensaoStatusCanadaPage() {
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Dúvidas</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Perguntas frequentes sobre extensão de status no Canadá</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Perguntas frequentes sobre extensão de estadia no Canadá</h2>
           </div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (

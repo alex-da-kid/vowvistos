@@ -8,6 +8,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: '/extensao-de-status-canada', destination: '/extensao-de-estadia-canada', permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: '/(.*)', headers: securityHeaders },
