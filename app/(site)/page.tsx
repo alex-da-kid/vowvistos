@@ -218,8 +218,9 @@ export default async function HomePage() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="pt-10 pb-12 md:pt-14 md:pb-16 text-center text-white relative overflow-hidden bg-dark"
-        style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="pt-10 pb-12 md:pt-14 md:pb-16 text-center text-white relative overflow-hidden bg-dark">
+        {/* next/image instead of a CSS background: responsive AVIF/WebP and an early preload for LCP. */}
+        <Image src="/hero-airport.jpg" alt="" fill preload sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-dark/75 to-primary/65" aria-hidden />
         <div className="absolute inset-0 pointer-events-none opacity-10" aria-hidden>
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-accent blur-3xl"/>
@@ -418,6 +419,7 @@ export default async function HomePage() {
               </div>
             ))}
           </div>
+          <p className="text-center text-muted text-sm mt-10">Já está nos EUA e precisa ficar mais tempo? Conheça nossa consultoria de <Link href="/assessoria-i-539" className="text-accent font-semibold hover:underline">extensão de permanência e mudança de status nos EUA (Form I-539)</Link>.</p>
         </div>
       </section>
 

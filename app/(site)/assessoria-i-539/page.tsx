@@ -7,7 +7,7 @@ import { getGooglePlacesData } from '@/lib/google-places';
 export const metadata: Metadata = {
   // The (site) layout's title template appends "| Vow Vistos".
   title: 'Como Estender sua Estadia nos EUA (Form I-539)',
-  description: 'Precisa ficar mais tempo nos EUA com visto de turista ou de negócios? Consultoria para brasileiros: extensão de permanência B1/B2 e mudança de status para F-1, da análise inicial à decisão da USCIS.',
+  description: 'Precisa ficar mais tempo nos EUA? Extensão de permanência B1/B2 e mudança de status para F-1 com o Form I-539. Em português, 100% online. A partir de R$ 2.600.',
   alternates: { canonical: '/assessoria-i-539' },
   openGraph: {
     title: 'Precisa ficar mais tempo nos Estados Unidos?',
@@ -155,9 +155,13 @@ const faqs = [
   { q: 'Quando devo fazer o pedido?', a: 'Sempre antes da data do seu I-94. A USCIS recomenda protocolar com pelo menos 45 dias de antecedência. Pedidos feitos depois do vencimento, em regra, não são aceitos, salvo circunstâncias extraordinárias.' },
   { q: 'Onde vejo a data do meu I-94?', a: 'No site oficial i94.cbp.dhs.gov. A data que vale é a do I-94, e não a validade do visto no passaporte. Muita gente confunde as duas.' },
   { q: 'Posso continuar nos EUA enquanto o pedido está em análise?', a: 'Em geral, quem protocola antes do vencimento do I-94 e não violou o status pode aguardar a decisão nos Estados Unidos. Se o pedido for negado, é preciso sair do país. Cada caso tem particularidades, e é isso que avaliamos no briefing inicial.' },
+  { q: 'Posso viajar para fora dos EUA com o I-539 pendente?', a: 'Em regra, não. Se você sair dos Estados Unidos enquanto o pedido está em análise, a USCIS normalmente considera o I-539 abandonado e o nega. Para voltar, você precisaria entrar novamente com o seu visto, e a extensão pedida deixa de valer. Se precisar viajar, fale conosco antes.' },
+  { q: 'O que acontece se eu passar do prazo do I-94 (overstay)?', a: 'Ficar além da data do I-94 sem um pedido protocolado a tempo gera presença ilegal (unlawful presence). Quem acumula mais de 180 dias e menos de 1 ano de presença ilegal e depois sai dos EUA fica impedido de voltar por 3 anos. Com 1 ano ou mais, o impedimento é de 10 anos. Um overstay também costuma cancelar o visto no passaporte. Por isso o pedido precisa ser feito antes do vencimento.' },
+  { q: 'Fico em situação irregular enquanto o I-539 está em análise?', a: 'Se o pedido foi protocolado antes do vencimento do I-94, tem fundamento e você não trabalhou sem autorização, você não acumula presença ilegal enquanto ele estiver pendente, mesmo que a data do I-94 passe. Se o pedido for negado, a presença ilegal passa a contar a partir da data da negativa.' },
+  { q: 'O que acontece se o I-539 for negado?', a: 'Você precisa se organizar para sair dos Estados Unidos o quanto antes, porque a presença ilegal começa a contar a partir da data da negativa. Não existe recurso ao órgão de apelação para o I-539, mas em alguns casos é possível pedir reabertura ou reconsideração (Form I-290B). Avaliamos a carta de negativa com você e, quando o caso exige, encaminhamos para advogado de imigração parceiro.' },
   { q: 'Posso trabalhar ou estudar enquanto aguardo?', a: 'Não. O pedido pendente não autoriza trabalho. Quem pede mudança de B1/B2 para F-1 não pode começar os estudos antes da aprovação.' },
   { q: 'Quanto custa a consultoria da Vow Vistos?', a: 'R$ 2.600 para extensão de permanência (B1 ou B2) e R$ 2.950 para mudança de status (por exemplo, de B1/B2 para F-1 ou de F-1 para B1/B2). Os valores incluem todo o acompanhamento até a decisão e uma resposta a RFE. As taxas da USCIS são pagas à parte, direto ao governo.' },
-  { q: 'Quanto custa a taxa da USCIS?', a: 'A taxa é paga por você direto à USCIS e muda periodicamente. Confira o valor atualizado em uscis.gov/i-539. Antes de começar, informamos a taxa vigente e todos os custos externos do seu caso.' },
+  { q: 'Quanto custa a taxa da USCIS?', a: 'Em setembro de 2026, a taxa do I-539 é de US$ 420 no protocolo online e US$ 470 no protocolo em papel, sem cobrança separada de biometria. O Premium Processing, disponível para algumas mudanças para F-1, custa US$ 2.075 a mais. A taxa é paga por você direto à USCIS e muda periodicamente: confira sempre em uscis.gov/i-539. Antes de começar, informamos a taxa vigente e todos os custos externos do seu caso.' },
   { q: 'Quanto tempo a USCIS leva para decidir?', a: 'Varia bastante conforme a categoria e o centro de processamento, e pode levar meses. Os prazos atualizados ficam em egov.uscis.gov/processing-times. Algumas mudanças para F-1 e F-2 podem usar Premium Processing, com prazo menor e taxa adicional.' },
   { q: 'Minha família pode ser incluída?', a: 'Sim. Cônjuge e filhos podem ser incluídos no mesmo pedido com o Form I-539A, quando se enquadram na mesma situação. O caso dos dependentes é sempre analisado junto com o do titular.' },
   { q: 'O que é uma RFE?', a: 'É uma Request for Evidence: a USCIS pede documentos ou explicações adicionais antes de decidir. A preparação de uma resposta a RFE ligada ao pedido original já está incluída na consultoria.' },
@@ -175,21 +179,45 @@ const schemaOrg = {
   })),
 };
 
+const pageUrl = 'https://www.vowvistos.com.br/assessoria-i-539';
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Consultoria para extensão e mudança de status nos EUA (Form I-539)',
   serviceType: 'Preparação e acompanhamento de processos I-539',
-  url: 'https://www.vowvistos.com.br/assessoria-i-539',
+  description: 'Extensão de permanência B1/B2 e mudança de status de B1/B2 para F-1 ou de F-1 para B1/B2 com o Form I-539, para brasileiros que já estão nos Estados Unidos.',
+  url: pageUrl,
+  image: 'https://www.vowvistos.com.br/hero-airport.jpg',
   areaServed: { '@type': 'Country', name: 'Estados Unidos' },
   availableLanguage: 'pt-BR',
-  provider: { '@type': 'Organization', name: 'Vow Vistos', url: 'https://www.vowvistos.com.br' },
+  provider: {
+    // Same @id as the LocalBusiness on the home page, so Google links the two.
+    '@type': 'Organization',
+    '@id': 'https://vowvistos.com.br/#business',
+    name: 'Vow Vistos',
+    legalName: 'Vow Vistos Consultoria Consular e Agência de Viagens Ltda.',
+    url: 'https://www.vowvistos.com.br',
+    logo: 'https://www.vowvistos.com.br/logo.svg',
+    sameAs: ['https://instagram.com/vowvistos', 'https://www.youtube.com/@vowvistos'],
+  },
   offers: plans.map((p) => ({
     '@type': 'Offer',
     name: p.name,
     price: p.price.replace(/[^\d]/g, ''),
     priceCurrency: 'BRL',
+    url: `${pageUrl}#planos`,
   })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: 'https://www.vowvistos.com.br' },
+    { '@type': 'ListItem', position: 2, name: 'Visto Americano', item: 'https://www.vowvistos.com.br/visto-americano' },
+    { '@type': 'ListItem', position: 3, name: 'Extensão e Mudança de Status (I-539)', item: pageUrl },
+  ],
 };
 
 // Content review date shown on the page; bump it whenever facts or fees are rechecked.
@@ -201,9 +229,11 @@ export default async function AssessoriaI539Page() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark"
-        style={{ backgroundImage: 'url(/hero-airport.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="py-24 md:py-32 text-center text-white relative overflow-hidden bg-dark">
+        {/* next/image instead of a CSS background: responsive AVIF/WebP and an early preload for LCP. */}
+        <Image src="/hero-airport.jpg" alt="" fill preload sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-dark/80 to-primary/70" aria-hidden />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
@@ -288,7 +318,7 @@ export default async function AssessoriaI539Page() {
             </div>
             <div>
               <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Prazo</span>
-              <h2 className="text-3xl font-heading font-bold text-dark mb-4">A data que manda é a do I-94, não a do visto</h2>
+              <h2 className="text-3xl font-heading font-bold text-dark mb-4">Prorrogar o visto de turista? A data que manda é a do I-94</h2>
               <p className="text-muted leading-relaxed mb-4">
                 Muita gente procura como prorrogar o visto de turista, mas o que se estende é a estadia. O visto no passaporte pode valer 10 anos, mas o tempo que você pode ficar nos EUA é definido pelo I-94, registrado na sua entrada. O pedido de extensão ou mudança de status precisa ser protocolado antes dessa data. A USCIS recomenda pelo menos 45 dias de antecedência.
               </p>
@@ -309,8 +339,8 @@ export default async function AssessoriaI539Page() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Serviços</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Em que situação você está?</h2>
-            <p className="text-muted">Cada categoria tem requisitos e evidências próprias. Trabalhamos cada caso de forma individual.</p>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Extensão de permanência B1/B2 e mudança de status para F-1</h2>
+            <p className="text-muted">Em que situação você está? Cada categoria tem requisitos e evidências próprias. Trabalhamos cada caso de forma individual.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {services.map((s) => (
@@ -343,7 +373,7 @@ export default async function AssessoriaI539Page() {
       <section className="py-20 bg-dark text-white">
         <div className="max-w-4xl mx-auto px-4">
           <span className="inline-block bg-accent/20 text-accent text-xs font-heading font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">Nossa abordagem</span>
-          <h2 className="text-4xl font-heading font-bold mb-6">Um I-539 não é só um formulário</h2>
+          <h2 className="text-4xl font-heading font-bold mb-6">Form I-539: por que não é só um formulário</h2>
           <p className="text-white/75 text-lg leading-relaxed mb-8">
             O formulário é a parte mais simples. O que a USCIS avalia é se a sua história faz sentido e está bem comprovada. Antes de preencher qualquer campo, respondemos com você a perguntas como:
           </p>
@@ -366,7 +396,7 @@ export default async function AssessoriaI539Page() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Processo</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Como funciona, do início até a decisão</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Como funciona a consultoria I-539, do início até a decisão</h2>
             <p className="text-muted">A contratação não termina no protocolo. Acompanhamos você até a resposta da USCIS.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -507,7 +537,7 @@ export default async function AssessoriaI539Page() {
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block text-accent text-xs font-heading font-bold uppercase tracking-widest mb-3">Dúvidas</span>
-            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Perguntas frequentes sobre o I-539</h2>
+            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Perguntas frequentes sobre extensão de estadia nos EUA e o I-539</h2>
           </div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
